@@ -78,16 +78,16 @@ if __name__ == '__main__':
     cf.complex_fcn.mra = mra
     print('call MRA DONE')
     
-    computeNuclearPotential = False
-    readOrbitals = True
-    runCoulomb = False
+    computeNuclearPotential = True
+    readOrbitals = False
+    runCoulomb = True
     saveOrbitals = False
-    runGaunt = True
-    runGaugeA = True
-    runGaugeB = True
-    runGaugeC = True
-    runGaugeD = True
-    runGaugeDelta = True
+    runGaunt = False
+    runGaugeA = False
+    runGaugeB = False
+    runGaugeC = False
+    runGaugeD = False
+    runGaugeDelta = False
     default_der = args.deriv
     
     ################### Define V potential ######################
@@ -135,7 +135,7 @@ if __name__ == '__main__':
     length = 2 * args.box
 
     if runCoulomb:
-        spinorb1, spinorb2 = two_electron.coulomb_gs_2e(spinorb, V_tree, mra, prec)
+        spinorb1, spinorb2 = two_electron.coulomb_gs_2e(spinorb1, V_tree, mra, prec)
     
     if runGaunt:
         two_electron.calcGauntPert(spinorb1, spinorb2, mra, prec)

@@ -65,6 +65,12 @@ class complex_fcn:
         output.real = self.real * np.real(other) - self.imag * np.imag(other)
         output.imag = self.real * np.imag(other) + self.imag * np.real(other)
         return output
+
+    def __mul__(self, other):
+        output = complex_fcn()
+        output.real = self.real * other.real - self.imag * other.imag
+        output.imag = self.real * other.imag + self.imag * other.real
+        return output
         
     def __str__(self):
         return ('Real part {}\n Imag part {}'.format(self.real, self.imag))
@@ -265,7 +271,7 @@ def multiply(prec, lhs, rhs):
     vp.advanced.multiply(prec, ii, 1.0, lhs.imag, rhs.imag, -1, True)
     output = complex_fcn()
     output.real = rr - ii
-    output.imag = ri + ri
+    output.imag = ri + ir
     output.crop(prec)
     return output
 

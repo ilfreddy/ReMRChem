@@ -310,9 +310,9 @@ def matrix_element(bra, operator, ket):
 def apply_dirac_hamiltonian(orbital, prec, shift = 0.0, der = 'ABGV'):
     beta_phi = orbital.beta(shift)
     grad_phi = orbital.gradient(der)
-    alpx_phi = -1j * orbital4c.light_speed * grad_phi[0].alpha(0)
-    alpy_phi = -1j * orbital4c.light_speed * grad_phi[1].alpha(1)
-    alpz_phi = -1j * orbital4c.light_speed * grad_phi[2].alpha(2)
+    alpx_phi = -1j * orbital4c.light_speed * grad_phi[0].alpha(0, prec)
+    alpy_phi = -1j * orbital4c.light_speed * grad_phi[1].alpha(1, prec)
+    alpz_phi = -1j * orbital4c.light_speed * grad_phi[2].alpha(2, prec)
     return beta_phi + alpx_phi + alpy_phi + alpz_phi
 
 def apply_potential(factor, potential, orbital, prec):

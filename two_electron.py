@@ -30,8 +30,6 @@ def coulomb_gs_2e(spinorb1, potential, mra, prec, der = 'ABGV'):
         print("Spinorb 2")
         print(spinorb2)
         
-        return spinorb1, spinorb2
-
     # Definition of two electron operators
         B11    = P(n_11.real) * (4 * np.pi)
 
