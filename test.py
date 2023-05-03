@@ -30,11 +30,11 @@ if __name__ == '__main__':
                         help='put the atom charge')
     parser.add_argument('-b', '--box', dest='box', type=int, default=60,
                         help='put the box dimension')
-    parser.add_argument('-cx', '--center_x', dest='cx', type=float, default=0.0,
+    parser.add_argument('-cx', '--center_x', dest='cx', type=float, default=0.1,
                         help='position of nucleus in x')
-    parser.add_argument('-cy', '--center_y', dest='cy', type=float, default=0.0,
+    parser.add_argument('-cy', '--center_y', dest='cy', type=float, default=0.2,
                         help='position of nucleus in y')
-    parser.add_argument('-cz', '--center_z', dest='cz', type=float, default=0.0,
+    parser.add_argument('-cz', '--center_z', dest='cz', type=float, default=0.3,
                         help='position of nucleus in z')
     parser.add_argument('-l', '--light_speed', dest='lux_speed', type=float, default=137.03599913900001,
                         help='light of speed')
@@ -78,16 +78,16 @@ if __name__ == '__main__':
     cf.complex_fcn.mra = mra
     print('call MRA DONE')
     
-    computeNuclearPotential = True
-    readOrbitals = False
-    runCoulomb = True
+    computeNuclearPotential = False
+    readOrbitals = True
+    runCoulomb = False
     saveOrbitals = False
-    runGaunt = False
-    runGaugeA = False
-    runGaugeB = False
-    runGaugeC = False
-    runGaugeD = False
-    runGaugeDelta = False
+    runGaunt = True
+    runGaugeA = True
+    runGaugeB = True
+    runGaugeC = True
+    runGaugeD = True
+    runGaugeDelta = True
     default_der = args.deriv
     
     ################### Define V potential ######################
