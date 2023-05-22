@@ -364,8 +364,8 @@ def calcGaugePertD(spinorb1, spinorb2, mra, prec):
                   cf.vector_dot_r([grad_n12[i][1] for i in range(3)], prec),
                   cf.vector_dot_r([grad_n12[i][2] for i in range(3)], prec)]
 
-    div_n22 = cf.divergence(n22, prec)
     div_n21 = cf.divergence(n21, prec)
+    div_n22 = cf.divergence(n22, prec)
 
     div_n22_r = cf.scalar_times_r(div_n22, prec)
     div_n21_r = cf.scalar_times_r(div_n21, prec)

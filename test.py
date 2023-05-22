@@ -79,16 +79,16 @@ if __name__ == '__main__':
     print('call MRA DONE')
     
     computeNuclearPotential = False
-    readOrbitals = True
-    runCoulomb = False
-    saveOrbitals = False
-    runGaunt = True
-    runGaugeA = True
-    runGaugeB = True
-    runGaugeC = True
-    runGaugeD = True
-    runGaugeDelta = True
-    default_der = args.deriv
+    readOrbitals            = True
+    runCoulomb              = False
+    saveOrbitals            = False
+    runGaunt                = False
+    runGaugeA               = False
+    runGaugeB               = False
+    runGaugeC               = False
+    runGaugeD               = True
+    runGaugeDelta           = False
+    default_der             = args.deriv
     
     ################### Define V potential ######################
     if(computeNuclearPotential):
