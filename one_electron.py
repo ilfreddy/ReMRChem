@@ -25,7 +25,8 @@ def gs_D_1e(spinorb1, potential, mra, prec, derivative):
 
     light_speed = spinorb1.light_speed
 
-    while error_norm > prec:
+#    while error_norm > prec:
+    for itera in range(7):
         hd_psi = orb.apply_dirac_hamiltonian(spinorb1, prec, der = derivative)
         v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec)
         add_psi = hd_psi + v_psi
@@ -58,7 +59,8 @@ def gs_D2_1e(spinorb1, potential, mra, prec, derivative):
     light_speed = spinorb1.light_speed
     c2 = light_speed * light_speed
 
-    while error_norm > prec:
+#    while error_norm > prec:
+    for itera in range(7):
         v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec) 
         vv_psi = orb.apply_potential(-0.5/c2, potential, v_psi, prec)
         beta_v_psi = v_psi.beta2()

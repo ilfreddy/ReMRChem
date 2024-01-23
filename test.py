@@ -27,16 +27,16 @@ if __name__ == '__main__':
                         help='put the type of derivative')
     parser.add_argument('-b', '--box', dest='box', type=int, default=60,
                         help='put the box dimension')
-    parser.add_argument('-l', '--light_speed', dest='lux_speed', type=float, default=137.03599913900001,
+    parser.add_argument('-l', '--light_speed', dest='lux_speed', type=float, default=137.035999084,
                         help='light of speed')
-    parser.add_argument('-o', '--order', dest='order', type=int, default=6,
+    parser.add_argument('-o', '--order', dest='order', type=int, default=8,
                         help='put the order of Polinomial')
-    parser.add_argument('-p', '--prec', dest='prec', type=float, default=1e-4,
+    parser.add_argument('-p', '--prec', dest='prec', type=float, default=1e-6,
                         help='put the precision')
     parser.add_argument('-e', '--coulgau', dest='coulgau', type=str, default='coulomb',
                         help='put the coulomb or gaunt')
     parser.add_argument('-v', '--potential', dest='potential', type=str, default='point_charge',
-                        help='tell me wich model for V you want to use point_charge, coulomb_HFYGB, homogeneus_charge_sphere, gaussian')
+                        help='tell me wich model for V you want to use point_charge, coulomb_HFYGB, Homogeneus_charge_sphere, gaussian')
     args = parser.parse_args()
 
     assert args.coulgau in ['coulomb', 'gaunt', 'gaunt-test'], 'Please, specify coulgau in a rigth way: coulomb or gaunt'
@@ -66,11 +66,11 @@ if __name__ == '__main__':
     computeNuclearPotential = True
     readOrbitals            = True
     runD_1e                 = False
-    runD2_1e                = False
+    runD2_1e                = True
     runCoulombGen           = False
-    runCoulomb2e            = False #Use it
+    runCoulomb2e            = False
     runKutzelnigg           = False
-    runKutzSimple           = True #I will use it
+    runKutzSimple           = False
     saveOrbitals            = False
     runGaunt                = False
     runGaugeA               = False
@@ -78,9 +78,9 @@ if __name__ == '__main__':
     runGaugeC               = False
     runGaugeD               = False
     runGaugeDelta           = False
-    print('Jobs chosen')
+    print('Jobs Reading')
 
-    ################### Reading Atoms #########################
+    ################### Atoms chosen #########################
     atomlist = 'atom_list.txt'  # Replace with the actual file name
     coordinates, number = nucpot.read_file_with_named_lists(atomlist)
 
@@ -90,7 +90,7 @@ if __name__ == '__main__':
     ################### Define V potential ######################
     V_tree = vp.FunctionTree(mra)
     if(computeNuclearPotential):
-        Peps = vp.ScalingProjector(mra, prec/10)
+        Peps = vp.ScalingProjector(mra, prec/100)
         typenuc = args.potential
         f = lambda x: nucpot.nuclear_potential(x, coordinates, typenuc, mra, prec, derivative)
         V_tree = Peps(f)
