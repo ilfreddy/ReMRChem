@@ -3,9 +3,9 @@ from orbital4c import orbital as orb
 from orbital4c import nuclear_potential as nucpot
 from orbital4c import complex_fcn as cf
 import numpy as np
-from scipy.special import legendre, laguerre, erf, gamma
-from scipy.special import gamma
-from scipy.constants import hbar
+#from scipy.special import legendre, laguerre, erf, gamma
+#from scipy.special import gamma
+#from scipy.constants import hbar
 
 def analytic_1s(light_speed, n, k, Z):
     alpha = 1/light_speed
