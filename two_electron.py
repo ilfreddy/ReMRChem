@@ -220,8 +220,9 @@ def coulomb_2e_D2_J(spinors, potential, mra, prec, thr, derivative):
         error_norm = np.sqrt(deltasq)
         print('Orbital_Error norm', error_norm)
         print('delta_e', delta_e)
-        spinors[0] = new_spinor
-        spinors[1] = new_spinor.ktrs(prec)
+        spinors[0] = new_spinor + spinors[0]
+        spinors[0].normalize()
+        spinors[1] = spinors[0].ktrs(prec)
         old_energy = orbital_energy
     Jop = oper.CoulombDirectOperator(mra, prec, spinors)
     RHS = build_RHS_D2(Jop, Vop, spinors[0], prec, light_speed)
