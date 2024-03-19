@@ -3,9 +3,6 @@ from orbital4c import orbital as orb
 from orbital4c import nuclear_potential as nucpot
 from orbital4c import complex_fcn as cf
 import numpy as np
-#from scipy.special import legendre, laguerre, erf, gamma
-#from scipy.special import gamma
-#from scipy.constants import hbar
 
 def analytic_1s(light_speed, n, k, Z):
     alpha = 1/light_speed
@@ -60,17 +57,14 @@ default_der = 'BS'
 
 orbital_error = 1
 while orbital_error > prec:
-#for idx in range(10):
     hd_psi = orb.apply_dirac_hamiltonian(spinor_H, prec, der = default_der)
     v_psi = orb.apply_potential(-1.0, V_tree, spinor_H, prec) 
     add_psi = hd_psi + v_psi
     energy = (spinor_H.dot(add_psi)).real
     print('Energy',energy-light_speed**2)
-    #tmp = orb.apply_dirac_hamiltonian(v_psi, prec, energy)
     mu = orb.calc_dirac_mu(energy, light_speed)
     tmp = orb.apply_helmholtz(v_psi, mu, prec)
     tmp.crop(prec/10)
-#    new_orbital = orb.apply_helmholtz(tmp, mu, prec)
     new_orbital = orb.apply_dirac_hamiltonian(tmp, prec, energy, der = default_der) 
     new_orbital.crop(prec/10)
     new_orbital.normalize()
@@ -84,11 +78,6 @@ v_psi = orb.apply_potential(-1.0, V_tree, spinor_H, prec)
 add_psi = hd_psi + v_psi
 energy = (spinor_H.dot(add_psi)).real
 print('Final Energy',energy - light_speed**2)
-
-#exact_orbital = orb.orbital4c()
-#orb.init_1s_orbital(exact_orbital,k,Z,n,alpha,origin,prec)
-#exact_orbital.normalize()
-
 energy_1s = analytic_1s(light_speed, n, k, Z)
 
 print('Exact Energy',energy_1s - light_speed**2)

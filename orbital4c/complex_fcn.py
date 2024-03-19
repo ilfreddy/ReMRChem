@@ -147,54 +147,6 @@ class complex_fcn:
         vp.advanced.add(prec/10, density, [temp_r, temp_i])
         return density
 
-#
-# Other is complex conjugate
-#
-
-#    def exchange(self, other, prec):
-#        exchange = vp.FunctionTree(self.mra)
-#        add_vector = []
-#        a_ = vp.FunctionTree(self.mra)
-#        a_.setZero()
-#        b_ = vp.FunctionTree(self.mra)
-#        b_.setZero()
-#        c_ = vp.FunctionTree(other.mra)
-#        c_.setZero()
-#        d_ = vp.FunctionTree(other.mra)
-#        d_.setZero()        
-#        if(self.real.squaredNorm() > 0 and other.real.squaredNorm() > 0):
-#            vp.advanced.multiply(prec, a_, 1.0, self.real, other.real)
-#        if(self.imag.squaredNorm() > 0 and other.imag.squaredNorm() > 0):
-#            vp.advanced.multiply(prec, b_, 1.0, self.imag, other.imag)
-#        if(self.real.squaredNorm() > 0 and other.imag.squaredNorm() > 0):
-#            vp.advanced.multiply(prec, c_, 1.0, self.real, other.imag)
-#        if(self.imag.squaredNorm() > 0 and other.real.squaredNorm() > 0):
-#            vp.advanced.multiply(prec, d_, -1.0, self.imag, other.real)        
-#        vp.advanced.add(prec/10, exchange, [a_, b_, c_, d_])
-#        return exchange
-#
-#    def alpha_exchange(self, other, prec):
-#        alpha_exchange = vp.FunctionTree(self.mra)
-#        add_vector = []
-#        a_ = vp.FunctionTree(self.mra)
-#        a_.setZero()
-#        b_ = vp.FunctionTree(self.mra)
-#        b_.setZero()
-#        c_ = vp.FunctionTree(other.mra)
-#        c_.setZero()
-#        d_ = vp.FunctionTree(other.mra)
-#        d_.setZero()        
-#        if(self.real.squaredNorm() > 0 and other.real.squaredNorm() > 0):
-#            vp.advanced.multiply(prec, a_, 1.0, self.real, other.real)
-#        if(self.imag.squaredNorm() > 0 and other.imag.squaredNorm() > 0):
-#            vp.advanced.multiply(prec, b_, 1.0, self.imag, other.imag)
-#        if(self.real.squaredNorm() > 0 and other.imag.squaredNorm() > 0):
-#            vp.advanced.multiply(prec, c_, 1.0, self.real, other.imag)
-#        if(self.imag.squaredNorm() > 0 and other.real.squaredNorm() > 0):
-#            vp.advanced.multiply(prec, d_, -1.0, self.imag, other.real)        
-#        vp.advanced.add(prec/10, alpha_exchange, [a_, b_])
-#        return alpha_exchange
-    
     def dot(self, other, cc_first = True):
         out_real = 0
         out_imag = 0
@@ -246,10 +198,6 @@ class complex_fcn:
 
         return output
 
-
-
-
-    #Not too happy about this design. Potential is only a real FunctionTree...
 def apply_potential(factor, potential, func, prec):
     output = complex_fcn()
     vp.advanced.multiply(prec, output.real, factor, potential, func.real)
@@ -332,7 +280,6 @@ def vector_gradient(vector, der = "BS"):
         tensor.append(vector[i].gradient(der))
     return tensor
 
-# Note: some thresholding of the contributions should be considered here.
 def add_vector(func_array, coeff_array, prec):
     output = complex_fcn()
     real_array = []

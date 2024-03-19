@@ -145,8 +145,6 @@ class orbital4c:
             print("WARNING: No component copied!")
         
     def init_small_components(self,prec):
-    # initalize the small components based on the kinetic balance
-    # TODO: should be optimized removing matrix operations.
         grad_a = self['La'].gradient()
         grad_b = self['Lb'].gradient()
         plx = np.array([grad_a[0],grad_b[0]])
@@ -204,30 +202,6 @@ class orbital4c:
                 add_vector.append((1.0,temp))
         vp.advanced.add(prec, density, add_vector)
         return density    
-
-#    def exchange(self, other, prec):
-#        exchange = vp.FunctionTree(self.mra)
-#        add_vector = []
-#        for comp in self.comp_dict.keys():
-#            func_i = self[comp]
-#            func_j = other[comp]
-#            temp = func_i.exchange(func_j, prec)
-#            if(temp.squaredNorm() > 0):
-#                add_vector.append((1.0,temp))    
-#        vp.advanced.add(prec, exchange, add_vector)
-#        return exchange
-#
-#    def alpha_exchange(self, other, prec):
-#        alpha_exchange = vp.FunctionTree(self.mra)
-#        add_vector = []
-#        for comp in self.comp_dict.keys():
-#            func_i = self[comp]
-#            func_j = other[comp]
-#            temp = func_i.alpha_exchange(func_j, prec)
-#            if(temp.squaredNorm() > 0):
-#                add_vector.append((1.0,temp))    
-#        vp.advanced.add(prec, alpha_exchange, add_vector)
-#        return alpha_exchange    
 
     def overlap_density(self, other, prec):
         density = cf.complex_fcn()
@@ -350,26 +324,6 @@ def apply_complex_potential(factor, potential, orbital, prec):
             out_orbital[comp] = potential * orbital[comp] 
     return out_orbital
 
-#
-# Keep this for now to maybe enable precise addition later
-#
-#def add_orbitals(a, orb_a, b, orb_b, prec):
-#    out_orb = orbital4c("a_plus_b",orb_a.mra)
-#    for comp, func in out_orb.components.items():        
-#        func_a = orb_a[comp]
-#        func_b = orb_b[comp]
-#        if (func_a.squaredNorm() > 0 and func_b.squaredNorm() > 0):
-#            vp.advanced.add(prec/10, func, a, func_a, b, func_b)
-#        elif(func_a.squaredNorm() > 0):
-#            out_orb.init_function(func_a, comp)
-#            func *= a
-#        elif(func_b.squaredNorm() > 0):
-#            out_orb.init_function(func_b, comp)
-#            func *= b
-#        else:
-#            print('Warning: adding two empty trees')
-#    return out_orb
-
 def add_vector(orbital_array, coeff_array, prec):
     output = orbital4c()
     for comp in output.comp_dict:
@@ -405,13 +359,6 @@ def init_1s_orbital(orbital,k,Z,n,alpha,origin,prec):
 def compute_gamma(k,Z,alpha):
     return np.sqrt(k**2 - Z**2 * alpha**2)
 
-def compute_norm_const(n, gamma_factor):
-# THIS NORMALIZATION CONSTANT IS FROM WIKIPEDIA BUT IT DOES NOT AGREE WITH Bethe&Salpeter
-# and most importantly, it is wrong :-)
-    tmp1 = 2 * n * (n + gamma_factor)
-    tmp2 = 1 / (gamma_factor * gamma(2 * gamma_factor))
-    return np.sqrt(tmp2/tmp1)
-
 def one_s_alpha(x,Z,alpha,gamma_factor):
     r = np.sqrt(x[0]**2 + x[1]**2 + x[2]**2)
     tmp1 = 1.0 + gamma_factor
@@ -442,15 +389,5 @@ def alpha_gradient(orbital, prec):
 def calc_dirac_mu(energy, light_speed):
     return np.sqrt((light_speed**4-energy**2)/light_speed**2)
 
-def calc_kutzelnigg_mu(energy_sq, light_speed):
-    c2 = light_speed**2
-    val = energy_sq/c2 - c2
-    return np.sqrt(-val)
-
-def calc_non_rel_mu(energy):
-    if energy > 0:
-        return np.sqrt(2.0 * energy)
-    elif energy < 0:
-        return np.sqrt(-2.0 * energy)
     
     
