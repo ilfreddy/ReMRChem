@@ -203,7 +203,7 @@ def coulomb_2e_D2_J(spinors, potential, mra, prec, thr, derivative):
         RHS = build_RHS_D2(Jop, Vop, spinors[0], prec, light_speed)
         cke = spinors[0].classicT()
         cpe = (spinors[0].dot(RHS)).real
-        cpe_alt = pot_exp_val_D2(Jop, Vop, spinor, prec, light_speed)
+        cpe_alt = pot_exp_val_D2(Jop, Vop, spinors[0], prec, light_speed)
         print("CPE and alt", cpe, cpe_alt)
         classical_energy = cke + cpe
         orbital_energy = c2 * ( -1.0 + np.sqrt(1 + 2 * (classical_energy) / c2))
@@ -295,7 +295,9 @@ def coulomb_gs_2e(spinorb1, potential, mra, prec, thr, derivative):
 
         V_J_K_spinorb1 = v_psi_1 + JmK_phi1
 
+        print(eps,light_speed)
         mu = orb.calc_dirac_mu(eps, light_speed)
+        print(mu)
         tmp = orb.apply_helmholtz(V_J_K_spinorb1, mu, prec)
         new_orbital = orb.apply_dirac_hamiltonian(tmp, prec, eps, der = derivative)
         new_orbital *= 0.5/light_speed**2

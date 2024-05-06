@@ -5,30 +5,13 @@ from scipy.special import gamma
 from vampyr import vampyr3d as vp
 from vampyr import vampyr1d as vp1
 
-import argparse
 import numpy as np
-import numpy.linalg as LA
-import sys, getopt
-
-def read_file_with_named_lists(atomlist):
-    charge_list = {"H" : 1, "He": 2, "Ne": 10, "Ar": 18, "Kr": 36, "Xe": 54, "Rn": 86, "Th": 90, "U":92, "Pu": 94}
-    atom_list = {}
-    index = 0
-    with open(atomlist, 'r') as file:
-        for line in file:
-            terms = line.strip().split()
-            charge = charge_list[terms[0]]
-            atom_list[index] = [terms[0], charge, float(terms[1]), float(terms[2]), float(terms[3])]
-            index += 1
-        number = len(atom_list)
-    return atom_list, number
-
 
 def calculate_center_of_mass(atoms_list):
     total_mass = 0.0
     center_of_mass = [0.0, 0.0, 0.0]
 
-    for atom in atoms_list.values():
+    for atom in atoms_list:
         # Assuming each atom has mass 1.0 (modify if necessary)
         mass = 1.0
         total_mass += mass
@@ -43,57 +26,9 @@ def calculate_center_of_mass(atoms_list):
 
     return center_of_mass
 
-#def pot(coordinates, typenuc, mra, prec, der):
-#    atomic_potentials = []
-#    V_tree = vp.FunctionTree(mra)
-#    V_tree.setZero()
-#    for atom, origin in coordinates.items():
-#        atom = get_original_list_name(atom)
-#        print("Atom:", atom)
-#        fileObj = open("Z.txt", "r")
-#        charge = ""
-#        for line in fileObj:
-#            if not line.startswith("#"):
-#                line = line.strip().split()
-#                if len(line) == 2:
-#                    if line[0] == atom:
-#                        charge = float(line[1])
-#                        print("Charge:", charge)
-#        fileObj.close()
-#        print("Origin:", origin)
-#        print()  # Print an empty line for separation
-#        
-#        if typenuc == 'point_charge':
-#            Peps = vp.ScalingProjector(mra,prec/10)
-#            f = lambda x: point_charge(x, origin, charge)
-#            V = Peps(f)
-#        elif typenuc == 'coulomb_HFYGB':
-#            Peps = vp.ScalingProjector(mra,prec/10)
-#            f = lambda x: coulomb_HFYGB(x, origin, charge, prec)
-#            V = Peps(f)
-#        elif typenuc == 'homogeneus_charge_sphere':
-#            Peps = vp.ScalingProjector(mra,prec/10)
-#            f = lambda x: homogeneus_charge_sphere(x, origin, charge, atom)
-#            V = Peps(f)
-#        elif typenuc == 'gaussian':
-#            Peps = vp.ScalingProjector(mra,prec/10)
-#            f = lambda x: gaussian(x, origin, charge, atom)
-#            V = Peps(f)
-#        print("Potential for atom ", atom)
-#        print(V)
-#        atomic_potentials.append(V)
-##    vp.advanced.add(prec, V_tree, atomic_potentials)
-#    V_tree = atomic_potentials[0] + atomic_potentials[1]
-#    print('Define V Potential', typenuc, 'DONE')
-#    return V_tree
-#
-
-
-
-
 def nuclear_potential(position, atoms_list, typenuc, mra, prec, der):
     potential = 0
-    for atom in atoms_list.values():
+    for atom in atoms_list:
         charge = atom[1]
         atomname = atom[0]
         atom_coordinates = [atom[2], atom[3], atom[4]]
