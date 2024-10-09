@@ -98,18 +98,7 @@ def homogeneus_charge_sphere(position, center, charge, RMS):
     return prec * factor
 
 
-def gaussian(position, center, charge, atomname):
-    fileObj = open("./orbital4c/param_V.txt", "r")
-    for line in fileObj:
-        if not line.startswith("#"):
-            line = line.strip().split()
-            if len(line) == 3:
-               if line[0] == atomname:
-                  epsilon = line[2]
-            else:
-               print("Data file not correclty formatted! Please check it!")
-    fileObj.close()
-    epsilon = float(epsilon)
+def gaussian_potential(position, center, charge, epsilon):
     d2 = ((position[0] - center[0]) ** 2 +
           (position[1] - center[1]) ** 2 +
           (position[2] - center[2]) ** 2)

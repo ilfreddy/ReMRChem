@@ -17,7 +17,7 @@ def analytic_1s(light_speed, n, k, Z):
     tmp3 = 1 + tmp2**2
     return light_speed**2 / np.sqrt(tmp3)
 
-def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative):
+def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
     print('One-electron calculations')
     
     error_norm = 1
@@ -55,7 +55,7 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative):
     v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec)
     add_psi = hd_psi + v_psi
     energy = spinorb1.dot(add_psi).real
-    energy_1s = analytic_1s(light_speed, 1, -1, 1)
+    energy_1s = analytic_1s(light_speed, 1, -1, charge)
     print("Exact energy: ", energy_1s - light_speed**2)
     print('Final Energy:',energy - light_speed**2)
     print('Delta Energy:',energy - old_energy)
@@ -63,7 +63,7 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative):
     return spinorb1
 
 
-def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative):
+def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
     print('Hartree-Fock 1e D2')
     error_norm = 1
     delta_e = 1
@@ -124,7 +124,7 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative):
     cpe = (spinorb1.dot(RHS)).real
     classic_energy = cke + cpe
     energy = c2*(np.sqrt(1+2*classic_energy/c2)-1)
-    energy_1s = analytic_1s(light_speed, 1, -1, 1)
+    energy_1s = analytic_1s(light_speed, 1, -1, charge)
     
 #    print('Kutzelnigg =',cke, cpe, energy_kutzelnigg)
 #    print('Quadratic approx =',energy_kutzelnigg - energy_kutzelnigg**2/(2*c2))

@@ -440,7 +440,9 @@ def alpha_gradient(orbital, prec):
     return out
 
 def calc_dirac_mu(energy, light_speed):
-    return np.sqrt((light_speed**4-energy**2)/light_speed**2)
+    val = (light_speed**4-energy**2)/light_speed**2
+    print("calc_dirac_mu", val, energy, light_speed)
+    return np.sqrt(val)
 
 def calc_kutzelnigg_mu(energy_sq, light_speed):
     c2 = light_speed**2
@@ -448,9 +450,11 @@ def calc_kutzelnigg_mu(energy_sq, light_speed):
     return np.sqrt(-val)
 
 def calc_non_rel_mu(energy):
-    if energy > 0:
-        return np.sqrt(2.0 * energy)
-    elif energy < 0:
+    if energy < 0:
         return np.sqrt(-2.0 * energy)
+    else:
+        print("Positive energy")
+        exit(-1)
+
     
     
