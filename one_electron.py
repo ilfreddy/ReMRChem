@@ -21,7 +21,6 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
     print('One-electron calculations', prec)
     
     error_norm = 1
-    Z = coordinates[0][1]
     #compute_last_energy = False
 
     light_speed = spinorb1.light_speed
@@ -97,6 +96,8 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
         print("mu =", mu)
         new_orbital = orb.apply_helmholtz(RHS, mu, prec)
         new_orbital.cropLargeSmall(prec)
+        if(idx > 10):
+            new_orbital = new_orbital + spinorb1
         new_orbital.normalize()
         delta_psi = new_orbital - spinorb1
         deltasq = delta_psi.squaredNorm()
@@ -106,7 +107,7 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
         print('Delta E', delta_e)
         print('Energy',energy, old_energy)
         old_energy = energy
-        spinorb1 = new_orbital
+        spinorb1 = new_orbital 
         idx += 1
     
     hd_psi = orb.apply_dirac_hamiltonian(spinorb1, prec, der = derivative)
