@@ -21,6 +21,7 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
     print('One-electron calculations', prec)
     
     error_norm = 1
+    Z = coordinates[0][1]
     #compute_last_energy = False
 
     light_speed = spinorb1.light_speed
