@@ -103,6 +103,6 @@ def gaussian_potential(position, center, charge, epsilon):
           (position[1] - center[1]) ** 2 +
           (position[2] - center[2]) ** 2)
     distance = np.sqrt(d2)
-    prec = charge / distance
-    u = erf(np.sqrt(epsilon) * distance)
-    return prec * u
+    point_charge_potential = charge / distance
+    gaussian_screening = erf(np.sqrt(epsilon) * distance)
+    return point_charge_potential * gaussian_screening

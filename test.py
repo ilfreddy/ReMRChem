@@ -57,7 +57,15 @@ V_tree = vp.FunctionTree(mra)
 
 if(computePotential):
     typenuc = potential
-    f = lambda x: nucpot.gaussian_potential(x, position, charge, epsilon)
+    f = 0
+    if(potential == "gaussian"):
+        f = lambda x: nucpot.gaussian_potential(x, position, charge, epsilon)
+    elif(potential == "coulomb_HFYGB"):
+        f = lambda x: nucpot.coulomb_HFYGB(x, position, charge, prec/10)
+    elif(potential == "point_charge"):
+        f = lambda x: nucpot.point_charge(x, position, charge)
+    else:
+        exit(-1)
     V_tree = Peps(f)
 elif(readPotential):
     V_tree.loadTree(f"potential")

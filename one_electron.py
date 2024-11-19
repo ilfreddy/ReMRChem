@@ -18,7 +18,7 @@ def analytic_1s(light_speed, n, k, Z):
     return light_speed**2 / np.sqrt(tmp3)
 
 def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
-    print('One-electron calculations')
+    print('One-electron calculations', prec)
     
     error_norm = 1
     #compute_last_energy = False
@@ -26,7 +26,8 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
     light_speed = spinorb1.light_speed
     old_energy = 0
     delta_e = 1
-    while (error_norm > thr and delta_e > thr/1000):
+    idx = 0
+    while ((error_norm > thr or delta_e > thr/1000) and idx < 100):
         hd_psi = orb.apply_dirac_hamiltonian(spinorb1, prec, der = derivative)
         v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec)
         add_psi = hd_psi + v_psi
@@ -50,6 +51,8 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
         print('Energy',energy - light_speed**2)
         old_energy = energy
         spinorb1 = new_orbital
+        print('Converged? ', error_norm, ' > ', thr, '  ----  ', delta_e, ' > ',thr/1000, '  ----  iteration', idx)
+        idx += 1
     
     hd_psi = orb.apply_dirac_hamiltonian(spinorb1, prec, der = derivative)
     v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec)
@@ -70,7 +73,8 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
     light_speed = spinorb1.light_speed
     c2 = light_speed * light_speed
     old_energy = 0
-    while (error_norm > thr  and delta_e > thr/1000):
+    idx = 0
+    while ((error_norm > thr or delta_e > thr/1000) and idx < 100):
         v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec) 
         vv_psi = orb.apply_potential(-0.5/c2, potential, v_psi, prec*c2)
         beta_v_psi = v_psi.beta2()
@@ -102,6 +106,7 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
         print('Energy',energy, old_energy)
         old_energy = energy
         spinorb1 = new_orbital
+        idx += 1
     
     hd_psi = orb.apply_dirac_hamiltonian(spinorb1, prec, der = derivative)
     v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec)
