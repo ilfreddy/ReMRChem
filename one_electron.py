@@ -21,13 +21,13 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
     print('One-electron calculations', prec)
     
     error_norm = 1
-    #compute_last_energy = False
 
     light_speed = spinorb1.light_speed
+    c2 = light_speed**2
     old_energy = 0
     delta_e = 1
     idx = 0
-    while ((error_norm > thr or delta_e > thr/1000) and idx < 100):
+    while ((error_norm > thr or delta_e > prec/10) and idx < 100):
         hd_psi = orb.apply_dirac_hamiltonian(spinorb1, prec, der = derivative)
         v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec)
         add_psi = hd_psi + v_psi
@@ -38,7 +38,8 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
         tmp.cropLargeSmall(prec)
         new_orbital = orb.apply_dirac_hamiltonian(tmp, prec, energy, der = derivative)
 #        new_orbital =  orb.apply_helmholtz(tmp, mu, prec)
-#        new_orbital.cropLargeSmall(prec)
+        if(idx > 10):
+            new_orbital = new_orbital + spinorb1
         new_orbital.cropLargeSmall(prec)
         new_orbital.normalize()
         delta_psi = new_orbital - spinorb1
@@ -51,18 +52,34 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
         print('Energy',energy - light_speed**2)
         old_energy = energy
         spinorb1 = new_orbital
-        print('Converged? ', error_norm, ' > ', thr, '  ----  ', delta_e, ' > ',thr/1000, '  ----  iteration', idx)
+        print('Converged? ', error_norm, ' > ', thr, '  ----  ', delta_e, ' > ',prec/10, '  ----  iteration', idx)
         idx += 1
+        print(new_orbital)
     
     hd_psi = orb.apply_dirac_hamiltonian(spinorb1, prec, der = derivative)
     v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec)
     add_psi = hd_psi + v_psi
     energy = spinorb1.dot(add_psi).real
     energy_1s = analytic_1s(light_speed, 1, -1, charge)
-    print("Exact energy: ", energy_1s - light_speed**2)
-    print('Final Energy:',energy - light_speed**2)
-    print('Delta Energy:',energy - old_energy)
-    print('Error Energy:',energy - energy_1s)
+
+    beta_v_psi = v_psi.beta2()
+    ap_psi = spinorb1.alpha_p(prec, derivative)
+    cke = spinorb1.classicT()
+    psi_beta_v_vpsi = spinorb1.dot(beta_v_psi).real
+    psi_ap_V_psi = ap_psi.dot(v_psi).real
+    psi_V2_psi = v_psi.dot(v_psi).real
+    cpe = psi_beta_v_vpsi + psi_ap_V_psi/light_speed + psi_V2_psi/c2
+    classic_energy = cke + cpe
+    print("Classic-like energies:", "cke =", cke,"cpe =", cpe,"cke + cpe =", classic_energy)
+    energy_kutzelnigg = c2*(np.sqrt(1+2*classic_energy/c2)-1)
+
+    print('Exact Energy = ', energy_1s - c2)
+    print('Dirac Energy = ', energy - c2)
+    print('Kutze Energy = ', energy_kutzelnigg)
+    print('Error Kutze  = ', energy_kutzelnigg - energy_1s + light_speed**2)
+    print('Error Dirac  = ', energy - energy_1s)
+    print('Delta Energy = ', energy - old_energy)
+    print('Dirac - Kutzelnigg = ', energy - energy_kutzelnigg - light_speed**2)   
     return spinorb1
 
 
@@ -74,7 +91,7 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
     c2 = light_speed * light_speed
     old_energy = 0
     idx = 0
-    while ((error_norm > thr or delta_e > thr/1000) and idx < 100):
+    while ((error_norm > thr or delta_e > prec/10) and idx < 100):
         v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec) 
         vv_psi = orb.apply_potential(-0.5/c2, potential, v_psi, prec*c2)
         beta_v_psi = v_psi.beta2()
@@ -95,9 +112,9 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
         mu = orb.calc_non_rel_mu(cke+cpe)
         print("mu =", mu)
         new_orbital = orb.apply_helmholtz(RHS, mu, prec)
-        new_orbital.cropLargeSmall(prec)
         if(idx > 10):
             new_orbital = new_orbital + spinorb1
+        new_orbital.cropLargeSmall(prec)
         new_orbital.normalize()
         delta_psi = new_orbital - spinorb1
         deltasq = delta_psi.squaredNorm()
@@ -108,33 +125,28 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
         print('Energy',energy, old_energy)
         old_energy = energy
         spinorb1 = new_orbital 
+        print('Converged? ', error_norm, ' > ', thr, '  ----  ', delta_e, ' > ',prec/10, '  ----  iteration', idx)
         idx += 1
+        print(new_orbital)
     
     hd_psi = orb.apply_dirac_hamiltonian(spinorb1, prec, der = derivative)
     v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec)
     add_psi = hd_psi + v_psi
     energy_dirac = spinorb1.dot(add_psi).real
     
-#    v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec) 
-    vv_psi = orb.apply_potential(-0.5/c2, potential, v_psi, prec*c2)
     beta_v_psi = v_psi.beta2()
-    apV_psi = v_psi.alpha_p(prec*light_speed, derivative)
     ap_psi = spinorb1.alpha_p(prec*light_speed, derivative)
-    Vap_psi = orb.apply_potential(-1.0, potential, ap_psi, prec*light_speed)
-    anticom = apV_psi + Vap_psi
-#    anticom.cropLargeSmall(prec)
-#    beta_v_psi.cropLargeSmall(prec)
-#    vv_psi.cropLargeSmall(prec)
-    RHS = beta_v_psi + vv_psi + anticom * (0.5/light_speed)
-    RHS.cropLargeSmall(prec)
+    
     cke = spinorb1.classicT()
-    cpe = (spinorb1.dot(RHS)).real
+    psi_beta_v_vpsi = spinorb1.dot(beta_v_psi).real
+    psi_ap_V_psi = ap_psi.dot(v_psi).real
+    psi_V2_psi = v_psi.dot(v_psi).real
+    cpe = psi_beta_v_vpsi + psi_ap_V_psi/light_speed + psi_V2_psi/c2
     classic_energy = cke + cpe
     energy = c2*(np.sqrt(1+2*classic_energy/c2)-1)
     energy_1s = analytic_1s(light_speed, 1, -1, charge)
-    
-#    print('Kutzelnigg =',cke, cpe, energy_kutzelnigg)
-#    print('Quadratic approx =',energy_kutzelnigg - energy_kutzelnigg**2/(2*c2))
+
+    print("Classic-like energies:", "cke =", cke,"cpe =", cpe,"cke + cpe =", classic_energy)
     print('Exact Energy = ', energy_1s - light_speed**2)
     print('Dirac Energy = ', energy_dirac - light_speed**2)
     print('Kutze Energy = ', energy)

@@ -40,7 +40,7 @@ exec(input_blob)
 #
 
 ################# Call MRA #######################
-mra = vp.MultiResolutionAnalysis(box=[-box, box], order=order, max_depth = 30)
+mra = vp.MultiResolutionAnalysis(box=[-box, box], order=order, max_depth = 20)
 orb.orbital4c.mra = mra
 orb.orbital4c.light_speed = light_speed
 cf.complex_fcn.mra = mra
@@ -59,10 +59,13 @@ if(computePotential):
     typenuc = potential
     f = 0
     if(potential == "gaussian"):
+        print("Gaussian potential")
         f = lambda x: nucpot.gaussian_potential(x, position, charge, epsilon)
     elif(potential == "coulomb_HFYGB"):
+        print("Harrison potential")
         f = lambda x: nucpot.coulomb_HFYGB(x, position, charge, prec/10)
     elif(potential == "point_charge"):
+        print("point charge potential")
         f = lambda x: nucpot.point_charge(x, position, charge)
     else:
         exit(-1)
@@ -72,6 +75,9 @@ elif(readPotential):
 
 if(savePotential):
     V_tree.saveTree(f"potential")
+
+print("Potential")
+print(V_tree)
         
 print("Number of Atoms = ", len(molecule))
 print(molecule)
