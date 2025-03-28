@@ -93,7 +93,7 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
     old_energy = 0
     idx = 0
 #    while ((error_norm > thr or delta_e > prec/10) and idx < 100):
-    while(idx < 30)
+    while(idx < 30):
         v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec) 
         vv_psi = orb.apply_potential(-0.5/c2, potential, v_psi, prec*c2)
         beta_v_psi = v_psi.beta2()
