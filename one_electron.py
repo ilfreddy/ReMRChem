@@ -17,7 +17,7 @@ def analytic_1s(light_speed, n, k, Z):
     tmp3 = 1 + tmp2**2
     return light_speed**2 / np.sqrt(tmp3)
 
-def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
+def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge, niter=15):
     print('One-electron calculations', prec)
     
     error_norm = 1
@@ -28,7 +28,7 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
     delta_e = 1
     idx = 0
 #    while ((error_norm > thr or delta_e > prec/10) and idx < 100):
-    while (idx < 30):
+    while (idx < niter):
         hd_psi = orb.apply_dirac_hamiltonian(spinorb1, prec, der = derivative)
         v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec)
         add_psi = hd_psi + v_psi
@@ -84,7 +84,7 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
     return spinorb1
 
 
-def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
+def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge, niter=15):
     print('Hartree-Fock 1e D2')
     error_norm = 1
     delta_e = 1
@@ -93,7 +93,7 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge):
     old_energy = 0
     idx = 0
 #    while ((error_norm > thr or delta_e > prec/10) and idx < 100):
-    while(idx < 30):
+    while(idx < niter):
         v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec) 
         vv_psi = orb.apply_potential(-0.5/c2, potential, v_psi, prec*c2)
         beta_v_psi = v_psi.beta2()
