@@ -69,7 +69,7 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge, niter=15):
     psi_beta_v_vpsi = spinorb1.dot(beta_v_psi).real
     psi_ap_V_psi = ap_psi.dot(v_psi).real
     psi_V2_psi = v_psi.dot(v_psi).real
-    cpe = psi_beta_v_vpsi + psi_ap_V_psi/light_speed + psi_V2_psi/c2
+    cpe = psi_beta_v_vpsi + psi_ap_V_psi/light_speed + 0.5 * psi_V2_psi / c2
     classic_energy = cke + cpe
     print("Classic-like energies:", "cke =", cke,"cpe =", cpe,"cke + cpe =", classic_energy)
     energy_kutzelnigg = c2*(np.sqrt(1+2*classic_energy/c2)-1)
