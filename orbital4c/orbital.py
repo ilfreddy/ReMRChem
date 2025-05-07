@@ -328,6 +328,18 @@ class orbital4c:
             result += component
         return result
 
+def print_expectation_value_VV(psi, V, prec):
+    v_psi = apply_potential(-1.0, V, psi, prec)
+    vv_psi = apply_potential(-1.0, V, v_psi, prec)
+    V2 = V * V
+    v2_psi = apply_potential(1.0, V2, psi, prec)
+    exp1 = v_psi.dot(v_psi).real
+    exp2 = psi.dot(vv_psi).real
+    exp3 = psi.dot(v2_psi).real
+    print("<v_psi |  v_psi> = ", exp1) 
+    print("<  psi | vv_psi> = ", exp2) 
+    print("<  psi | v2_psi> = ", exp3) 
+
 def apply_dirac_hamiltonian(orbital, prec, shift = 0.0, der = 'ABGV'):
     beta_phi = orbital.beta(shift)
     grad_phi = orbital.gradient(der)

@@ -44,7 +44,6 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge, niter=15):
         new_orbital.cropLargeSmall(prec)
         new_orbital.normalize()
         delta_psi = new_orbital - spinorb1
-        #orbital_error = delta_psi.dot(delta_psi).real
         deltasq = delta_psi.squaredNorm()
         error_norm = np.sqrt(deltasq)
         print('Error', error_norm)
@@ -95,11 +94,11 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge, niter=15):
 #    while ((error_norm > thr or delta_e > prec/10) and idx < 100):
     while(idx < niter):
         v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec) 
-        vv_psi = orb.apply_potential(-0.5/c2, potential, v_psi, prec*c2)
+        vv_psi = orb.apply_potential(-0.5/c2, potential, v_psi, prec)
         beta_v_psi = v_psi.beta2()
-        apV_psi = v_psi.alpha_p(prec*light_speed, derivative)
-        ap_psi = spinorb1.alpha_p(prec*light_speed, derivative)
-        Vap_psi = orb.apply_potential(-1.0, potential, ap_psi, prec*light_speed)
+        apV_psi = v_psi.alpha_p(prec, derivative)
+        ap_psi = spinorb1.alpha_p(prec, derivative)
+        Vap_psi = orb.apply_potential(-1.0, potential, ap_psi, prec)
         anticom = apV_psi + Vap_psi
 #        anticom.cropLargeSmall(prec)
 #        beta_v_psi.cropLargeSmall(prec)
@@ -137,7 +136,7 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge, niter=15):
     energy_dirac = spinorb1.dot(add_psi).real
     
     beta_v_psi = v_psi.beta2()
-    ap_psi = spinorb1.alpha_p(prec*light_speed, derivative)
+    ap_psi = spinorb1.alpha_p(prec, derivative)
     
     cke = spinorb1.classicT()
     psi_beta_v_vpsi = spinorb1.dot(beta_v_psi).real
