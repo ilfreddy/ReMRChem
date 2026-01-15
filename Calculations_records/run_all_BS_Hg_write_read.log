@@ -1,0 +1,2306 @@
+nohup: ignoring input
+=== Lancio dei calcoli in ordine definito ===
+input__Hg004ABGV.txt
+input__Hg014ABGV.txt
+input__Hg005ABGV.txt
+input__Hg015ABGV.txt
+input__Hg006ABGV.txt
+input__Hg016ABGV.txt
+input__Hg007ABGV.txt
+input__Hg017ABGV.txt
+input__Hg008ABGV.txt
+input__Hg018ABGV.txt
+input__Hg104ABGV.txt
+input__Hg114ABGV.txt
+input__Hg105ABGV.txt
+input__Hg115ABGV.txt
+input__Hg106ABGV.txt
+input__Hg116ABGV.txt
+input__Hg107ABGV.txt
+input__Hg117ABGV.txt
+input__Hg108ABGV.txt
+input__Hg118ABGV.txt
+>>> Elaboro tutti i file contenenti Hg004
+Now executing: python test.py Input_Making/input__Hg004BS.txt#
+Input file: Input_Making/input__Hg004BS.txt
+Output file: outputs/output__Hg004BS.txt
+light_speed = 137.03599913900001  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 7
+box = 1
+prec = 1.0e-4                 # precision threshold for the MRA operations
+thr  = 1.0e-3                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = False
+D2               = False         # bool
+two_electrons    = False         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.00012485722724
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.681462019814425
+The normalization constant is: 9.215037722610468
+Integral of the Fermi-Dirac distribution via 3D integration: 80.0
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.70938e+14
+  root scale: 0
+  order: 7
+  nodes: 192
+  endNodes: 169
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=8
+    scale=2  nodes=8
+    scale=3  nodes=8
+    scale=4  nodes=8
+    scale=5  nodes=8
+    scale=6  nodes=8
+    scale=7  nodes=8
+    scale=8  nodes=8
+    scale=9  nodes=8
+    scale=10  nodes=16
+    scale=11  nodes=96
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.8
+  root scale: 0
+  order: 7
+  nodes: 688
+  endNodes: 603
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=56
+    scale=2  nodes=48
+    scale=3  nodes=56
+    scale=4  nodes=48
+    scale=5  nodes=56
+    scale=6  nodes=48
+    scale=7  nodes=56
+    scale=8  nodes=48
+    scale=9  nodes=56
+    scale=10  nodes=48
+    scale=11  nodes=56
+    scale=12  nodes=48
+    scale=13  nodes=56
+
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.8
+  root scale: 0
+  order: 7
+  nodes: 688
+  endNodes: 603
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=56
+    scale=2  nodes=48
+    scale=3  nodes=56
+    scale=4  nodes=48
+    scale=5  nodes=56
+    scale=6  nodes=48
+    scale=7  nodes=56
+    scale=8  nodes=48
+    scale=9  nodes=56
+    scale=10  nodes=48
+    scale=11  nodes=56
+    scale=12  nodes=48
+    scale=13  nodes=56
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+One-electron calculations 0.0001
+calc_dirac_mu 6267.625894531365 15327.976775245776 137.035999139
+Error 0.04544843773537924
+Delta E 15327.976775245776
+Energy -3450.888284778235
+Converged?  0.04544843773537924  >  0.001   ----   15327.976775245776  >  1e-05   ----  iteration 0
+calc_dirac_mu 6328.299605687138 15290.76481370336 137.035999139
+Error 0.032638160076904364
+Delta E 37.21196154241625
+Energy -3488.1002463206514
+Converged?  0.032638160076904364  >  0.001   ----   37.21196154241625  >  1e-05   ----  iteration 1
+calc_dirac_mu 6367.437516503077 15266.712908876127 137.035999139
+Error 0.019711837824597834
+Delta E 24.051904827232647
+Energy -3512.152151147884
+Converged?  0.019711837824597834  >  0.001   ----   24.051904827232647  >  1e-05   ----  iteration 2
+calc_dirac_mu 6385.03296629826 15255.88740338204 137.035999139
+Error 0.012982031756409858
+Delta E 10.825505494087338
+Energy -3522.9776566419714
+Converged?  0.012982031756409858  >  0.001   ----   10.825505494087338  >  1e-05   ----  iteration 3
+calc_dirac_mu 6392.207762931971 15251.470943055074 137.035999139
+Error 0.00781719753186759
+Delta E 4.4164603269655345
+Energy -3527.394116968937
+Converged?  0.00781719753186759  >  0.001   ----   4.4164603269655345  >  1e-05   ----  iteration 4
+calc_dirac_mu 6395.015656417508 15249.74219041048 137.035999139
+Error 0.004831530377316338
+Delta E 1.7287526445943513
+Energy -3529.1228696135313
+Converged?  0.004831530377316338  >  0.001   ----   1.7287526445943513  >  1e-05   ----  iteration 5
+calc_dirac_mu 6396.0864202013445 15249.082895222833 137.035999139
+Error 0.002884038143528043
+Delta E 0.6592951876464213
+Energy -3529.7821648011777
+Converged?  0.002884038143528043  >  0.001   ----   0.6592951876464213  >  1e-05   ----  iteration 6
+calc_dirac_mu 6396.489553993627 15248.8346685998 137.035999139
+Error 0.0017485543262657425
+Delta E 0.24822662303267862
+Energy -3530.0303914242104
+Converged?  0.0017485543262657425  >  0.001   ----   0.24822662303267862  >  1e-05   ----  iteration 7
+calc_dirac_mu 6396.639891087481 15248.742098622173 137.035999139
+Error 0.0010448264784293608
+Delta E 0.09256997762713581
+Energy -3530.1229614018375
+Converged?  0.0010448264784293608  >  0.001   ----   0.09256997762713581  >  1e-05   ----  iteration 8
+calc_dirac_mu 6396.695821477911 15248.70765937355 137.035999139
+Error 0.0006307922294701806
+Delta E 0.034439248624039465
+Energy -3530.1574006504616
+Converged?  0.0006307922294701806  >  0.001   ----   0.034439248624039465  >  1e-05   ----  iteration 9
+calc_dirac_mu 6396.716550487101 15248.69489542535 137.035999139
+Error 0.00037840312289614826
+Delta E 0.01276394819979032
+Energy -3530.1701645986614
+Converged?  0.00037840312289614826  >  0.001   ----   0.01276394819979032  >  1e-05   ----  iteration 10
+calc_dirac_mu 6396.72424927027 15248.690154874315 137.035999139
+Error 0.00022850545431258248
+Delta E 0.004740551034046803
+Energy -3530.1749051496954
+Converged?  0.00022850545431258248  >  0.001   ----   0.004740551034046803  >  1e-05   ----  iteration 11
+calc_dirac_mu 6396.727107885557 15248.688394672183 137.035999139
+Error 0.0001375934670080396
+Delta E 0.0017602021325728856
+Energy -3530.176665351828
+Converged?  0.0001375934670080396  >  0.001   ----   0.0017602021325728856  >  1e-05   ----  iteration 12
+calc_dirac_mu 6396.728182858269 15248.68773275401 137.035999139
+Error 8.319540773360964e-05
+Delta E 0.0006619181731366552
+Energy -3530.177327270001
+Converged?  8.319540773360964e-05  >  0.001   ----   0.0006619181731366552  >  1e-05   ----  iteration 13
+calc_dirac_mu 6396.72858648899 15248.687484216987 137.035999139
+Error 5.023629086021293e-05
+Delta E 0.00024853702234395314
+Energy -3530.1775758070235
+Converged?  5.023629086021293e-05  >  0.001   ----   0.00024853702234395314  >  1e-05   ----  iteration 14
+Classic-like energies: cke = 7148.143356860218, cpe = -10346.01295349198, cke + cpe = -3197.869596631762
+Exact Energy = -3532.192093162126
+Dirac Energy = -3530.177671855494
+Kutze Energy = -3529.568365645347
+Error Kutze  = 2.623727516780491
+Error Dirac  = 2.0144213066323573
+Delta Energy = -9.604847036825959e-05
+Dirac - Kutzelnigg = -0.6093062101463147
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = False
+prec        = 4
+derivative  = BS
+box         = 1
+
+-------------------------------
+Hg 0 0 4 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg014
+Now executing: python test.py Input_Making/input__Hg014BS.txt#
+Input file: Input_Making/input__Hg014BS.txt
+Output file: outputs/output__Hg014BS.txt
+light_speed = 137.03599913900001  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 7
+box = 1
+prec = 1.0e-4                 # precision threshold for the MRA operations
+thr  = 1.0e-3                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = False         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True
+orbitalName = "spinorb1"        # bool
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = False
+D2               = True         # bool
+two_electrons    = False         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.8
+  root scale: 0
+  order: 7
+  nodes: 688
+  endNodes: 603
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=56
+    scale=2  nodes=48
+    scale=3  nodes=56
+    scale=4  nodes=48
+    scale=5  nodes=56
+    scale=6  nodes=48
+    scale=7  nodes=56
+    scale=8  nodes=48
+    scale=9  nodes=56
+    scale=10  nodes=48
+    scale=11  nodes=56
+    scale=12  nodes=48
+    scale=13  nodes=56
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock 1e D2
+Classic-like energies: cke = 7148.143356860218 cpe = -10346.037088263509 cke + cpe = -3197.893731403291
+mu = 79.9736673087247
+Error = 5.9909391197640415e-05
+Delta E 3529.598086626488
+Energy -3529.598086626488 0
+Converged?  5.9909391197640415e-05  >  0.001   ----   3529.598086626488  >  1e-05   ----  iteration 0
+Classic-like energies: cke = 7148.053033973674 cpe = -10346.36371672534 cke + cpe = -3198.310682751666
+mu = 79.97888074675296
+Error = 6.37982030729179e-05
+Delta E 0.513467627386035
+Energy -3530.111554253874 -3529.598086626488
+Converged?  6.37982030729179e-05  >  0.001   ----   0.513467627386035  >  1e-05   ----  iteration 1
+Classic-like energies: cke = 7148.298938537429 cpe = -10346.63102669108 cke + cpe = -3198.332088153651
+mu = 79.97914838448395
+Error = 0.00012051115717961448
+Delta E 0.02636081058972195
+Energy -3530.137915064464 -3530.111554253874
+Converged?  0.00012051115717961448  >  0.001   ----   0.02636081058972195  >  1e-05   ----  iteration 2
+Classic-like energies: cke = 7149.97666769257 cpe = -10348.308406863673 cke + cpe = -3198.3317391711025
+mu = 79.97914402106467
+Error = 0.00024631079921133054
+Delta E 0.00042977332032023696
+Energy -3530.1374852911435 -3530.137915064464
+Converged?  0.00024631079921133054  >  0.001   ----   0.00042977332032023696  >  1e-05   ----  iteration 3
+Classic-like energies: cke = 7148.790933318736 cpe = -10347.113066358022 cke + cpe = -3198.322133039286
+mu = 79.97902391301467
+Error = 0.0004514647594649339
+Delta E 0.011829982684503193
+Energy -3530.125655308459 -3530.1374852911435
+Converged?  0.0004514647594649339  >  0.001   ----   0.011829982684503193  >  1e-05   ----  iteration 4
+Classic-like energies: cke = 7152.106149944486 cpe = -10350.40286629063 cke + cpe = -3198.2967163461435
+mu = 79.97870612039361
+Error = 0.0007969352685700089
+Delta E 0.03130069629060017
+Energy -3530.0943546121684 -3530.125655308459
+Converged?  0.0007969352685700089  >  0.001   ----   0.03130069629060017  >  1e-05   ----  iteration 5
+Classic-like energies: cke = 7147.744137236229 cpe = -10345.976646343905 cke + cpe = -3198.2325091076755
+mu = 79.97790331219836
+Error = 0.0013562496628801428
+Delta E 0.079071025738358
+Energy -3530.01528358643 -3530.0943546121684
+Converged?  0.0013562496628801428  >  0.001   ----   0.079071025738358  >  1e-05   ----  iteration 6
+Classic-like energies: cke = 7155.489241591403 cpe = -10353.563788786603 cke + cpe = -3198.0745471952005
+mu = 79.97592821837331
+Error = 0.0022589455089064786
+Delta E 0.19452788649368813
+Energy -3529.8207556999364 -3530.01528358643
+Converged?  0.0022589455089064786  >  0.001   ----   0.19452788649368813  >  1e-05   ----  iteration 7
+Classic-like energies: cke = 7143.5374996704995 cpe = -10341.220485965194 cke + cpe = -3197.6829862946943
+mu = 79.97103208405771
+Error = 0.003716615058295928
+Delta E 0.4821910745695277
+Energy -3529.338564625367 -3529.8207556999364
+Converged?  0.003716615058295928  >  0.001   ----   0.4821910745695277  >  1e-05   ----  iteration 8
+Classic-like energies: cke = 7162.203572071476 cpe = -10358.918902874242 cke + cpe = -3196.7153308027664
+mu = 79.9589310934403
+Error = 0.006040087930316441
+Delta E 1.1915623742511343
+Energy -3528.1470022511157 -3529.338564625367
+Converged?  0.006040087930316441  >  0.001   ----   1.1915623742511343  >  1e-05   ----  iteration 9
+Classic-like energies: cke = 7131.190898163617 cpe = -10325.516840895329 cke + cpe = -3194.3259427317116
+mu = 79.92904281588403
+Error = 0.009819188240901108
+Delta E 2.941872552186396
+Energy -3525.2051296989293 -3528.1470022511157
+Converged?  0.009819188240901108  >  0.001   ----   2.941872552186396  >  1e-05   ----  iteration 10
+Classic-like energies: cke = 7175.303166150397 cpe = -10363.702447020265 cke + cpe = -3188.3992808698677
+mu = 79.8548593495708
+Error = 0.007909542443158305
+Delta E 7.294601968267671
+Energy -3517.9105277306617 -3525.2051296989293
+Converged?  0.007909542443158305  >  0.001   ----   7.294601968267671  >  1e-05   ----  iteration 11
+Classic-like energies: cke = 7128.703797417689 cpe = -10326.217679781428 cke + cpe = -3197.513882363739
+mu = 79.96891749128206
+Error = 0.002438397308635528
+Delta E 11.219797103155997
+Energy -3529.1303248338177 -3517.9105277306617
+Converged?  0.002438397308635528  >  0.001   ----   11.219797103155997  >  1e-05   ----  iteration 12
+Classic-like energies: cke = 7140.744096129632 cpe = -10339.015975657738 cke + cpe = -3198.2718795281053
+mu = 79.97839557690696
+Error = 0.0007620153668388207
+Delta E 0.9334432612008641
+Energy -3530.0637680950185 -3529.1303248338177
+Converged?  0.0007620153668388207  >  0.001   ----   0.9334432612008641  >  1e-05   ----  iteration 13
+Classic-like energies: cke = 7139.708446210718 cpe = -10338.043191928524 cke + cpe = -3198.334745717806
+mu = 79.97918161268976
+Error = 0.0002438584194577019
+Delta E 0.07741977008981848
+Energy -3530.1411878651083 -3530.0637680950185
+Converged?  0.0002438584194577019  >  0.001   ----   0.07741977008981848  >  1e-05   ----  iteration 14
+Classic-like energies: cke = 7142.27028971139, cpe = -10340.610127567517, cke + cpe = -3198.339837856127
+Exact Energy = -3532.192093162126
+Dirac Energy = -3530.1762858061265
+Kutze Energy = -3530.1474588553133
+Error Kutze  = 2.0446343068142596
+Error Dirac  = 2.015807355999641
+Delta Energy = -0.006270990204939153
+Dirac - Kutzelnigg = -0.028826950812799623
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = True
+prec        = 4
+derivative  = BS
+box         = 1
+
+-------------------------------
+Hg 0 1 4 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg005
+Now executing: python test.py Input_Making/input__Hg005BS.txt#
+Input file: Input_Making/input__Hg005BS.txt
+Output file: outputs/output__Hg005BS.txt
+light_speed = 137.03599913900001  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 8
+box = 1
+prec = 1.0e-5                 # precision threshold for the MRA operations
+thr  = 1.0e-4                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = False
+D2               = False         # bool
+two_electrons    = False         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.00012485722724
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.659171750638407
+The normalization constant is: 9.238758891010784
+Integral of the Fermi-Dirac distribution via 3D integration: 80.00000000000009
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.70239e+14
+  root scale: 0
+  order: 8
+  nodes: 200
+  endNodes: 176
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=8
+    scale=2  nodes=8
+    scale=3  nodes=8
+    scale=4  nodes=8
+    scale=5  nodes=8
+    scale=6  nodes=8
+    scale=7  nodes=8
+    scale=8  nodes=8
+    scale=9  nodes=8
+    scale=10  nodes=16
+    scale=11  nodes=96
+    scale=12  nodes=8
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 8
+  nodes: 912
+  endNodes: 799
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=56
+    scale=4  nodes=64
+    scale=5  nodes=56
+    scale=6  nodes=64
+    scale=7  nodes=56
+    scale=8  nodes=64
+    scale=9  nodes=56
+    scale=10  nodes=64
+    scale=11  nodes=56
+    scale=12  nodes=64
+    scale=13  nodes=72
+    scale=14  nodes=104
+
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 8
+  nodes: 912
+  endNodes: 799
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=56
+    scale=4  nodes=64
+    scale=5  nodes=56
+    scale=6  nodes=64
+    scale=7  nodes=56
+    scale=8  nodes=64
+    scale=9  nodes=56
+    scale=10  nodes=64
+    scale=11  nodes=56
+    scale=12  nodes=64
+    scale=13  nodes=72
+    scale=14  nodes=104
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+One-electron calculations 1e-05
+calc_dirac_mu 6267.726793920104 15327.914967355087 137.035999139
+Error 0.04545738967230057
+Delta E 15327.914967355087
+Energy -3450.9500926689234
+Converged?  0.04545738967230057  >  0.0001   ----   15327.914967355087  >  1.0000000000000002e-06   ----  iteration 0
+calc_dirac_mu 6328.303428471866 15290.762466287617 137.035999139
+Error 0.03264028157200211
+Delta E 37.15250106747044
+Energy -3488.102593736394
+Converged?  0.03264028157200211  >  0.0001   ----   37.15250106747044  >  1.0000000000000002e-06   ----  iteration 1
+calc_dirac_mu 6367.448321418869 15266.706263565475 137.035999139
+Error 0.019713327019738474
+Delta E 24.05620272214219
+Energy -3512.158796458536
+Converged?  0.019713327019738474  >  0.0001   ----   24.05620272214219  >  1.0000000000000002e-06   ----  iteration 2
+calc_dirac_mu 6385.037638895627 15255.884527571496 137.035999139
+Error 0.012982431066970121
+Delta E 10.821735993979019
+Energy -3522.980532452515
+Converged?  0.012982431066970121  >  0.0001   ----   10.821735993979019  >  1.0000000000000002e-06   ----  iteration 3
+calc_dirac_mu 6392.212117701288 15251.468262079814 137.035999139
+Error 0.007817448455104178
+Delta E 4.41626549168177
+Energy -3527.396797944197
+Converged?  0.007817448455104178  >  0.0001   ----   4.41626549168177  >  1.0000000000000002e-06   ----  iteration 4
+calc_dirac_mu 6395.018598112654 15249.740379176597 137.035999139
+Error 0.004831601597092022
+Delta E 1.7278829032165959
+Energy -3529.1246808474134
+Converged?  0.004831601597092022  >  0.0001   ----   1.7278829032165959  >  1.0000000000000002e-06   ----  iteration 5
+calc_dirac_mu 6396.089106096464 15249.081241416336 137.035999139
+Error 0.0028840943655990417
+Delta E 0.6591377602617285
+Energy -3529.783818607675
+Converged?  0.0028840943655990417  >  0.0001   ----   0.6591377602617285  >  1.0000000000000002e-06   ----  iteration 6
+calc_dirac_mu 6396.491515466797 15248.83346082746 137.035999139
+Error 0.0017485735063138242
+Delta E 0.24778058887568477
+Energy -3530.031599196551
+Converged?  0.0017485735063138242  >  0.0001   ----   0.24778058887568477  >  1.0000000000000002e-06   ----  iteration 7
+calc_dirac_mu 6396.641527210378 15248.741091177366 137.035999139
+Error 0.0010448387265389583
+Delta E 0.0923696500940423
+Energy -3530.123968846645
+Converged?  0.0010448387265389583  >  0.0001   ----   0.0923696500940423  >  1.0000000000000002e-06   ----  iteration 8
+calc_dirac_mu 6396.697186499144 15248.70681885805 137.035999139
+Error 0.0006308003322782427
+Delta E 0.034272319315277855
+Energy -3530.15824116596
+Converged?  0.0006308003322782427  >  0.0001   ----   0.034272319315277855  >  1.0000000000000002e-06   ----  iteration 9
+calc_dirac_mu 6396.717770848728 15248.694143983766 137.035999139
+Error 0.0003784089258888911
+Delta E 0.012674874284130055
+Energy -3530.1709160402443
+Converged?  0.0003784089258888911  >  0.0001   ----   0.012674874284130055  >  1.0000000000000002e-06   ----  iteration 10
+calc_dirac_mu 6396.72537426844 15248.689462152872 137.035999139
+Error 0.00022851088159395403
+Delta E 0.004681830894696759
+Energy -3530.175597871139
+Converged?  0.00022851088159395403  >  0.0001   ----   0.004681830894696759  >  1.0000000000000002e-06   ----  iteration 11
+calc_dirac_mu 6396.728165656151 15248.687743346274 137.035999139
+Error 0.00013759718359843018
+Delta E 0.0017188065976370126
+Energy -3530.1773166777366
+Converged?  0.00013759718359843018  >  0.0001   ----   0.0017188065976370126  >  1.0000000000000002e-06   ----  iteration 12
+calc_dirac_mu 6396.729200584873 15248.6871060853 137.035999139
+Error 8.31983620446587e-05
+Delta E 0.0006372609750542324
+Energy -3530.1779539387117
+Converged?  8.31983620446587e-05  >  0.0001   ----   0.0006372609750542324  >  1.0000000000000002e-06   ----  iteration 13
+calc_dirac_mu 6396.729581673144 15248.68687142886 137.035999139
+Error 5.023859451131812e-05
+Delta E 0.00023465643971576355
+Energy -3530.1781885951514
+Converged?  5.023859451131812e-05  >  0.0001   ----   0.00023465643971576355  >  1.0000000000000002e-06   ----  iteration 14
+Classic-like energies: cke = 7149.491264922119, cpe = -10347.832555899924, cke + cpe = -3198.3412909778053
+Exact Energy = -3532.192093162126
+Dirac Energy = -3530.1782694962385
+Kutze Energy = -3530.1492483813736
+Error Kutze  = 2.042844780753512
+Error Dirac  = 2.013823665887685
+Delta Energy = -8.090108713076916e-05
+Dirac - Kutzelnigg = -0.02902111486400827
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = False
+prec        = 5
+derivative  = BS
+box         = 1
+
+-------------------------------
+Hg 0 0 5 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg015
+Now executing: python test.py Input_Making/input__Hg015BS.txt#
+Input file: Input_Making/input__Hg015BS.txt
+Output file: outputs/output__Hg015BS.txt
+light_speed = 137.03599913900001  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 8
+box = 1
+prec = 1.0e-5                 # precision threshold for the MRA operations
+thr  = 1.0e-4                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = False         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True
+orbitalName = "spinorb1"        # bool
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = False
+D2               = True         # bool
+two_electrons    = False         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 8
+  nodes: 912
+  endNodes: 799
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=56
+    scale=4  nodes=64
+    scale=5  nodes=56
+    scale=6  nodes=64
+    scale=7  nodes=56
+    scale=8  nodes=64
+    scale=9  nodes=56
+    scale=10  nodes=64
+    scale=11  nodes=56
+    scale=12  nodes=64
+    scale=13  nodes=72
+    scale=14  nodes=104
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock 1e D2
+Classic-like energies: cke = 7149.491264922119 cpe = -10347.845923306399 cke + cpe = -3198.35465838428
+mu = 79.9794305854234
+Error = 2.656487688984988e-05
+Delta E 3530.165710414044
+Energy -3530.165710414044 0
+Converged?  2.656487688984988e-05  >  0.0001   ----   3530.165710414044  >  1.0000000000000002e-06   ----  iteration 0
+Classic-like energies: cke = 7150.223773478254 cpe = -10348.587661165522 cke + cpe = -3198.3638876872683
+mu = 79.97954598129785
+Error = 2.3031349754705724e-05
+Delta E 0.011365946435489604
+Energy -3530.1770763604795 -3530.165710414044
+Converged?  2.3031349754705724e-05  >  0.0001   ----   0.011365946435489604  >  1.0000000000000002e-06   ----  iteration 1
+Classic-like energies: cke = 7150.646835874627 cpe = -10349.01076590824 cke + cpe = -3198.3639300336135
+mu = 79.97954651076253
+Error = 2.754595418989775e-05
+Delta E 5.2149816383462166e-05
+Energy -3530.177128510296 -3530.1770763604795
+Converged?  2.754595418989775e-05  >  0.0001   ----   5.2149816383462166e-05  >  1.0000000000000002e-06   ----  iteration 2
+Classic-like energies: cke = 7151.226838454784 cpe = -10349.59070819565 cke + cpe = -3198.363869740866
+mu = 79.97954575691045
+Error = 4.5802095406727995e-05
+Delta E 7.425093644997105e-05
+Energy -3530.1770542593595 -3530.177128510296
+Converged?  4.5802095406727995e-05  >  0.0001   ----   7.425093644997105e-05  >  1.0000000000000002e-06   ----  iteration 3
+Classic-like energies: cke = 7151.259965071642 cpe = -10349.623642992387 cke + cpe = -3198.3636779207445
+mu = 79.97954335854568
+Error = 7.127906185054376e-05
+Delta E 0.00023622780690857326
+Energy -3530.1768180315526 -3530.1770542593595
+Converged?  7.127906185054376e-05  >  0.0001   ----   0.00023622780690857326  >  1.0000000000000002e-06   ----  iteration 4
+Classic-like energies: cke = 7151.939430234615 cpe = -10350.302623068961 cke + cpe = -3198.3631928343457
+mu = 79.97953729341457
+Error = 0.00011533367938120195
+Delta E 0.0005973872453068907
+Energy -3530.1762206443073 -3530.1768180315526
+Converged?  0.00011533367938120195  >  0.0001   ----   0.0005973872453068907  >  1.0000000000000002e-06   ----  iteration 5
+Classic-like energies: cke = 7151.433040393665 cpe = -10349.795025409005 cke + cpe = -3198.36198501534
+mu = 79.97952219181282
+Error = 0.0001821111825215494
+Delta E 0.0014874373309794464
+Energy -3530.1747332069763 -3530.1762206443073
+Converged?  0.0001821111825215494  >  0.0001   ----   0.0014874373309794464  >  1.0000000000000002e-06   ----  iteration 6
+Classic-like energies: cke = 7152.66674086316 cpe = -10351.02575141216 cke + cpe = -3198.3590105490002
+mu = 79.97948500145522
+Error = 0.000288949404179934
+Delta E 0.003663074933228927
+Energy -3530.171070132043 -3530.1747332069763
+Converged?  0.000288949404179934  >  0.0001   ----   0.003663074933228927  >  1.0000000000000002e-06   ----  iteration 7
+Classic-like energies: cke = 7151.0640677488955 cpe = -10349.415753433972 cke + cpe = -3198.3516856850765
+mu = 79.97939341711809
+Error = 0.0004554489618670283
+Delta E 0.009020614525525161
+Energy -3530.1620495175175 -3530.171070132043
+Converged?  0.0004554489618670283  >  0.0001   ----   0.009020614525525161  >  1.0000000000000002e-06   ----  iteration 8
+Classic-like energies: cke = 7153.833279239505 cpe = -10352.166941653302 cke + cpe = -3198.3336624137974
+mu = 79.97916806786374
+Error = 0.0007177496318566886
+Delta E 0.022195745616500062
+Energy -3530.139853771901 -3530.1620495175175
+Converged?  0.0007177496318566886  >  0.0001   ----   0.022195745616500062  >  1.0000000000000002e-06   ----  iteration 9
+Classic-like energies: cke = 7149.65854984687 cpe = -10347.947869309937 cke + cpe = -3198.289319463067
+mu = 79.97861363468445
+Error = 0.0011299462134105663
+Delta E 0.05460842042839431
+Energy -3530.0852453514726 -3530.139853771901
+Converged?  0.0011299462134105663  >  0.0001   ----   0.05460842042839431  >  1.0000000000000002e-06   ----  iteration 10
+Classic-like energies: cke = 7156.2815790798695 cpe = -10354.461741957122 cke + cpe = -3198.1801628772528
+mu = 79.97724880085902
+Error = 0.000888203388044043
+Delta E 0.13442569079097666
+Energy -3529.9508196606816 -3530.0852453514726
+Converged?  0.000888203388044043  >  0.0001   ----   0.13442569079097666  >  1.0000000000000002e-06   ----  iteration 11
+Classic-like energies: cke = 7150.925680273632 cpe = -10349.274830363205 cke + cpe = -3198.3491500895734
+mu = 79.97936171400187
+Error = 0.0002544123847798826
+Delta E 0.20810725677711162
+Energy -3530.1589269174588 -3529.9508196606816
+Converged?  0.0002544123847798826  >  0.0001   ----   0.20810725677711162  >  1.0000000000000002e-06   ----  iteration 12
+Classic-like energies: cke = 7152.449685847114 cpe = -10350.812515675989 cke + cpe = -3198.362829828875
+mu = 79.97953275468512
+Error = 7.308624457290647e-05
+Delta E 0.016846683125550044
+Energy -3530.1757736005843 -3530.1589269174588
+Converged?  7.308624457290647e-05  >  0.0001   ----   0.016846683125550044  >  1.0000000000000002e-06   ----  iteration 13
+Classic-like energies: cke = 7152.082490969415 cpe = -10350.44642497298 cke + cpe = -3198.363934003566
+mu = 79.97954656039963
+Error = 2.0792324192045107e-05
+Delta E 0.0013597987363027642
+Energy -3530.1771333993206 -3530.1757736005843
+Converged?  2.0792324192045107e-05  >  0.0001   ----   0.0013597987363027642  >  1.0000000000000002e-06   ----  iteration 14
+Classic-like energies: cke = 7152.248098433748, cpe = -10350.61206661745, cke + cpe = -3198.363968183702
+Exact Energy = -3532.192093162126
+Dirac Energy = -3530.177991758035
+Kutze Energy = -3530.1771754923966
+Error Kutze  = 2.014917669730494
+Error Dirac  = 2.0141014040909795
+Delta Energy = -4.209307599012391e-05
+Dirac - Kutzelnigg = -0.0008162656376953237
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = True
+prec        = 5
+derivative  = BS
+box         = 1
+
+-------------------------------
+Hg 0 1 5 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg006
+Now executing: python test.py Input_Making/input__Hg006BS.txt#
+Input file: Input_Making/input__Hg006BS.txt
+Output file: outputs/output__Hg006BS.txt
+light_speed = 137.03599913900001  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 9
+box = 1
+prec = 1.0e-6                 # precision threshold for the MRA operations
+thr  = 1.0e-5                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = False
+D2               = False         # bool
+two_electrons    = False         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.00012485722724
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.658786291111504
+The normalization constant is: 9.239170168932604
+Integral of the Fermi-Dirac distribution via 3D integration: 79.99999999999999
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.70217e+14
+  root scale: 0
+  order: 9
+  nodes: 240
+  endNodes: 211
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=8
+    scale=2  nodes=8
+    scale=3  nodes=8
+    scale=4  nodes=8
+    scale=5  nodes=8
+    scale=6  nodes=8
+    scale=7  nodes=8
+    scale=8  nodes=8
+    scale=9  nodes=8
+    scale=10  nodes=16
+    scale=11  nodes=96
+    scale=12  nodes=16
+    scale=13  nodes=32
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 9
+  nodes: 1288
+  endNodes: 1128
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=88
+    scale=3  nodes=88
+    scale=4  nodes=88
+    scale=5  nodes=88
+    scale=6  nodes=88
+    scale=7  nodes=88
+    scale=8  nodes=88
+    scale=9  nodes=88
+    scale=10  nodes=88
+    scale=11  nodes=88
+    scale=12  nodes=88
+    scale=13  nodes=88
+    scale=14  nodes=160
+
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 9
+  nodes: 1288
+  endNodes: 1128
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=88
+    scale=3  nodes=88
+    scale=4  nodes=88
+    scale=5  nodes=88
+    scale=6  nodes=88
+    scale=7  nodes=88
+    scale=8  nodes=88
+    scale=9  nodes=88
+    scale=10  nodes=88
+    scale=11  nodes=88
+    scale=12  nodes=88
+    scale=13  nodes=88
+    scale=14  nodes=160
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+One-electron calculations 1e-06
+calc_dirac_mu 6267.727868717388 15327.914308965683 137.035999139
+Error 0.04545701125687563
+Delta E 15327.914308965683
+Energy -3450.950751058328
+Converged?  0.04545701125687563  >  9.999999999999999e-06   ----   15327.914308965683  >  1e-07   ----  iteration 0
+calc_dirac_mu 6328.302706149684 15290.762909836152 137.035999139
+Error 0.03263999893894798
+Delta E 37.151399129530546
+Energy -3488.1021501878586
+Converged?  0.03263999893894798  >  9.999999999999999e-06   ----   37.151399129530546  >  1e-07   ----  iteration 1
+calc_dirac_mu 6367.447156040763 15266.706980304152 137.035999139
+Error 0.01971317687726701
+Delta E 24.055929531999936
+Energy -3512.1580797198585
+Converged?  0.01971317687726701  >  9.999999999999999e-06   ----   24.055929531999936  >  1e-07   ----  iteration 2
+calc_dirac_mu 6385.037088870021 15255.884866091905 137.035999139
+Error 0.012982383215633529
+Delta E 10.82211421224747
+Energy -3522.980193932106
+Converged?  0.012982383215633529  >  9.999999999999999e-06   ----   10.82211421224747  >  1e-07   ----  iteration 3
+calc_dirac_mu 6392.211690893772 15251.468524840111 137.035999139
+Error 0.007817435320510662
+Delta E 4.41634125179371
+Energy -3527.3965351838997
+Converged?  0.007817435320510662  >  9.999999999999999e-06   ----   4.41634125179371  >  1e-07   ----  iteration 4
+calc_dirac_mu 6395.018140006044 15249.740661237864 137.035999139
+Error 0.004831595911578093
+Delta E 1.727863602247453
+Energy -3529.124398786147
+Converged?  0.004831595911578093  >  9.999999999999999e-06   ----   1.727863602247453  >  1e-07   ----  iteration 5
+calc_dirac_mu 6396.088428576756 15249.081658590681 137.035999139
+Error 0.0028840867899084005
+Delta E 0.6590026471822057
+Energy -3529.7834014333293
+Converged?  0.0028840867899084005  >  9.999999999999999e-06   ----   0.6590026471822057  >  1e-07   ----  iteration 6
+calc_dirac_mu 6396.490852880037 15248.83386881366 137.035999139
+Error 0.0017485706479490703
+Delta E 0.24778977702226257
+Energy -3530.0311912103516
+Converged?  0.0017485706479490703  >  9.999999999999999e-06   ----   0.24778977702226257  >  1e-07   ----  iteration 7
+calc_dirac_mu 6396.640882763989 15248.741487996078 137.035999139
+Error 0.0010448390247303103
+Delta E 0.09238081758121552
+Energy -3530.123572027933
+Converged?  0.0010448390247303103  >  9.999999999999999e-06   ----   0.09238081758121552  >  1e-07   ----  iteration 8
+calc_dirac_mu 6396.696542743142 15248.707215252547 137.035999139
+Error 0.0006308007190887169
+Delta E 0.0342727435308916
+Energy -3530.1578447714637
+Converged?  0.0006308007190887169  >  9.999999999999999e-06   ----   0.0342727435308916  >  1e-07   ----  iteration 9
+calc_dirac_mu 6396.717133522584 15248.694536419387 137.035999139
+Error 0.00037840975490106946
+Delta E 0.012678833159952774
+Energy -3530.1705236046237
+Converged?  0.00037840975490106946  >  9.999999999999999e-06   ----   0.012678833159952774  >  1e-07   ----  iteration 10
+calc_dirac_mu 6396.7247379023165 15248.689853997477 137.035999139
+Error 0.0002285114595580034
+Delta E 0.004682421909819823
+Energy -3530.1752060265335
+Converged?  0.0002285114595580034  >  9.999999999999999e-06   ----   0.004682421909819823  >  1e-07   ----  iteration 11
+calc_dirac_mu 6396.727543710363 15248.688126311552 137.035999139
+Error 0.0001375981524750116
+Delta E 0.0017276859252888244
+Energy -3530.176933712459
+Converged?  0.0001375981524750116  >  9.999999999999999e-06   ----   0.0017276859252888244  >  1e-07   ----  iteration 12
+calc_dirac_mu 6396.728578255807 15248.687489286598 137.035999139
+Error 8.319891018108997e-05
+Delta E 0.0006370249539031647
+Energy -3530.1775707374127
+Converged?  8.319891018108997e-05  >  9.999999999999999e-06   ----   0.0006370249539031647  >  1e-07   ----  iteration 13
+calc_dirac_mu 6396.728959593755 15248.687254476425 137.035999139
+Error 5.023893600661543e-05
+Delta E 0.00023481017342419364
+Energy -3530.177805547586
+Converged?  5.023893600661543e-05  >  9.999999999999999e-06   ----   0.00023481017342419364  >  1e-07   ----  iteration 14
+Classic-like energies: cke = 7149.4851460735135, cpe = -10347.860686500117, cke + cpe = -3198.375540426603
+Exact Energy = -3532.192093162126
+Dirac Energy = -3530.1778921175846
+Kutze Energy = -3530.191426796578
+Error Kutze  = 2.0006663655476586
+Error Dirac  = 2.014201044541551
+Delta Energy = -8.656999852973968e-05
+Dirac - Kutzelnigg = 0.013534678993892157
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = False
+prec        = 6
+derivative  = BS
+box         = 1
+
+-------------------------------
+Hg 0 0 6 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg016
+Now executing: python test.py Input_Making/input__Hg016BS.txt#
+Input file: Input_Making/input__Hg016BS.txt
+Output file: outputs/output__Hg016BS.txt
+light_speed = 137.03599913900001  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 9
+box = 1
+prec = 1.0e-6                 # precision threshold for the MRA operations
+thr  = 1.0e-5                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = False         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True
+orbitalName = "spinorb1"        # bool
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = False
+D2               = True         # bool
+two_electrons    = False         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 9
+  nodes: 1288
+  endNodes: 1128
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=88
+    scale=3  nodes=88
+    scale=4  nodes=88
+    scale=5  nodes=88
+    scale=6  nodes=88
+    scale=7  nodes=88
+    scale=8  nodes=88
+    scale=9  nodes=88
+    scale=10  nodes=88
+    scale=11  nodes=88
+    scale=12  nodes=88
+    scale=13  nodes=88
+    scale=14  nodes=160
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock 1e D2
+Classic-like energies: cke = 7149.4851460735135 cpe = -10347.860652667387 cke + cpe = -3198.375506593873
+mu = 79.9796912546413
+Error = 2.2836838042539165e-05
+Delta E 3530.1913851312993
+Energy -3530.1913851312993 0
+Converged?  2.2836838042539165e-05  >  9.999999999999999e-06   ----   3530.1913851312993  >  1e-07   ----  iteration 0
+Classic-like energies: cke = 7150.272809162788 cpe = -10348.637320040536 cke + cpe = -3198.364510877748
+mu = 79.97955377317065
+Error = 2.1565737091396123e-05
+Delta E 0.013541307399918878
+Energy -3530.1778438238994 -3530.1913851312993
+Converged?  2.1565737091396123e-05  >  9.999999999999999e-06   ----   0.013541307399918878  >  1e-07   ----  iteration 1
+Classic-like energies: cke = 7150.695483466658 cpe = -10349.060007053657 cke + cpe = -3198.364523586999
+mu = 79.9795539320769
+Error = 2.5004439607423075e-05
+Delta E 1.5651530247851042e-05
+Energy -3530.1778594754296 -3530.1778438238994
+Converged?  2.5004439607423075e-05  >  9.999999999999999e-06   ----   1.5651530247851042e-05  >  1e-07   ----  iteration 2
+Classic-like energies: cke = 7151.242628826444 cpe = -10349.607108725038 cke + cpe = -3198.3644798985943
+mu = 79.97955338583223
+Error = 4.0543203950519153e-05
+Delta E 5.380257471188088e-05
+Energy -3530.177805672855 -3530.1778594754296
+Converged?  4.0543203950519153e-05  >  9.999999999999999e-06   ----   5.380257471188088e-05  >  1e-07   ----  iteration 3
+Classic-like energies: cke = 7151.30622044496 cpe = -10349.670565012677 cke + cpe = -3198.364344567717
+mu = 79.9795516937638
+Error = 6.19531134724312e-05
+Delta E 0.00016666092324157944
+Energy -3530.1776390119317 -3530.177805672855
+Converged?  6.19531134724312e-05  >  9.999999999999999e-06   ----   0.00016666092324157944  >  1e-07   ----  iteration 4
+Classic-like energies: cke = 7151.9171289802125 cpe = -10350.281124189654 cke + cpe = -3198.363995209442
+mu = 79.97954732566873
+Error = 9.930754843992094e-05
+Delta E 0.00043023714806622593
+Energy -3530.1772087747836 -3530.1776390119317
+Converged?  9.930754843992094e-05  >  9.999999999999999e-06   ----   0.00043023714806622593  >  1e-07   ----  iteration 5
+Classic-like energies: cke = 7151.506545227983 cpe = -10349.869671244325 cke + cpe = -3198.363126016342
+mu = 79.97953645797583
+Error = 0.00015550885234222442
+Delta E 0.0010704173073463608
+Energy -3530.1761383574762 -3530.1772087747836
+Converged?  0.00015550885234222442  >  9.999999999999999e-06   ----   0.0010704173073463608  >  1e-07   ----  iteration 6
+Classic-like energies: cke = 7152.576557574181 cpe = -10350.937538821214 cke + cpe = -3198.360981247033
+mu = 79.97950964149547
+Error = 0.0002455112918212835
+Delta E 0.0026412978950247634
+Energy -3530.173497059581 -3530.1761383574762
+Converged?  0.0002455112918212835  >  9.999999999999999e-06   ----   0.0026412978950247634  >  1e-07   ----  iteration 7
+Classic-like energies: cke = 7151.225531925204 cpe = -10349.581233724155 cke + cpe = -3198.3557017989506
+mu = 79.97944363146009
+Error = 0.0003853145249722856
+Delta E 0.006501674035462202
+Energy -3530.1669953855458 -3530.173497059581
+Converged?  0.0003853145249722856  >  9.999999999999999e-06   ----   0.006501674035462202  >  1e-07   ----  iteration 8
+Classic-like energies: cke = 7153.5943630391375 cpe = -10351.93707607448 cke + cpe = -3198.342713035343
+mu = 79.97928123002035
+Error = 0.0006053964723852763
+Delta E 0.01599573354360473
+Energy -3530.150999652002 -3530.1669953855458
+Converged?  0.0006053964723852763  >  9.999999999999999e-06   ----   0.01599573354360473  >  1e-07   ----  iteration 9
+Classic-like energies: cke = 7150.0544815798185 cpe = -10348.365251238287 cke + cpe = -3198.3107696584684
+mu = 79.97888183337484
+Error = 0.0009504092047848997
+Delta E 0.03933837225667958
+Energy -3530.1116612797455 -3530.150999652002
+Converged?  0.0009504092047848997  >  9.999999999999999e-06   ----   0.03933837225667958  >  1e-07   ----  iteration 10
+Classic-like energies: cke = 7155.700361997234 cpe = -10353.932522405536 cke + cpe = -3198.2321604083018
+mu = 79.97789895225182
+Error = 0.000745398361835443
+Delta E 0.0968071144525311
+Energy -3530.014854165293 -3530.1116612797455
+Converged?  0.000745398361835443  >  9.999999999999999e-06   ----   0.0968071144525311  >  1e-07   ----  iteration 11
+Classic-like energies: cke = 7151.1728488447425 cpe = -10349.526741993523 cke + cpe = -3198.35389314878
+mu = 79.979421017519
+Error = 0.00021211465138146275
+Delta E 0.1499138566550755
+Energy -3530.164768021948 -3530.014854165293
+Converged?  0.00021211465138146275  >  9.999999999999999e-06   ----   0.1499138566550755  >  1e-07   ----  iteration 12
+Classic-like energies: cke = 7152.466823710027 cpe = -10350.830559850094 cke + cpe = -3198.363736140067
+mu = 79.97954408647335
+Error = 6.052482650526519e-05
+Delta E 0.012121707100959611
+Energy -3530.176889729049 -3530.164768021948
+Converged?  6.052482650526519e-05  >  9.999999999999999e-06   ----   0.012121707100959611  >  1e-07   ----  iteration 13
+Classic-like energies: cke = 7152.152183950465 cpe = -10350.516715211497 cke + cpe = -3198.3645312610324
+mu = 79.97955402802684
+Error = 1.706808420918916e-05
+Delta E 0.0009791970069272793
+Energy -3530.177868926056 -3530.176889729049
+Converged?  1.706808420918916e-05  >  9.999999999999999e-06   ----   0.0009791970069272793  >  1e-07   ----  iteration 14
+Classic-like energies: cke = 7152.290732938555, cpe = -10350.65532769846, cke + cpe = -3198.3645947599043
+Exact Energy = -3532.192093162126
+Dirac Energy = -3530.1779781508067
+Kutze Energy = -3530.17794712536
+Error Kutze  = 2.0141460367667605
+Error Dirac  = 2.014115011319518
+Delta Energy = -7.819930397090502e-05
+Dirac - Kutzelnigg = -3.102544724242762e-05
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = True
+prec        = 6
+derivative  = BS
+box         = 1
+
+-------------------------------
+Hg 0 1 6 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg007
+Now executing: python test.py Input_Making/input__Hg007BS.txt#
+Input file: Input_Making/input__Hg007BS.txt
+Output file: outputs/output__Hg007BS.txt
+light_speed = 137.03599913900001  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 10
+box = 1
+prec = 1.0e-7                 # precision threshold for the MRA operations
+thr  = 1.0e-6                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = False
+D2               = False         # bool
+two_electrons    = False         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.00012485722724
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.658788729144261
+The normalization constant is: 9.239167567483348
+Integral of the Fermi-Dirac distribution via 3D integration: 79.99999999999997
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.70217e+14
+  root scale: 0
+  order: 10
+  nodes: 304
+  endNodes: 267
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=8
+    scale=2  nodes=8
+    scale=3  nodes=8
+    scale=4  nodes=8
+    scale=5  nodes=8
+    scale=6  nodes=8
+    scale=7  nodes=8
+    scale=8  nodes=8
+    scale=9  nodes=8
+    scale=10  nodes=16
+    scale=11  nodes=96
+    scale=12  nodes=16
+    scale=13  nodes=40
+    scale=14  nodes=56
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 10
+  nodes: 1496
+  endNodes: 1310
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=104
+    scale=3  nodes=104
+    scale=4  nodes=104
+    scale=5  nodes=104
+    scale=6  nodes=104
+    scale=7  nodes=104
+    scale=8  nodes=104
+    scale=9  nodes=104
+    scale=10  nodes=96
+    scale=11  nodes=104
+    scale=12  nodes=96
+    scale=13  nodes=112
+    scale=14  nodes=184
+
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 10
+  nodes: 1496
+  endNodes: 1310
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=104
+    scale=3  nodes=104
+    scale=4  nodes=104
+    scale=5  nodes=104
+    scale=6  nodes=104
+    scale=7  nodes=104
+    scale=8  nodes=104
+    scale=9  nodes=104
+    scale=10  nodes=96
+    scale=11  nodes=104
+    scale=12  nodes=96
+    scale=13  nodes=112
+    scale=14  nodes=184
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+One-electron calculations 1e-07
+calc_dirac_mu 6267.728240520507 15327.914081209952 137.035999139
+Error 0.04545704084194396
+Delta E 15327.914081209952
+Energy -3450.9509788140585
+Converged?  0.04545704084194396  >  1e-06   ----   15327.914081209952  >  1e-08   ----  iteration 0
+calc_dirac_mu 6328.302802671514 15290.762850566041 137.035999139
+Error 0.03264000706777145
+Delta E 37.15123064391082
+Energy -3488.1022094579694
+Converged?  0.03264000706777145  >  1e-06   ----   37.15123064391082  >  1e-08   ----  iteration 1
+calc_dirac_mu 6367.447255646437 15266.706919044002 137.035999139
+Error 0.019713180473130438
+Delta E 24.055931522039828
+Energy -3512.158140980009
+Converged?  0.019713180473130438  >  1e-06   ----   24.055931522039828  >  1e-08   ----  iteration 2
+calc_dirac_mu 6385.037163321137 15255.884820269997 137.035999139
+Error 0.012982383358982448
+Delta E 10.82209877400419
+Energy -3522.9802397540134
+Converged?  0.012982383358982448  >  1e-06   ----   10.82209877400419  >  1e-08   ----  iteration 3
+calc_dirac_mu 6392.211764779136 15251.468479353236 137.035999139
+Error 0.007817434900053778
+Delta E 4.416340916761328
+Energy -3527.3965806707747
+Converged?  0.007817434900053778  >  1e-06   ----   4.416340916761328  >  1e-08   ----  iteration 4
+calc_dirac_mu 6395.018210909782 15249.740617581654 137.035999139
+Error 0.004831595228093276
+Delta E 1.7278617715819564
+Energy -3529.1244424423567
+Converged?  0.004831595228093276  >  1e-06   ----   1.7278617715819564  >  1e-08   ----  iteration 5
+calc_dirac_mu 6396.088475034432 15249.081629984945 137.035999139
+Error 0.002884085361027757
+Delta E 0.6589875967092667
+Energy -3529.783430039066
+Converged?  0.002884085361027757  >  1e-06   ----   0.6589875967092667  >  1e-08   ----  iteration 6
+calc_dirac_mu 6396.49089875365 15248.833840567093 137.035999139
+Error 0.0017485696787721665
+Delta E 0.2477894178518909
+Energy -3530.031219456918
+Converged?  0.0017485696787721665  >  1e-06   ----   0.2477894178518909  >  1e-08   ----  iteration 7
+calc_dirac_mu 6396.64092599722 15248.741461375159 137.035999139
+Error 0.0010448383256873488
+Delta E 0.09237919193401467
+Energy -3530.123598648852
+Converged?  0.0010448383256873488  >  1e-06   ----   0.09237919193401467  >  1e-08   ----  iteration 8
+calc_dirac_mu 6396.696585298953 15248.707189048691 137.035999139
+Error 0.0006308002407876353
+Delta E 0.03427232646754419
+Energy -3530.1578709753194
+Converged?  0.0006308002407876353  >  1e-06   ----   0.03427232646754419  >  1e-08   ----  iteration 9
+calc_dirac_mu 6396.717175440762 15248.694510608135 137.035999139
+Error 0.00037840943892488967
+Delta E 0.01267844055655587
+Energy -3530.170549415876
+Converged?  0.00037840943892488967  >  1e-06   ----   0.01267844055655587  >  1e-08   ----  iteration 10
+calc_dirac_mu 6396.724779711463 15248.689828253353 137.035999139
+Error 0.0002285112541425066
+Delta E 0.004682354781834874
+Energy -3530.175231770658
+Converged?  0.0002285112541425066  >  1e-06   ----   0.004682354781834874  >  1e-08   ----  iteration 11
+calc_dirac_mu 6396.727585279618 15248.688100715139 137.035999139
+Error 0.00013759801681439426
+Delta E 0.0017275382142543094
+Energy -3530.176959308872
+Converged?  0.00013759801681439426  >  1e-06   ----   0.0017275382142543094  >  1e-08   ----  iteration 12
+calc_dirac_mu 6396.7286198809825 15248.687463655751 137.035999139
+Error 8.319882771733904e-05
+Delta E 0.0006370593873725738
+Energy -3530.1775963682594
+Converged?  8.319882771733904e-05  >  1e-06   ----   0.0006370593873725738  >  1e-08   ----  iteration 13
+calc_dirac_mu 6396.7290012600115 15248.687228820281 137.035999139
+Error 5.02388864871307e-05
+Delta E 0.00023483547010982875
+Energy -3530.1778312037295
+Converged?  5.02388864871307e-05  >  1e-06   ----   0.00023483547010982875  >  1e-08   ----  iteration 14
+Classic-like energies: cke = 7149.497336060256, cpe = -10347.862489853767, cke + cpe = -3198.365153793511
+Exact Energy = -3532.192093162126
+Dirac Energy = -3530.177917760062
+Kutze Energy = -3530.1786355791833
+Error Kutze  = 2.0134575829433743
+Error Dirac  = 2.014175402064211
+Delta Energy = -8.655633246235084e-05
+Dirac - Kutzelnigg = 0.0007178191226557828
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = False
+prec        = 7
+derivative  = BS
+box         = 1
+
+-------------------------------
+Hg 0 0 7 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg017
+Now executing: python test.py Input_Making/input__Hg017BS.txt#
+Input file: Input_Making/input__Hg017BS.txt
+Output file: outputs/output__Hg017BS.txt
+light_speed = 137.03599913900001  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 10
+box = 1
+prec = 1.0e-7                 # precision threshold for the MRA operations
+thr  = 1.0e-6                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = False         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True
+orbitalName = "spinorb1"        # bool
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = False
+D2               = True         # bool
+two_electrons    = False         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 10
+  nodes: 1496
+  endNodes: 1310
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=104
+    scale=3  nodes=104
+    scale=4  nodes=104
+    scale=5  nodes=104
+    scale=6  nodes=104
+    scale=7  nodes=104
+    scale=8  nodes=104
+    scale=9  nodes=104
+    scale=10  nodes=96
+    scale=11  nodes=104
+    scale=12  nodes=96
+    scale=13  nodes=112
+    scale=14  nodes=184
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock 1e D2
+Classic-like energies: cke = 7149.497336060256 cpe = -10347.862483702274 cke + cpe = -3198.365147642018
+mu = 79.97956173475843
+Error = 2.197908301825282e-05
+Delta E 3530.178628003575
+Energy -3530.178628003575 0
+Converged?  2.197908301825282e-05  >  1e-06   ----   3530.178628003575  >  1e-08   ----  iteration 0
+Classic-like energies: cke = 7150.25809045248 cpe = -10348.622658368451 cke + cpe = -3198.364567915971
+mu = 79.9795544863307
+Error = 2.1664321190516473e-05
+Delta E 0.0007139367053241585
+Energy -3530.1779140668696 -3530.178628003575
+Converged?  2.1664321190516473e-05  >  1e-06   ----   0.0007139367053241585  >  1e-08   ----  iteration 1
+Classic-like energies: cke = 7150.686785539516 cpe = -10349.051355565029 cke + cpe = -3198.364570025513
+mu = 79.97955451270671
+Error = 2.4803266624376392e-05
+Delta E 2.597914317448158e-06
+Energy -3530.177916664784 -3530.1779140668696
+Converged?  2.4803266624376392e-05  >  1e-06   ----   2.597914317448158e-06  >  1e-08   ----  iteration 2
+Classic-like energies: cke = 7151.235225400055 cpe = -10349.599752817932 cke + cpe = -3198.364527417877
+mu = 79.97955397997512
+Error = 4.011808791044444e-05
+Delta E 5.247160015642294e-05
+Energy -3530.1778641931837 -3530.177916664784
+Converged?  4.011808791044444e-05  >  1e-06   ----   5.247160015642294e-05  >  1e-08   ----  iteration 3
+Classic-like energies: cke = 7151.303738042492 cpe = -10349.668133685413 cke + cpe = -3198.3643956429205
+mu = 79.97955233236706
+Error = 6.120633170123592e-05
+Delta E 0.00016228178128585569
+Energy -3530.1777019114024 -3530.1778641931837
+Converged?  6.120633170123592e-05  >  1e-06   ----   0.00016228178128585569  >  1e-08   ----  iteration 4
+Classic-like energies: cke = 7151.9115145628975 cpe = -10350.27556947598 cke + cpe = -3198.3640549130823
+mu = 79.97954807215507
+Error = 9.811159894294686e-05
+Delta E 0.0004196111704004579
+Energy -3530.177282300232 -3530.1777019114024
+Converged?  9.811159894294686e-05  >  1e-06   ----   0.0004196111704004579  >  1e-08   ----  iteration 5
+Classic-like energies: cke = 7151.509031054266 cpe = -10349.872237705844 cke + cpe = -3198.3632066515775
+mu = 79.97953746617415
+Error = 0.00015358973448475295
+Delta E 0.001044639907831879
+Energy -3530.176237660324 -3530.177282300232
+Converged?  0.00015358973448475295  >  1e-06   ----   0.001044639907831879  >  1e-08   ----  iteration 6
+Classic-like energies: cke = 7152.568553801688 cpe = -10350.929667582084 cke + cpe = -3198.3611137803964
+mu = 79.97951129858691
+Error = 0.0002424708992274292
+Delta E 0.002577385023869283
+Energy -3530.1736602753003 -3530.176237660324
+Converged?  0.0002424708992274292  >  1e-06   ----   0.002577385023869283  >  1e-08   ----  iteration 7
+Classic-like energies: cke = 7151.235673592903 cpe = -10349.591635746146 cke + cpe = -3198.355962153243
+mu = 79.97944688672513
+Error = 0.0003804942696704767
+Delta E 0.0063442618434237374
+Energy -3530.167316013457 -3530.1736602753003
+Converged?  0.0003804942696704767  >  1e-06   ----   0.0063442618434237374  >  1e-08   ----  iteration 8
+Classic-like energies: cke = 7153.577421311922 cpe = -10351.920707394995 cke + cpe = -3198.3432860830726
+mu = 79.97928839497226
+Error = 0.0005977823045012608
+Delta E 0.015610650390044611
+Energy -3530.151705363067 -3530.167316013457
+Converged?  0.0005977823045012608  >  1e-06   ----   0.015610650390044611  >  1e-08   ----  iteration 9
+Classic-like energies: cke = 7150.081522930504 cpe = -10348.393635483402 cke + cpe = -3198.312112552898
+mu = 79.97889862398578
+Error = 0.0009383622527058021
+Delta E 0.03839030651943176
+Energy -3530.1133150565474 -3530.151705363067
+Converged?  0.0009383622527058021  >  1e-06   ----   0.03839030651943176  >  1e-08   ----  iteration 10
+Classic-like energies: cke = 7155.660619166217 cpe = -10353.89602143045 cke + cpe = -3198.235402264233
+mu = 79.97793948663885
+Error = 0.0007358919508698123
+Delta E 0.09446856513022794
+Energy -3530.018846491417 -3530.1133150565474
+Converged?  0.0007358919508698123  >  1e-06   ----   0.09446856513022794  >  1e-08   ----  iteration 11
+Classic-like energies: cke = 7151.189626012389 cpe = -10349.543823584967 cke + cpe = -3198.3541975725775
+mu = 79.9794248237955
+Error = 0.00020934957714090904
+Delta E 0.1462964302504588
+Energy -3530.1651429216677 -3530.018846491417
+Converged?  0.00020934957714090904  >  1e-06   ----   0.1462964302504588  >  1e-08   ----  iteration 12
+Classic-like energies: cke = 7152.468041489557 cpe = -10350.831844320423 cke + cpe = -3198.363802830865
+mu = 79.97954492032153
+Error = 5.971462322317855e-05
+Delta E 0.011828937563223008
+Energy -3530.176971859231 -3530.1651429216677
+Converged?  5.971462322317855e-05  >  1e-06   ----   0.011828937563223008  >  1e-08   ----  iteration 13
+Classic-like energies: cke = 7152.157147881146 cpe = -10350.521726326722 cke + cpe = -3198.3645784455766
+mu = 79.97955461798442
+Error = 1.6831764237622945e-05
+Delta E 0.0009551749203637883
+Energy -3530.1779270341513 -3530.176971859231
+Converged?  1.6831764237622945e-05  >  1e-06   ----   0.0009551749203637883  >  1e-08   ----  iteration 14
+Classic-like energies: cke = 7152.293985839654, cpe = -10350.65862695823, cke + cpe = -3198.3646411185755
+Exact Energy = -3532.192093162126
+Dirac Energy = -3530.177976059196
+Kutze Energy = -3530.1780042163896
+Error Kutze  = 2.014088945736148
+Error Dirac  = 2.0141171029299585
+Delta Energy = -7.718223832853255e-05
+Dirac - Kutzelnigg = 2.815719199134037e-05
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = True
+prec        = 7
+derivative  = BS
+box         = 1
+
+-------------------------------
+Hg 0 1 7 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg008
+Now executing: python test.py Input_Making/input__Hg008BS.txt#
+Input file: Input_Making/input__Hg008BS.txt
+Output file: outputs/output__Hg008BS.txt
+light_speed = 137.03599913900001  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 11
+box = 1
+prec = 1.0e-8                 # precision threshold for the MRA operations
+thr  = 1.0e-7                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = False
+D2               = False         # bool
+two_electrons    = False         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.00012485722724
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.658788732985998
+The normalization constant is: 9.239167563384106
+Integral of the Fermi-Dirac distribution via 3D integration: 80.00000000000001
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.70217e+14
+  root scale: 0
+  order: 11
+  nodes: 392
+  endNodes: 344
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=8
+    scale=2  nodes=8
+    scale=3  nodes=8
+    scale=4  nodes=8
+    scale=5  nodes=8
+    scale=6  nodes=8
+    scale=7  nodes=8
+    scale=8  nodes=8
+    scale=9  nodes=8
+    scale=10  nodes=16
+    scale=11  nodes=96
+    scale=12  nodes=16
+    scale=13  nodes=56
+    scale=14  nodes=128
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 11
+  nodes: 1808
+  endNodes: 1583
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=120
+    scale=3  nodes=112
+    scale=4  nodes=120
+    scale=5  nodes=112
+    scale=6  nodes=120
+    scale=7  nodes=112
+    scale=8  nodes=120
+    scale=9  nodes=112
+    scale=10  nodes=120
+    scale=11  nodes=112
+    scale=12  nodes=120
+    scale=13  nodes=112
+    scale=14  nodes=200
+    scale=15  nodes=144
+
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 11
+  nodes: 1808
+  endNodes: 1583
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=120
+    scale=3  nodes=112
+    scale=4  nodes=120
+    scale=5  nodes=112
+    scale=6  nodes=120
+    scale=7  nodes=112
+    scale=8  nodes=120
+    scale=9  nodes=112
+    scale=10  nodes=120
+    scale=11  nodes=112
+    scale=12  nodes=120
+    scale=13  nodes=112
+    scale=14  nodes=200
+    scale=15  nodes=144
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+One-electron calculations 1e-08
+calc_dirac_mu 6267.728235321655 15327.914084394617 137.035999139
+Error 0.04545704097366547
+Delta E 15327.914084394617
+Energy -3450.9509756293937
+Converged?  0.04545704097366547  >  1e-07   ----   15327.914084394617  >  1e-09   ----  iteration 0
+calc_dirac_mu 6328.302802770174 15290.762850505458 137.035999139
+Error 0.03264000735975745
+Delta E 37.1512338891589
+Energy -3488.1022095185526
+Converged?  0.03264000735975745  >  1e-07   ----   37.1512338891589  >  1e-09   ----  iteration 1
+calc_dirac_mu 6367.447260871282 15266.706915830582 137.035999139
+Error 0.019713180882625858
+Delta E 24.05593467487597
+Energy -3512.1581441934286
+Converged?  0.019713180882625858  >  1e-07   ----   24.05593467487597  >  1e-09   ----  iteration 2
+calc_dirac_mu 6385.037169136523 15255.884816690843 137.035999139
+Error 0.01298238364958339
+Delta E 10.822099139739294
+Energy -3522.980243333168
+Converged?  0.01298238364958339  >  1e-07   ----   10.822099139739294  >  1e-09   ----  iteration 3
+calc_dirac_mu 6392.211772248637 15251.468474754703 137.035999139
+Error 0.007817435145513292
+Delta E 4.416341936139361
+Energy -3527.3965852693073
+Converged?  0.007817435145513292  >  1e-07   ----   4.416341936139361  >  1e-09   ----  iteration 4
+calc_dirac_mu 6395.0182181345635 15249.740613133277 137.035999139
+Error 0.004831595368285312
+Delta E 1.7278616214262001
+Energy -3529.1244468907335
+Converged?  0.004831595368285312  >  1e-07   ----   1.7278616214262001  >  1e-09   ----  iteration 5
+calc_dirac_mu 6396.088482464903 15249.081625409724 137.035999139
+Error 0.0028840854523699624
+Delta E 0.6589877235528547
+Energy -3529.7834346142863
+Converged?  0.0028840854523699624  >  1e-07   ----   0.6589877235528547  >  1e-09   ----  iteration 6
+calc_dirac_mu 6396.490905587773 15248.833836358997 137.035999139
+Error 0.001748569712173735
+Delta E 0.24778905072707857
+Energy -3530.0312236650134
+Converged?  0.001748569712173735  >  1e-07   ----   0.24778905072707857  >  1e-09   ----  iteration 7
+calc_dirac_mu 6396.640932893454 15248.741457128794 137.035999139
+Error 0.0010448383500974347
+Delta E 0.09237923020373273
+Energy -3530.123602895217
+Converged?  0.0010448383500974347  >  1e-07   ----   0.09237923020373273  >  1e-09   ----  iteration 8
+calc_dirac_mu 6396.696592596932 15248.707184554942 137.035999139
+Error 0.0006308002716396659
+Delta E 0.03427257385192206
+Energy -3530.157875469069
+Converged?  0.0006308002716396659  >  1e-07   ----   0.03427257385192206  >  1e-09   ----  iteration 9
+calc_dirac_mu 6396.717182745793 15248.694506110038 137.035999139
+Error 0.0003784094571846891
+Delta E 0.012678444903940544
+Energy -3530.170553913973
+Converged?  0.0003784094571846891  >  1e-07   ----   0.012678444903940544  >  1e-09   ----  iteration 10
+calc_dirac_mu 6396.724787007448 15248.689823760826 137.035999139
+Error 0.00022851126480564934
+Delta E 0.004682349212089321
+Energy -3530.175236263185
+Converged?  0.00022851126480564934  >  1e-07   ----   0.004682349212089321  >  1e-09   ----  iteration 11
+calc_dirac_mu 6396.72759258422 15248.688096217305 137.035999139
+Error 0.0001375980235138993
+Delta E 0.0017275435202463996
+Energy -3530.1769638067053
+Converged?  0.0001375980235138993  >  1e-07   ----   0.0017275435202463996  >  1e-09   ----  iteration 12
+calc_dirac_mu 6396.728627170498 15248.687459167206 137.035999139
+Error 8.319883126305271e-05
+Delta E 0.0006370500996126793
+Energy -3530.177600856805
+Converged?  8.319883126305271e-05  >  1e-07   ----   0.0006370500996126793  >  1e-09   ----  iteration 13
+calc_dirac_mu 6396.729008558883 15248.687224325975 137.035999139
+Error 5.023888904710296e-05
+Delta E 0.00023484123084926978
+Energy -3530.177835698036
+Converged?  5.023888904710296e-05  >  1e-07   ----   0.00023484123084926978  >  1e-09   ----  iteration 14
+Classic-like energies: cke = 7149.497948446815, cpe = -10347.862538738254, cke + cpe = -3198.3645902914395
+Exact Energy = -3532.192093162126
+Dirac Energy = -3530.1779222531513
+Kutze Energy = -3530.1779416224153
+Error Kutze  = 2.0141515397117473
+Error Dirac  = 2.0141709089748474
+Delta Energy = -8.655511555843987e-05
+Dirac - Kutzelnigg = 1.9369264919077978e-05
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = False
+prec        = 8
+derivative  = BS
+box         = 1
+
+-------------------------------
+Hg 0 0 8 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg018
+Now executing: python test.py Input_Making/input__Hg018BS.txt#
+./run_all.sh: line 18: 36145 Killed                  python "$SCRIPT" "$file"
+>>> Elaboro tutti i file contenenti Hg104
+Now executing: python test.py Input_Making/input__Hg104BS.txt#
+Input file: Input_Making/input__Hg104BS.txt
+Output file: outputs/output__Hg104BS.txt
+light_speed = 137.03599913900001  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 7
+box = 1
+prec = 1.0e-4                 # precision threshold for the MRA operations
+thr  = 1.0e-3                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = False
+D2               = False         # bool
+two_electrons    = False         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.0, 0.0, 0.0, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.0, 0.0, 0.0]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.00012485722724
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.718057234102968
+The normalization constant is: 9.176356366078787
+Integral of the Fermi-Dirac distribution via 3D integration: 80.00000000000058
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.71427e+14
+  root scale: 0
+  order: 7
+  nodes: 712
+  endNodes: 624
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.4
+  root scale: 0
+  order: 7
+  nodes: 840
+  endNodes: 736
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.4
+  root scale: 0
+  order: 7
+  nodes: 840
+  endNodes: 736
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+
+Number of Atoms =  1
+[['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+Using derivative  BS
+One-electron calculations 0.0001
+calc_dirac_mu 6268.859685272958 15327.220975526685 137.035999139
+Error 0.04548835084855024
+Delta E 15327.220975526685
+Energy -3451.644084497326
+Converged?  0.04548835084855024  >  0.001   ----   15327.220975526685  >  1e-05   ----  iteration 0
+calc_dirac_mu 6328.290423233277 15290.770452271223 137.035999139
+Error 0.03261070613914898
+Delta E 36.45052325546203
+Energy -3488.094607752788
+Converged?  0.03261070613914898  >  0.001   ----   36.45052325546203  >  1e-05   ----  iteration 1
+calc_dirac_mu 6366.83972511415 15267.080561976205 137.035999139
+Error 0.01966389141078862
+Delta E 23.689890295017904
+Energy -3511.7844980478058
+Converged?  0.01966389141078862  >  0.001   ----   23.689890295017904  >  1e-05   ----  iteration 2
+calc_dirac_mu 6384.348764950261 15256.308498108536 137.035999139
+Error 0.012936941424321289
+Delta E 10.772063867669203
+Energy -3522.556561915475
+Converged?  0.012936941424321289  >  0.001   ----   10.772063867669203  >  1e-05   ----  iteration 3
+calc_dirac_mu 6391.417192167582 15251.957643153815 137.035999139
+Error 0.007781968274404191
+Delta E 4.350854954720489
+Energy -3526.9074168701954
+Converged?  0.007781968274404191  >  0.001   ----   4.350854954720489  >  1e-05   ----  iteration 4
+calc_dirac_mu 6394.229551395656 15250.226196162264 137.035999139
+Error 0.004801490084253147
+Delta E 1.7314469915509108
+Energy -3528.6388638617464
+Converged?  0.004801490084253147  >  0.001   ----   1.7314469915509108  >  1e-05   ----  iteration 5
+calc_dirac_mu 6395.294129078759 15249.570730792944 137.035999139
+Error 0.002863286834293542
+Delta E 0.6554653693201544
+Energy -3529.2943292310665
+Converged?  0.002863286834293542  >  0.001   ----   0.6554653693201544  >  1e-05   ----  iteration 6
+calc_dirac_mu 6395.711760174873 15249.31358571454 137.035999139
+Error 0.0017319365433574653
+Delta E 0.25714507840348233
+Energy -3529.55147430947
+Converged?  0.0017319365433574653  >  0.001   ----   0.25714507840348233  >  1e-05   ----  iteration 7
+calc_dirac_mu 6395.869585729845 15249.216407758735 137.035999139
+Error 0.0010335507417340596
+Delta E 0.09717795580581878
+Energy -3529.648652265276
+Converged?  0.0010335507417340596  >  0.001   ----   0.09717795580581878  >  1e-05   ----  iteration 8
+calc_dirac_mu 6395.934359714975 15249.176524282617 137.035999139
+Error 0.0006222545868172551
+Delta E 0.0398834761181206
+Energy -3529.688535741394
+Converged?  0.0006222545868172551  >  0.001   ----   0.0398834761181206  >  1e-05   ----  iteration 9
+calc_dirac_mu 6395.960225995938 15249.16059753232 137.035999139
+Error 0.0003725828693201016
+Delta E 0.01592675029678503
+Energy -3529.7044624916907
+Converged?  0.0003725828693201016  >  0.001   ----   0.01592675029678503  >  1e-05   ----  iteration 10
+calc_dirac_mu 6395.971828286577 15249.15345360135 137.035999139
+Error 0.00022427225762076822
+Delta E 0.007143930970414658
+Energy -3529.711606422661
+Converged?  0.00022427225762076822  >  0.001   ----   0.007143930970414658  >  1e-05   ----  iteration 11
+calc_dirac_mu 6395.977155763253 15249.150173288883 137.035999139
+Error 0.0001347291125783975
+Delta E 0.003280312466813484
+Energy -3529.714886735128
+Converged?  0.0001347291125783975  >  0.001   ----   0.003280312466813484  >  1e-05   ----  iteration 12
+calc_dirac_mu 6395.979863525129 15249.148506025556 137.035999139
+Error 8.118567140644448e-05
+Delta E 0.0016672633264533943
+Energy -3529.7165539984544
+Converged?  8.118567140644448e-05  >  0.001   ----   0.0016672633264533943  >  1e-05   ----  iteration 13
+calc_dirac_mu 6395.981286935813 15249.147629581934 137.035999139
+Error 4.889388201034135e-05
+Delta E 0.0008764436224737437
+Energy -3529.717430442077
+Converged?  4.889388201034135e-05  >  0.001   ----   0.0008764436224737437  >  1e-05   ----  iteration 14
+Classic-like energies: cke = 7036.286115488032, cpe = -10175.878039709274, cke + cpe = -3139.591924221242
+Exact Energy = -3532.192093162126
+Dirac Energy = -3529.717888103871
+Kutze Energy = -3457.969956747344
+Error Kutze  = 74.22213641478083
+Error Dirac  = 2.474205058255393
+Delta Energy = -0.0004576617939164862
+Dirac - Kutzelnigg = -71.74793135652726
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+D2          = False
+prec        = 4
+derivative  = BS
+box         = 1
+
+-------------------------------
+Hg 1 0 4 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg114
+Now executing: python test.py Input_Making/input__Hg114BS.txt#
+Input file: Input_Making/input__Hg114BS.txt
+Output file: outputs/output__Hg114BS.txt
+light_speed = 137.03599913900001  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 7
+box = 1
+prec = 1.0e-4                 # precision threshold for the MRA operations
+thr  = 1.0e-3                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = False         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True
+orbitalName = "spinorb1"        # bool
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = False
+D2               = True         # bool
+two_electrons    = False         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.0, 0.0, 0.0, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.0, 0.0, 0.0]
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.4
+  root scale: 0
+  order: 7
+  nodes: 840
+  endNodes: 736
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+
+Number of Atoms =  1
+[['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+Using derivative  BS
+Hartree-Fock 1e D2
+Classic-like energies: cke = 7036.286115488032 cpe = -10174.214524883759 cke + cpe = -3137.9284093957267
+mu = 79.22030559642808
+Error = 0.005755419919508616
+Delta E 3455.9311175156663
+Energy -3455.9311175156663 0
+Converged?  0.005755419919508616  >  0.001   ----   3455.9311175156663  >  1e-05   ----  iteration 0
+Classic-like energies: cke = 6935.1707584669575 cpe = -10108.28593637202 cke + cpe = -3173.1151779050624
+mu = 79.6632308898536
+Error = 0.004282537756947944
+Delta E 43.183635287873585
+Energy -3499.11475280354 -3455.9311175156663
+Converged?  0.004282537756947944  >  0.001   ----   43.183635287873585  >  1e-05   ----  iteration 1
+Classic-like energies: cke = 6891.046065473029 cpe = -10059.612239087792 cke + cpe = -3168.566173614763
+mu = 79.60610747442388
+Error = 0.009831441196054308
+Delta E 5.589719303442962
+Energy -3493.525033500097 -3499.11475280354
+Converged?  0.009831441196054308  >  0.001   ----   5.589719303442962  >  1e-05   ----  iteration 2
+Classic-like energies: cke = 6986.826704343951 cpe = -10129.289985365936 cke + cpe = -3142.4632810219855
+mu = 79.27752873320391
+Error = 0.018828827288067833
+Delta E 32.03524216380765
+Energy -3461.4897913362893 -3493.525033500097
+Converged?  0.018828827288067833  >  0.001   ----   32.03524216380765  >  1e-05   ----  iteration 3
+Classic-like energies: cke = 6836.411945369844 cpe = -9911.648005691759 cke + cpe = -3075.236060321915
+mu = 78.42494578030532
+Error = 0.03538070137191287
+Delta E 82.19897651725478
+Energy -3379.2908148190345 -3461.4897913362893
+Converged?  0.03538070137191287  >  0.001   ----   82.19897651725478  >  1e-05   ----  iteration 4
+Classic-like energies: cke = 7007.467296344729 cpe = -9919.608631921345 cke + cpe = -2912.1413355766153
+mu = 76.31698809015742
+Error = 0.05755473335990395
+Delta E 197.6163540525672
+Energy -3181.6744607664673 -3379.2908148190345
+Converged?  0.05755473335990395  >  0.001   ----   197.6163540525672  >  1e-05   ----  iteration 5
+Classic-like energies: cke = 6456.636863814127 cpe = -9024.722528351529 cke + cpe = -2568.0856645374024
+mu = 71.66708679076334
+Error = 0.10169441704254392
+Delta E 408.88026865787515
+Energy -2772.794192108592 -3181.6744607664673
+Converged?  0.10169441704254392  >  0.001   ----   408.88026865787515  >  1e-05   ----  iteration 6
+Classic-like energies: cke = 6459.040248501019 cpe = -8378.08445371474 cke + cpe = -1919.0442052137214
+mu = 61.952307547237034
+Error = 0.1483113336935018
+Delta E 744.1777450076625
+Energy -2028.6164471009297 -2772.794192108592
+Converged?  0.1483113336935018  >  0.001   ----   744.1777450076625  >  1e-05   ----  iteration 7
+Classic-like energies: cke = 4736.945064921919 cpe = -5989.9204565493 cke + cpe = -1252.9753916273812
+mu = 50.059472462809296
+Error = 0.2282858334881281
+Delta E 730.7943003812597
+Energy -1297.82214671967 -2028.6164471009297
+Converged?  0.2282858334881281  >  0.001   ----   730.7943003812597  >  1e-05   ----  iteration 8
+Classic-like energies: cke = 3649.1037768622746 cpe = -4700.262451962 cke + cpe = -1051.1586750997258
+mu = 45.8510343416531
+Error = 0.19265508291288852
+Delta E 215.4719726795047
+Energy -1082.3501740401653 -1297.82214671967
+Converged?  0.19265508291288852  >  0.001   ----   215.4719726795047  >  1e-05   ----  iteration 9
+Classic-like energies: cke = 2315.9930522511495 cpe = -3396.140342535717 cke + cpe = -1080.1472902845676
+mu = 46.47896922877201
+Error = 0.18943697910946738
+Delta E 30.788393020651938
+Energy -1113.1385670608172 -1082.3501740401653
+Converged?  0.18943697910946738  >  0.001   ----   30.788393020651938  >  1e-05   ----  iteration 10
+Classic-like energies: cke = 2186.9284479203816 cpe = -3238.214972773996 cke + cpe = -1051.2865248536145
+mu = 45.85382262916833
+Error = 0.11033362725468537
+Delta E 30.652723229462026
+Energy -1082.4858438313552 -1113.1385670608172
+Converged?  0.11033362725468537  >  0.001   ----   30.652723229462026  >  1e-05   ----  iteration 11
+Classic-like energies: cke = 1395.259060008148 cpe = -3803.7411557373252 cke + cpe = -2408.482095729177
+mu = 69.4043528278908
+Error = 0.07475529170141541
+Delta E 1504.1387167365508
+Energy -2586.624560567906 -1082.4858438313552
+Converged?  0.07475529170141541  >  0.001   ----   1504.1387167365508  >  1e-05   ----  iteration 12
+Classic-like energies: cke = 1694.2613971474657 cpe = -4308.590268157429 cke + cpe = -2614.328871009963
+mu = 72.30945817816593
+Error = 0.06725317386603057
+Delta E 240.51599205100183
+Energy -2827.140552618908 -2586.624560567906
+Converged?  0.06725317386603057  >  0.001   ----   240.51599205100183  >  1e-05   ----  iteration 13
+Classic-like energies: cke = 1999.4692126984294 cpe = -4727.457357426325 cke + cpe = -2727.988144727896
+mu = 73.8645807505586
+Error = 0.05726833164019815
+Delta E 134.36915221978006
+Energy -2961.509704838688 -2827.140552618908
+Converged?  0.05726833164019815  >  0.001   ----   134.36915221978006  >  1e-05   ----  iteration 14
+Classic-like energies: cke = 2332.674440564122, cpe = -5149.869345837233, cke + cpe = -2817.1949052731106
+Exact Energy = -3532.192093162126
+Dirac Energy = -3138.354596905452
+Kutze Energy = -3067.7757599541756
+Error Kutze  = 464.41633320795154
+Error Dirac  = 393.83749625667406
+Delta Energy = -106.26605511548769
+Dirac - Kutzelnigg = -70.57883695127748
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+D2          = True
+prec        = 4
+derivative  = BS
+box         = 1
+
+-------------------------------
+Hg 1 1 4 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg105
+Now executing: python test.py Input_Making/input__Hg105BS.txt#
+./run_all.sh: line 18: 36270 Segmentation fault      python "$SCRIPT" "$file"
+>>> Elaboro tutti i file contenenti Hg115
+Now executing: python test.py Input_Making/input__Hg115BS.txt#
+./run_all.sh: line 18: 36271 Segmentation fault      python "$SCRIPT" "$file"
+>>> Elaboro tutti i file contenenti Hg106
+Now executing: python test.py Input_Making/input__Hg106BS.txt#
+./run_all.sh: line 18: 36272 Segmentation fault      python "$SCRIPT" "$file"
+>>> Elaboro tutti i file contenenti Hg116
+Now executing: python test.py Input_Making/input__Hg116BS.txt#
+./run_all.sh: line 18: 36273 Segmentation fault      python "$SCRIPT" "$file"
+>>> Elaboro tutti i file contenenti Hg107
+Now executing: python test.py Input_Making/input__Hg107BS.txt#
+./run_all.sh: line 18: 36274 Segmentation fault      python "$SCRIPT" "$file"
+>>> Elaboro tutti i file contenenti Hg117
+Now executing: python test.py Input_Making/input__Hg117BS.txt#
+./run_all.sh: line 18: 36275 Segmentation fault      python "$SCRIPT" "$file"
+>>> Elaboro tutti i file contenenti Hg108
+Now executing: python test.py Input_Making/input__Hg108BS.txt#
+./run_all.sh: line 18: 36276 Segmentation fault      python "$SCRIPT" "$file"
+>>> Elaboro tutti i file contenenti Hg118
+Now executing: python test.py Input_Making/input__Hg118BS.txt#
+./run_all.sh: line 18: 36277 Segmentation fault      python "$SCRIPT" "$file"

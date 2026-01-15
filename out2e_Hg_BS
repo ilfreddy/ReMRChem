@@ -1,0 +1,5003 @@
+nohup: ignoring input
+=== Lancio dei calcoli in ordine definito ===
+input__Hg004BS.txt
+input__Hg014BS.txt
+input__Hg005BS.txt
+input__Hg015BS.txt
+input__Hg006BS.txt
+input__Hg016BS.txt
+input__Hg007BS.txt
+input__Hg017BS.txt
+input__Hg008BS.txt
+input__Hg018BS.txt
+input__Hg104BS.txt
+input__Hg114BS.txt
+input__Hg105BS.txt
+input__Hg115BS.txt
+input__Hg106BS.txt
+input__Hg116BS.txt
+input__Hg107BS.txt
+input__Hg117BS.txt
+input__Hg108BS.txt
+input__Hg118BS.txt
+>>> Elaboro tutti i file contenenti Hg004BS
+Now executing: python test.py Input_Making/input__Hg004BS.txt
+Input file: Input_Making/input__Hg004BS.txt
+Output file: outputs/output__Hg004BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 8
+box = 1
+prec = 1.0e-4                 # precision threshold for the MRA operations
+thr  = 1.0e-3                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = False         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.0001243324938394
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.577457131152464
+The normalization constant is: 9.326773515363664
+Integral of the Fermi-Dirac distribution via 3D integration: 80.00000000000007
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.77152e+14
+  root scale: 0
+  order: 7
+  nodes: 192
+  endNodes: 169
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=8
+    scale=2  nodes=8
+    scale=3  nodes=8
+    scale=4  nodes=8
+    scale=5  nodes=8
+    scale=6  nodes=8
+    scale=7  nodes=8
+    scale=8  nodes=8
+    scale=9  nodes=8
+    scale=10  nodes=16
+    scale=11  nodes=96
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 7
+  nodes: 688
+  endNodes: 603
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=56
+    scale=2  nodes=48
+    scale=3  nodes=56
+    scale=4  nodes=48
+    scale=5  nodes=56
+    scale=6  nodes=48
+    scale=7  nodes=56
+    scale=8  nodes=48
+    scale=9  nodes=56
+    scale=10  nodes=48
+    scale=11  nodes=56
+    scale=12  nodes=48
+    scale=13  nodes=56
+
+box = 1
+order = 7
+precision = 0.0001
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.1, 0.2, 0.3]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 7
+  nodes: 688
+  endNodes: 603
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=56
+    scale=2  nodes=48
+    scale=3  nodes=56
+    scale=4  nodes=48
+    scale=5  nodes=56
+    scale=6  nodes=48
+    scale=7  nodes=56
+    scale=8  nodes=48
+    scale=9  nodes=56
+    scale=10  nodes=48
+    scale=11  nodes=56
+    scale=12  nodes=48
+    scale=13  nodes=56
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction)
+hd_11 (21727.702757991185+0.01088490561976452j)
+J contribution 49.99998341350309
+orbital energy -3400.8904111887477
+total energy -6851.780805790997
+calc_dirac_mu 6185.8726096585615 15377.972007055361 137.0359895
+Orbital_Error norm 0.04424953764806856
+hd_11 (22208.733659126305-7.116351241488099e-05j)
+J contribution 52.461330425172115
+orbital energy -3434.9807109711146
+total energy -6922.422752367402
+calc_dirac_mu 6241.643677131422 15343.881707272994 137.0359895
+Orbital_Error norm 0.031687843375974196
+hd_11 (22490.796499960477+0.00022715101403904963j)
+J contribution 54.3101329365038
+orbital energy -3457.0462940873167
+total energy -6968.402721111139
+calc_dirac_mu 6277.67655757142 15321.816124156792 137.0359895
+Orbital_Error norm 0.019045004848224502
+hd_11 (22708.66239600278+8.441107132930244e-05j)
+J contribution 55.57905580969808
+orbital energy -3466.6943516595584
+total energy -6988.967759128816
+calc_dirac_mu 6293.415447210031 15312.16806658455 137.0359895
+Orbital_Error norm 0.012529421787067842
+hd_11 (22845.763667564774+8.079216036681553e-05j)
+J contribution 56.414886398266304
+orbital energy -3470.440972204826
+total energy -6997.296830807918
+calc_dirac_mu 6299.524642070777 15308.421446039283 137.0359895
+Orbital_Error norm 0.007513873846593668
+hd_11 (22935.5029999719+8.587878615510028e-05j)
+J contribution 56.933492686251
+orbital energy -3471.800103028836
+total energy -7000.533698743922
+calc_dirac_mu 6301.740455081445 15307.062315215273 137.0359895
+Orbital_Error norm 0.004631049590936576
+hd_11 (22990.308486740727+0.0001004226568294621j)
+J contribution 57.253092122106644
+orbital energy -3472.2529939369233
+total energy -7001.759079995954
+calc_dirac_mu 6302.478766768555 15306.609424307186 137.0359895
+Orbital_Error norm 0.0027532133455262283
+hd_11 (23024.287110899902-4.1145313047124274e-05j)
+J contribution 57.44535531355651
+orbital energy -3472.3860206666395
+total energy -7002.217396646836
+calc_dirac_mu 6302.695625415405 15306.47639757747 137.0359895
+Orbital_Error norm 0.0016638750815485296
+hd_11 (23044.783335283366-3.769832617309078e-05j)
+J contribution 57.56133860837239
+orbital energy -3472.4128838442048
+total energy -7002.387106296781
+calc_dirac_mu 6302.739417230201 15306.449534399904 137.0359895
+Orbital_Error norm 0.000990426671012034
+hd_11 (23057.261385753136-3.6133510823684826e-05j)
+J contribution 57.630679263616365
+orbital energy -3472.4095824642063
+total energy -7002.44984419203
+calc_dirac_mu 6302.734035390699 15306.452835779903 137.0359895
+Orbital_Error norm 0.0005959891468509814
+hd_11 (23064.76885655123-3.4172828844541894e-05j)
+J contribution 57.6723182377857
+orbital energy -3472.4003250676833
+total energy -7002.472968373153
+calc_dirac_mu 6302.718944173461 15306.462093176426 137.0359895
+Orbital_Error norm 0.0003562307452327522
+hd_11 (23069.313204108967-3.524877921460244e-05j)
+J contribution 57.69724522269897
+orbital energy -3472.392138420786
+total energy -7002.48152206427
+calc_dirac_mu 6302.705598462617 15306.470279823323 137.0359895
+Orbital_Error norm 0.0002144267486644262
+hd_11 (23072.04922147391-4.297923057391311e-05j)
+J contribution 57.71222370322733
+orbital energy -3472.386247599232
+total energy -7002.484718901691
+calc_dirac_mu 6302.695995356701 15306.476170644877 137.0359895
+Orbital_Error norm 0.00012867177650946723
+hd_11 (23073.70291313195-4.148492756662816e-05j)
+J contribution 57.72121594185509
+orbital energy -3472.382338405907
+total energy -7002.48589275367
+calc_dirac_mu 6302.6896226616145 15306.480079838202 137.0359895
+Orbital_Error norm 7.755813759390928e-05
+hd_11 (23074.699890502805-4.151178627822606e-05j)
+J contribution 57.72662879410876
+orbital energy -3472.379851665919
+total energy -7002.486332125947
+Final classic-like energies: cke = 7074.337237212717, cpe = -7768.217323924615, cke + cpe = -693.880086711898, total cte = -1445.4868022179048
+Dirac orbital energy: -3472.379851665919
+Dirac total energy: -7002.486332125947
+Kutzelnigg total energy: -7001.423817071678
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = False
+prec        = 4
+derivative  = BS
+box         = 1
+order       = 7
+
+-------------------------------
+Hg 0 0 4 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg014BS
+Now executing: python test.py Input_Making/input__Hg014BS.txt
+Input file: Input_Making/input__Hg014BS.txt
+Output file: outputs/output__Hg014BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 8
+box = 1
+prec = 1.0e-4                 # precision threshold for the MRA operations
+thr  = 1.0e-3                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True        # bool
+orbitalName = "spinorb1"
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = True         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+box = 1
+order = 7
+precision = 0.0001
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.1, 0.2, 0.3]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 7
+  nodes: 688
+  endNodes: 603
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=56
+    scale=2  nodes=48
+    scale=3  nodes=56
+    scale=4  nodes=48
+    scale=5  nodes=56
+    scale=6  nodes=48
+    scale=7  nodes=56
+    scale=8  nodes=48
+    scale=9  nodes=56
+    scale=10  nodes=48
+    scale=11  nodes=56
+    scale=12  nodes=48
+    scale=13  nodes=56
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction) 2e D2 J only
+Classic-like energies: cke = 7074.337237212717 cpe = -10225.64392229903 cke + cpe = -3151.3066850863133
+Orbital energy:  -3472.3355630269734
+Orbital_Error norm 6.242277476439296e-05
+Final classic-like energies: cke = 7075.863217782531, cpe = -10227.15420452262, cte = -3151.2909867400886
+Final orbital energy: -3472.3163034718004
+Dirac total energy: -7002.483517545468
+Kutzelnigg total energy: -7002.36107608527
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = True
+prec        = 4
+derivative  = BS
+box         = 1
+order       = 7
+
+-------------------------------
+Hg 0 1 4 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg005BS
+Now executing: python test.py Input_Making/input__Hg005BS.txt
+Input file: Input_Making/input__Hg005BS.txt
+Output file: outputs/output__Hg005BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 9
+box = 1
+prec = 1.0e-5                 # precision threshold for the MRA operations
+thr  = 1.0e-4                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = False         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.0001243324938394
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.554097136545874
+The normalization constant is: 9.352243576731679
+Integral of the Fermi-Dirac distribution via 3D integration: 79.99999999999994
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.76664e+14
+  root scale: 0
+  order: 8
+  nodes: 200
+  endNodes: 176
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=8
+    scale=2  nodes=8
+    scale=3  nodes=8
+    scale=4  nodes=8
+    scale=5  nodes=8
+    scale=6  nodes=8
+    scale=7  nodes=8
+    scale=8  nodes=8
+    scale=9  nodes=8
+    scale=10  nodes=16
+    scale=11  nodes=96
+    scale=12  nodes=8
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 8
+  nodes: 912
+  endNodes: 799
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=56
+    scale=4  nodes=64
+    scale=5  nodes=56
+    scale=6  nodes=64
+    scale=7  nodes=56
+    scale=8  nodes=64
+    scale=9  nodes=56
+    scale=10  nodes=64
+    scale=11  nodes=56
+    scale=12  nodes=64
+    scale=13  nodes=72
+    scale=14  nodes=104
+
+box = 1
+order = 8
+precision = 1e-05
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.1, 0.2, 0.3]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 8
+  nodes: 912
+  endNodes: 799
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=56
+    scale=4  nodes=64
+    scale=5  nodes=56
+    scale=6  nodes=64
+    scale=7  nodes=56
+    scale=8  nodes=64
+    scale=9  nodes=56
+    scale=10  nodes=64
+    scale=11  nodes=56
+    scale=12  nodes=64
+    scale=13  nodes=72
+    scale=14  nodes=104
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction)
+hd_11 (21727.622512237394+0.00016145551884387508j)
+J contribution 49.999992598252256
+orbital energy -3400.9522947678743
+total energy -6851.9045821340005
+calc_dirac_mu 6185.973962127259 15377.910123476235 137.0359895
+Orbital_Error norm 0.04425786658403943
+hd_11 (22208.809861150025-5.102770409947763e-05j)
+J contribution 52.462145044085496
+orbital energy -3434.9820640508315
+total energy -6922.426273145749
+calc_dirac_mu 6241.6458882871075 15343.880354193278 137.0359895
+Orbital_Error norm 0.03168975980235528
+hd_11 (22490.891226366824-1.1500699120339659e-05j)
+J contribution 54.31111462286966
+orbital energy -3457.0521011571927
+total energy -6968.415316937255
+calc_dirac_mu 6277.6860336342415 15321.810317086916 137.0359895
+Orbital_Error norm 0.019046427831237958
+hd_11 (22708.77540149661-1.5335577991364847e-05j)
+J contribution 55.58013813622593
+orbital energy -3466.696957272854
+total energy -6988.974052681933
+calc_dirac_mu 6293.4196964115445 15312.165460971255 137.0359895
+Orbital_Error norm 0.012529833824563484
+hd_11 (22845.887119864077-8.923858184838255e-06j)
+J contribution 56.41599015064732
+orbital energy -3470.443416468128
+total energy -6997.302823086902
+calc_dirac_mu 6299.528627169441 15308.419001775981 137.0359895
+Orbital_Error norm 0.0075141446094097045
+hd_11 (22935.633846703513-9.715362261824973e-06j)
+J contribution 56.934613755270696
+orbital energy -3471.801559313015
+total energy -7000.537732381301
+calc_dirac_mu 6301.742829179633 15307.060858931094 137.0359895
+Orbital_Error norm 0.004631126758361524
+hd_11 (22990.44393254664-4.812725491145164e-06j)
+J contribution 57.25421865128277
+orbital energy -3472.254360769806
+total energy -7001.762940190896
+calc_dirac_mu 6302.480994973405 15306.608057474303 137.0359895
+Orbital_Error norm 0.0027532827215079442
+hd_11 (23024.426081954327-5.885286023666017e-06j)
+J contribution 57.446486158711515
+orbital energy -3472.3869113847377
+total energy -7002.220308928187
+calc_dirac_mu 6302.697077447465 15306.475506859371 137.0359895
+Orbital_Error norm 0.0016639004717723773
+hd_11 (23044.92447847635-7.202303609740061e-06j)
+J contribution 57.56247070354913
+orbital energy -3472.41359456954
+total energy -7002.389659842629
+calc_dirac_mu 6302.740575839384 15306.44882367457 137.0359895
+Orbital_Error norm 0.0009904450915025963
+hd_11 (23057.40402319534-1.2535699162055627e-05j)
+J contribution 57.631811499381584
+orbital energy -3472.4101295377895
+total energy -7002.45207057496
+calc_dirac_mu 6302.734927218506 15306.45228870632 137.0359895
+Orbital_Error norm 0.0005960010806192927
+hd_11 (23064.912475951514-1.2139190773691746e-05j)
+J contribution 57.67345101584787
+orbital energy -3472.4007756699993
+total energy -7002.475002355848
+calc_dirac_mu 6302.719678736292 15306.46164257411 137.0359895
+Orbital_Error norm 0.00035623879820801215
+hd_11 (23069.457486140403-1.2093545973709366e-05j)
+J contribution 57.69837827579225
+orbital energy -3472.392520078796
+total energy -7002.483418433385
+calc_dirac_mu 6302.706220634161 15306.469898165313 137.0359895
+Orbital_Error norm 0.00021442470723471703
+hd_11 (23072.193941599005-1.186780612498841e-05j)
+J contribution 57.71335699069689
+orbital energy -3472.38657777968
+total energy -7002.486512550058
+calc_dirac_mu 6302.696533610721 15306.475840464429 137.0359895
+Orbital_Error norm 0.00012866732781212988
+hd_11 (23073.847898253596+4.524943843244341e-06j)
+J contribution 57.72234945899176
+orbital energy -3472.382680779916
+total energy -7002.4877110188245
+calc_dirac_mu 6302.690180793495 15306.479737464193 137.0359895
+Orbital_Error norm 7.754470778971901e-05
+hd_11 (23074.845096437748+4.412522490068675e-06j)
+J contribution 57.72776262064425
+orbital energy -3472.380181044864
+total energy -7002.488124710373
+calc_dirac_mu 6302.686105770611 15306.482237199245 137.0359895
+Orbital_Error norm 4.666549693700969e-05
+hd_11 (23075.44774040708+4.405001537853425e-06j)
+J contribution 57.73102058468701
+orbital energy -3472.3786278770713
+total energy -7002.4882763388305
+calc_dirac_mu 6302.683573824223 15306.483790367038 137.0359895
+Orbital_Error norm 2.8157367229104925e-05
+hd_11 (23075.811492136396+4.435405829115668e-06j)
+J contribution 57.732984853781524
+orbital energy -3472.377673569674
+total energy -7002.488331993129
+calc_dirac_mu 6302.682018129225 15306.484744674435 137.0359895
+Orbital_Error norm 1.697805758506348e-05
+hd_11 (23076.031370197015+4.433336835552028e-06j)
+J contribution 57.73416923803345
+orbital energy -3472.377091553717
+total energy -7002.488352345466
+calc_dirac_mu 6302.681069337084 15306.485326690392 137.0359895
+Orbital_Error norm 1.0253617657465962e-05
+hd_11 (23076.16420025845+4.4570960682512086e-06j)
+J contribution 57.73488417046727
+orbital energy -3472.3767367748915
+total energy -7002.488357720249
+calc_dirac_mu 6302.680490982888 15306.485681469218 137.0359895
+Orbital_Error norm 6.190434127841756e-06
+hd_11 (23076.24451200674+4.4456886951522565e-06j)
+J contribution 57.7353157787827
+orbital energy -3472.3765223114297
+total energy -7002.488360401643
+Final classic-like energies: cke = 7079.962657954173, cpe = -7769.758616074059, cke + cpe = -689.7959581198866, total cte = -1437.3272320185558
+Dirac orbital energy: -3472.3765223114297
+Dirac total energy: -7002.488360401643
+Kutzelnigg total energy: -7002.474192207861
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = False
+prec        = 5
+derivative  = BS
+box         = 1
+order       = 8
+
+-------------------------------
+Hg 0 0 5 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg015BS
+Now executing: python test.py Input_Making/input__Hg015BS.txt
+Input file: Input_Making/input__Hg015BS.txt
+Output file: outputs/output__Hg015BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 9
+box = 1
+prec = 1.0e-5                 # precision threshold for the MRA operations
+thr  = 1.0e-4                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True        # bool
+orbitalName = "spinorb1"
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = True         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+box = 1
+order = 8
+precision = 1e-05
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.1, 0.2, 0.3]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 8
+  nodes: 912
+  endNodes: 799
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=56
+    scale=4  nodes=64
+    scale=5  nodes=56
+    scale=6  nodes=64
+    scale=7  nodes=56
+    scale=8  nodes=64
+    scale=9  nodes=56
+    scale=10  nodes=64
+    scale=11  nodes=56
+    scale=12  nodes=64
+    scale=13  nodes=72
+    scale=14  nodes=104
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction) 2e D2 J only
+Classic-like energies: cke = 7079.962657954173 cpe = -10231.278966394031 cke + cpe = -3151.3163084398584
+Orbital energy:  -3472.347369474224
+Orbital_Error norm 7.868949407225447e-06
+Final classic-like energies: cke = 7079.994417819984, cpe = -10231.332762116941, cte = -3151.338344296957
+Final orbital energy: -3472.3744042821368
+Dirac total energy: -7002.48667331172
+Kutzelnigg total energy: -7002.484106296962
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = True
+prec        = 5
+derivative  = BS
+box         = 1
+order       = 8
+
+-------------------------------
+Hg 0 1 5 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg006BS
+Now executing: python test.py Input_Making/input__Hg006BS.txt
+Input file: Input_Making/input__Hg006BS.txt
+Output file: outputs/output__Hg006BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 10
+box = 1
+prec = 1.0e-6                 # precision threshold for the MRA operations
+thr  = 1.0e-5                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = False         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.0001243324938394
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.553688618841981
+The normalization constant is: 9.352690232816844
+Integral of the Fermi-Dirac distribution via 3D integration: 80.00000000000003
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.76653e+14
+  root scale: 0
+  order: 9
+  nodes: 240
+  endNodes: 211
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=8
+    scale=2  nodes=8
+    scale=3  nodes=8
+    scale=4  nodes=8
+    scale=5  nodes=8
+    scale=6  nodes=8
+    scale=7  nodes=8
+    scale=8  nodes=8
+    scale=9  nodes=8
+    scale=10  nodes=16
+    scale=11  nodes=96
+    scale=12  nodes=16
+    scale=13  nodes=32
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 9
+  nodes: 1288
+  endNodes: 1128
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=88
+    scale=3  nodes=88
+    scale=4  nodes=88
+    scale=5  nodes=88
+    scale=6  nodes=88
+    scale=7  nodes=88
+    scale=8  nodes=88
+    scale=9  nodes=88
+    scale=10  nodes=88
+    scale=11  nodes=88
+    scale=12  nodes=88
+    scale=13  nodes=88
+    scale=14  nodes=160
+
+box = 1
+order = 9
+precision = 1e-06
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.1, 0.2, 0.3]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 9
+  nodes: 1288
+  endNodes: 1128
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=88
+    scale=3  nodes=88
+    scale=4  nodes=88
+    scale=5  nodes=88
+    scale=6  nodes=88
+    scale=7  nodes=88
+    scale=8  nodes=88
+    scale=9  nodes=88
+    scale=10  nodes=88
+    scale=11  nodes=88
+    scale=12  nodes=88
+    scale=13  nodes=88
+    scale=14  nodes=160
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction)
+hd_11 (21727.621921431513+5.888233104543732e-05j)
+J contribution 49.99999968978121
+orbital energy -3400.9529417635767
+total energy -6851.905883216936
+calc_dirac_mu 6185.975021769886 15377.909476480532 137.0359895
+Orbital_Error norm 0.04425753214140604
+hd_11 (22208.807679868536-2.120417361043932e-06j)
+J contribution 52.462119428559035
+orbital energy -3434.9816215443934
+total energy -6922.425362517344
+calc_dirac_mu 6241.64516515854 15343.880796699716 137.0359895
+Orbital_Error norm 0.03168948686494239
+hd_11 (22490.887458312733-7.127767390008193e-06j)
+J contribution 54.311070682281596
+orbital energy -3457.051460879051
+total energy -6968.413992440383
+calc_dirac_mu 6277.684988819041 15321.810957365058 137.0359895
+Orbital_Error norm 0.019046284907445147
+hd_11 (22708.770597838255-1.2865234691120341e-05j)
+J contribution 55.58008520274443
+orbital energy -3466.696191594632
+total energy -6988.97246839201
+calc_dirac_mu 6293.41844775317 15312.166226649477 137.0359895
+Orbital_Error norm 0.01252975699358601
+hd_11 (22845.881608013915-1.4481054334718407e-05j)
+J contribution 56.415932051337656
+orbital energy -3470.442717761698
+total energy -6997.301367574735
+calc_dirac_mu 6299.52748800661 15308.419700482411 137.0359895
+Orbital_Error norm 0.007514114753348316
+hd_11 (22935.62797632438-1.565874909692839e-05j)
+J contribution 56.93455421974019
+orbital energy -3471.8008657824375
+total energy -7000.536285784616
+calc_dirac_mu 6301.741698555768 15307.061552461671 137.0359895
+Orbital_Error norm 0.0046311128961706825
+hd_11 (22990.43809114232-9.35735874444973e-06j)
+J contribution 57.25415823293154
+orbital energy -3472.2535536847463
+total energy -7001.761265602425
+calc_dirac_mu 6302.479679266975 15306.608864559363 137.0359895
+Orbital_Error norm 0.002753271844897289
+hd_11 (23024.420121698204-1.0166434143370427e-05j)
+J contribution 57.44642500914296
+orbital energy -3472.386110764075
+total energy -7002.218646537294
+calc_dirac_mu 6302.695772290572 15306.476307480034 137.0359895
+Orbital_Error norm 0.001663895529875411
+hd_11 (23044.918475519673-1.0388525704797981e-05j)
+J contribution 57.56240923471785
+orbital energy -3472.4127979136647
+total energy -7002.388005062046
+calc_dirac_mu 6302.739277148075 15306.449620330444 137.0359895
+Orbital_Error norm 0.000990443686113359
+hd_11 (23057.398001339607-1.0614143826286578e-05j)
+J contribution 57.63174993733353
+orbital energy -3472.409330702132
+total energy -7002.450411341597
+calc_dirac_mu 6302.733624973469 15306.453087541977 137.0359895
+Orbital_Error norm 0.0005960004046824961
+hd_11 (23064.906446098175-1.0729958071588218e-05j)
+J contribution 57.67338941815562
+orbital energy -3472.399977062498
+total energy -7002.473343543152
+calc_dirac_mu 6302.718376862394 15306.462441181611 137.0359895
+Orbital_Error norm 0.0003562386874655605
+hd_11 (23069.451454545775-1.0795918877668791e-05j)
+J contribution 57.69831667475944
+orbital energy -3472.3917202525117
+total energy -7002.481757179783
+calc_dirac_mu 6302.704916772725 15306.470697991597 137.0359895
+Orbital_Error norm 0.00021442467938693758
+hd_11 (23072.187914039656-1.0876735557801758e-05j)
+J contribution 57.713295391187124
+orbital energy -3472.385772958107
+total energy -7002.4848413074
+calc_dirac_mu 6302.6952216055515 15306.476645286002 137.0359895
+Orbital_Error norm 0.0001286643331014826
+hd_11 (23073.841885319056-1.0890219471627767e-05j)
+J contribution 57.72228780995987
+orbital energy -3472.38184166302
+total energy -7002.485971136
+calc_dirac_mu 6302.6888128803785 15306.480576581089 137.0359895
+Orbital_Error norm 7.75420721518572e-05
+hd_11 (23074.839042362786-1.0903038751273082e-05j)
+J contribution 57.727700792376034
+orbital energy -3472.3793420710463
+total energy -7002.486384934469
+calc_dirac_mu 6302.684738090514 15306.483076173063 137.0359895
+Orbital_Error norm 4.6663672881988345e-05
+hd_11 (23075.441663510443-1.0909840753350959e-05j)
+J contribution 57.730958635952504
+orbital energy -3472.3777889125377
+total energy -7002.486536461027
+calc_dirac_mu 6302.682206159122 15306.484629331571 137.0359895
+Orbital_Error norm 2.8156342754651277e-05
+hd_11 (23075.805400427857-1.0914306716475828e-05j)
+J contribution 57.73292283423568
+orbital energy -3472.3768345568787
+total energy -7002.486591947993
+calc_dirac_mu 6302.680650385362 15306.48558368723 137.0359895
+Orbital_Error norm 1.69773906163289e-05
+hd_11 (23076.025269791797-1.0917064498231756e-05j)
+J contribution 57.734107173577364
+orbital energy -3472.3762525457805
+total energy -7002.48661226514
+calc_dirac_mu 6302.679701601091 15306.486165698328 137.0359895
+Orbital_Error norm 1.0253227047931732e-05
+hd_11 (23076.158093358612-1.091819560521764e-05j)
+J contribution 57.73482207887471
+orbital energy -3472.3758988127047
+total energy -7002.486619704283
+calc_dirac_mu 6302.6791249516245 15306.486519431404 137.0359895
+Orbital_Error norm 6.190254691718947e-06
+hd_11 (23076.238402530904-1.0919094763607726e-05j)
+J contribution 57.73525367515971
+orbital energy -3472.375684377703
+total energy -7002.486622430566
+calc_dirac_mu 6302.678775383433 15306.486733866406 137.0359895
+Orbital_Error norm 3.7408573877017513e-06
+hd_11 (23076.28694497536-1.0917828941366675e-05j)
+J contribution 57.73551441376147
+orbital energy -3472.3755545087697
+total energy -7002.486623431301
+calc_dirac_mu 6302.678563673367 15306.48686373534 137.0359895
+Orbital_Error norm 2.2603196270014356e-06
+hd_11 (23076.316301421488-1.0918197119816885e-05j)
+J contribution 57.73567195144476
+orbital energy -3472.375475923045
+total energy -7002.486623797537
+calc_dirac_mu 6302.678435564289 15306.486942321064 137.0359895
+Orbital_Error norm 1.3665173335988153e-06
+hd_11 (23076.334052250277-1.0918421459527787e-05j)
+J contribution 57.73576717551533
+orbital energy -3472.375428378309
+total energy -7002.4866239321345
+calc_dirac_mu 6302.67835805769 15306.4869898658 137.0359895
+Orbital_Error norm 8.261021869377533e-07
+hd_11 (23076.344788846174-1.0918606789723048e-05j)
+J contribution 57.73582473927619
+orbital energy -3472.375399630135
+total energy -7002.486623999546
+Final classic-like energies: cke = 7080.280209637452, cpe = -7769.8577702322, cke + cpe = -689.5775605947483, total cte = -1436.890945928773
+Dirac orbital energy: -3472.375399630135
+Dirac total energy: -7002.486623999546
+Kutzelnigg total energy: -7002.479495084692
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = False
+prec        = 6
+derivative  = BS
+box         = 1
+order       = 9
+
+-------------------------------
+Hg 0 0 6 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg016BS
+Now executing: python test.py Input_Making/input__Hg016BS.txt
+Input file: Input_Making/input__Hg016BS.txt
+Output file: outputs/output__Hg016BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 10
+box = 1
+prec = 1.0e-6                 # precision threshold for the MRA operations
+thr  = 1.0e-5                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True        # bool
+orbitalName = "spinorb1"
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = True         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+box = 1
+order = 9
+precision = 1e-06
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.1, 0.2, 0.3]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 9
+  nodes: 1288
+  endNodes: 1128
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=88
+    scale=3  nodes=88
+    scale=4  nodes=88
+    scale=5  nodes=88
+    scale=6  nodes=88
+    scale=7  nodes=88
+    scale=8  nodes=88
+    scale=9  nodes=88
+    scale=10  nodes=88
+    scale=11  nodes=88
+    scale=12  nodes=88
+    scale=13  nodes=88
+    scale=14  nodes=160
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction) 2e D2 J only
+Classic-like energies: cke = 7080.280209637452 cpe = -10231.583302811361 cke + cpe = -3151.3030931739095
+Orbital energy:  -3472.3311562781546
+Orbital_Error norm 4.267709658434307e-06
+Classic-like energies: cke = 7080.188956552198 cpe = -10231.528239080662 cke + cpe = -3151.3392825284645
+Orbital energy:  -3472.375555357487
+Orbital_Error norm 4.357175063817311e-06
+Classic-like energies: cke = 7080.190778507139 cpe = -10231.529981778416 cke + cpe = -3151.3392032712773
+Orbital energy:  -3472.375458120295
+Orbital_Error norm 7.708856635365061e-06
+Classic-like energies: cke = 7080.279247725969 cpe = -10231.618506853632 cke + cpe = -3151.3392591276634
+Orbital energy:  -3472.3755266480644
+Orbital_Error norm 1.4280513376809736e-05
+Classic-like energies: cke = 7080.201385552213 cpe = -10231.540440734218 cke + cpe = -3151.339055182005
+Orbital energy:  -3472.375276436016
+Orbital_Error norm 2.443475967384278e-05
+Classic-like energies: cke = 7080.378998273332 cpe = -10231.718241042583 cke + cpe = -3151.3392427692506
+Orbital energy:  -3472.3755065786395
+Orbital_Error norm 4.0859290898401257e-05
+Classic-like energies: cke = 7080.135416012315 cpe = -10231.474028610723 cke + cpe = -3151.338612598408
+Orbital energy:  -3472.3747334494865
+Orbital_Error norm 6.660722856689281e-05
+Classic-like energies: cke = 7080.552881367921 cpe = -10231.891774722968 cke + cpe = -3151.338893355047
+Orbital energy:  -3472.3750778975696
+Orbital_Error norm 0.00010729061412464419
+Classic-like energies: cke = 7079.9177472332085 cpe = -10231.254413600744 cke + cpe = -3151.336666367535
+Orbital energy:  -3472.3723457038664
+Orbital_Error norm 0.00017119889681379343
+Classic-like energies: cke = 7080.935146192212 cpe = -10232.271019631846 cke + cpe = -3151.3358734396334
+Orbital energy:  -3472.371372895376
+Orbital_Error norm 0.00027169709720096375
+Classic-like energies: cke = 7079.346114025074 cpe = -10230.672637672902 cke + cpe = -3151.3265236478283
+Orbital energy:  -3472.359902050251
+Orbital_Error norm 0.0004299087318011503
+Classic-like energies: cke = 7081.839755810841 cpe = -10233.15497296796 cke + cpe = -3151.3152171571182
+Orbital energy:  -3472.3460306294587
+Orbital_Error norm 0.0006808807536080958
+Classic-like energies: cke = 7077.903896032014 cpe = -10229.172768687598 cke + cpe = -3151.2688726555843
+Orbital energy:  -3472.289172793248
+Orbital_Error norm 0.001083484180956284
+Classic-like energies: cke = 7084.0024980051785 cpe = -10235.185813054932 cke + cpe = -3151.183315049753
+Orbital energy:  -3472.184206843387
+Orbital_Error norm 0.0017320710240318995
+Classic-like energies: cke = 7074.24539013994 cpe = -10225.170821840658 cke + cpe = -3150.925431700718
+Orbital energy:  -3471.867828213297
+Orbital_Error norm 0.002800930732061845
+Classic-like energies: cke = 7089.04526939535 cpe = -10239.398250063243 cke + cpe = -3150.3529806678926
+Orbital energy:  -3471.1655523662844
+Orbital_Error norm 0.004576285680028502
+Classic-like energies: cke = 7064.61337421684 cpe = -10213.411880676613 cke + cpe = -3148.7985064597724
+Orbital energy:  -3469.2587051436367
+Orbital_Error norm 0.007658396364743531
+Classic-like energies: cke = 7099.778253034595 cpe = -10244.771112903303 cke + cpe = -3144.9928598687084
+Orbital energy:  -3464.591384999598
+Orbital_Error norm 0.013029846243719539
+Classic-like energies: cke = 7036.83126452737 cpe = -10171.65599759303 cke + cpe = -3134.8247330656604
+Orbital energy:  -3452.1279653920187
+Orbital_Error norm 0.023003094228200318
+Classic-like energies: cke = 7114.780825109709 cpe = -10222.633126127475 cke + cpe = -3107.852301017766
+Orbital energy:  -3419.115930451124
+Orbital_Error norm 0.04112499730347722
+Classic-like energies: cke = 6939.58641102598 cpe = -9973.08514971639 cke + cpe = -3033.4987386904095
+Orbital energy:  -3328.478513506581
+Orbital_Error norm 0.0767396469952756
+Classic-like energies: cke = 7059.981262521384 cpe = -9881.410091630954 cke + cpe = -2821.42882910957
+Orbital energy:  -3072.8372650136257
+Orbital_Error norm 0.14155200376939905
+Classic-like energies: cke = 6460.576446793177 cpe = -8715.107250261084 cke + cpe = -2254.5308034679074
+Orbital energy:  -2409.0540451657407
+Orbital_Error norm 0.27047118293676997
+Classic-like energies: cke = 5990.995875428083 cpe = -6937.3060462511385 cke + cpe = -946.3101708230552
+Orbital energy:  -971.4365313395522
+Orbital_Error norm 0.4925424968877261
+Classic-like energies: cke = 3077.480377233679 cpe = -3177.3212193949066 cke + cpe = -99.84084216122756
+Orbital energy:  -100.10767265128621
+Orbital_Error norm 0.8420117532311386
+Classic-like energies: cke = 589.6345165489399 cpe = -1255.106809296045 cke + cpe = -665.472292747105
+Orbital energy:  -677.7008956777104
+Orbital_Error norm 0.849387645863446
+Classic-like energies: cke = 739.2244950740318 cpe = -628.143118714799 cke + cpe = 111.08137635923276
+Orbital energy:  110.75476927717362
+Positive energy
+>>> Elaboro tutti i file contenenti Hg007BS
+Now executing: python test.py Input_Making/input__Hg007BS.txt
+Input file: Input_Making/input__Hg007BS.txt
+Output file: outputs/output__Hg007BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 11
+box = 1
+prec = 1.0e-7                 # precision threshold for the MRA operations
+thr  = 1.0e-6                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = False         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.0001243324938394
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.553690693162277
+The normalization constant is: 9.35268796473446
+Integral of the Fermi-Dirac distribution via 3D integration: 80.00000000000016
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.76652e+14
+  root scale: 0
+  order: 10
+  nodes: 304
+  endNodes: 267
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=8
+    scale=2  nodes=8
+    scale=3  nodes=8
+    scale=4  nodes=8
+    scale=5  nodes=8
+    scale=6  nodes=8
+    scale=7  nodes=8
+    scale=8  nodes=8
+    scale=9  nodes=8
+    scale=10  nodes=16
+    scale=11  nodes=96
+    scale=12  nodes=16
+    scale=13  nodes=40
+    scale=14  nodes=56
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 10
+  nodes: 1496
+  endNodes: 1310
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=104
+    scale=3  nodes=104
+    scale=4  nodes=104
+    scale=5  nodes=104
+    scale=6  nodes=104
+    scale=7  nodes=104
+    scale=8  nodes=104
+    scale=9  nodes=104
+    scale=10  nodes=96
+    scale=11  nodes=104
+    scale=12  nodes=96
+    scale=13  nodes=112
+    scale=14  nodes=184
+
+box = 1
+order = 10
+precision = 1e-07
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.1, 0.2, 0.3]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 10
+  nodes: 1496
+  endNodes: 1310
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=104
+    scale=3  nodes=104
+    scale=4  nodes=104
+    scale=5  nodes=104
+    scale=6  nodes=104
+    scale=7  nodes=104
+    scale=8  nodes=104
+    scale=9  nodes=104
+    scale=10  nodes=96
+    scale=11  nodes=104
+    scale=12  nodes=96
+    scale=13  nodes=112
+    scale=14  nodes=184
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction)
+hd_11 (21727.621697055627+6.78459470759482e-07j)
+J contribution 49.999999917081055
+orbital energy -3400.9531692058135
+total energy -6851.906338328707
+calc_dirac_mu 6185.975394272333 15377.909249038295 137.0359895
+Orbital_Error norm 0.04425755887040121
+hd_11 (22208.807870367942+1.6172690968074102e-07j)
+J contribution 52.46212217437765
+orbital energy -3434.9816834940884
+total energy -6922.425489162553
+calc_dirac_mu 6241.64526639457 15343.88073475002 137.0359895
+Orbital_Error norm 0.03168949450731708
+hd_11 (22490.887702475848+1.503502101076476e-07j)
+J contribution 54.311073991834526
+orbital energy -3457.051518635006
+total energy -6968.414111261845
+calc_dirac_mu 6277.685083066052 15321.810899609103 137.0359895
+Orbital_Error norm 0.019046288043183528
+hd_11 (22708.77087101347+1.8761692840755213e-07j)
+J contribution 55.58008870524825
+orbital energy -3466.696237005972
+total energy -6988.97256271719
+calc_dirac_mu 6293.41852180941 15312.166181238137 137.0359895
+Orbital_Error norm 0.01252975714903531
+hd_11 (22845.881880611487+2.1058453886939882e-07j)
+J contribution 56.41593554800987
+orbital energy -3470.4427598791153
+total energy -6997.301455306242
+calc_dirac_mu 6299.5275566743585 15308.419658364994 137.0359895
+Orbital_Error norm 0.007514114150801933
+hd_11 (22935.62824413493+2.2819766019749513e-07j)
+J contribution 56.9345576667382
+orbital energy -3471.800905141474
+total energy -7000.536367949684
+calc_dirac_mu 6301.741762720591 15307.061513102635 137.0359895
+Orbital_Error norm 0.004631112061541253
+hd_11 (22990.43836112405+2.1802309749065464e-07j)
+J contribution 57.25416162521328
+orbital energy -3472.2535787488814
+total energy -7001.761319122976
+calc_dirac_mu 6302.4797201264155 15306.608839495228 137.0359895
+Orbital_Error norm 0.002753270362323975
+hd_11 (23024.420371759184+6.504906165971237e-07j)
+J contribution 57.44642829837274
+orbital energy -3472.3861370455597
+total energy -7002.218702389491
+calc_dirac_mu 6302.695815134159 15306.47628119855 137.0359895
+Orbital_Error norm 0.001663894630882513
+hd_11 (23044.918717626897+6.697444393652362e-07j)
+J contribution 57.56241245877551
+orbital energy -3472.4128208334914
+total energy -7002.388054125757
+calc_dirac_mu 6302.7393145114875 15306.449597410618 137.0359895
+Orbital_Error norm 0.0009904429170542542
+hd_11 (23057.39823374057+6.756143166654184e-07j)
+J contribution 57.63175310724184
+orbital energy -3472.409353677671
+total energy -7002.450460462584
+calc_dirac_mu 6302.733662427709 15306.453064566438 137.0359895
+Orbital_Error norm 0.0005959999232771541
+hd_11 (23064.906672658155+6.738272718092953e-07j)
+J contribution 57.67339255393623
+orbital energy -3472.3999999089156
+total energy -7002.473392371769
+calc_dirac_mu 6302.718414106165 15306.462418335193 137.0359895
+Orbital_Error norm 0.00035623838861697995
+hd_11 (23069.45167730414+6.796175223950652e-07j)
+J contribution 57.69831978922591
+orbital energy -3472.3917430118745
+total energy -7002.481805812975
+calc_dirac_mu 6302.704953874601 15306.470675232234 137.0359895
+Orbital_Error norm 0.0002144244878931668
+hd_11 (23072.188134453427+6.814105326571945e-07j)
+J contribution 57.71329849183306
+orbital energy -3472.3857955244403
+total energy -7002.484889540712
+calc_dirac_mu 6302.6952583927705 15306.476622719669 137.0359895
+Orbital_Error norm 0.00012866421192434376
+hd_11 (23073.842104115607+6.822704619343835e-07j)
+J contribution 57.72229090118667
+orbital energy -3472.3818641895195
+total energy -7002.486019280226
+calc_dirac_mu 6302.688849602669 15306.48055405459 137.0359895
+Orbital_Error norm 7.75420056525381e-05
+hd_11 (23074.839260176763+6.825174999148849e-07j)
+J contribution 57.727703877525634
+orbital energy -3472.379364566079
+total energy -7002.4864330096825
+calc_dirac_mu 6302.684774761514 15306.48305367803 137.0359895
+Orbital_Error norm 4.6663653467239254e-05
+hd_11 (23075.441880689577+6.828921723872356e-07j)
+J contribution 57.7309617173262
+orbital energy -3472.3778113930202
+total energy -7002.486584503367
+calc_dirac_mu 6302.682242806406 15306.484606851089 137.0359895
+Orbital_Error norm 2.8156364284284415e-05
+hd_11 (23075.80561722368+6.829673353198903e-07j)
+J contribution 57.73292591321414
+orbital energy -3472.3768570267657
+total energy -7002.486639966744
+calc_dirac_mu 6302.680687015379 15306.485561217343 137.0359895
+Orbital_Error norm 1.6977461996419864e-05
+hd_11 (23076.025486342467+6.829911426426533e-07j)
+J contribution 57.73411025108554
+orbital energy -3472.376275010027
+total energy -7002.486660271141
+calc_dirac_mu 6302.679738221912 15306.486143234082 137.0359895
+Orbital_Error norm 1.025336616100686e-05
+hd_11 (23076.158309758037+6.831146376968324e-07j)
+J contribution 57.73482515561581
+orbital energy -3472.3759212743844
+total energy -7002.486667704383
+calc_dirac_mu 6302.679161568262 15306.486496969725 137.0359895
+Orbital_Error norm 6.190498849735795e-06
+hd_11 (23076.23861883738+6.840644824541807e-07j)
+J contribution 57.73525675134019
+orbital energy -3472.3757068372615
+total energy -7002.486670425864
+calc_dirac_mu 6302.678811996614 15306.486711406847 137.0359895
+Orbital_Error norm 3.7412694321290393e-06
+hd_11 (23076.287161225402+6.84102602766807e-07j)
+J contribution 57.73551748959114
+orbital energy -3472.3755769660947
+total energy -7002.486671421782
+calc_dirac_mu 6302.678600282906 15306.486841278014 137.0359895
+Orbital_Error norm 2.2610066029673735e-06
+hd_11 (23076.31651763525+6.841367846645433e-07j)
+J contribution 57.735675027056786
+orbital energy -3472.3754983797025
+total energy -7002.486671786461
+calc_dirac_mu 6302.678472172741 15306.486919864406 137.0359895
+Orbital_Error norm 1.3676564584237353e-06
+hd_11 (23076.33426844155+6.841400259005692e-07j)
+J contribution 57.7357702509908
+orbital energy -3472.375450834379
+total energy -7002.486671919749
+calc_dirac_mu 6302.678394665183 15306.48696740973 137.0359895
+Orbital_Error norm 8.279869814522134e-07
+hd_11 (23076.345005032468+6.841598736066506e-07j)
+J contribution 57.735827814669506
+orbital energy -3472.3754220771516
+total energy -7002.486671968974
+calc_dirac_mu 6302.678347785653 15306.486996166957 137.0359895
+Orbital_Error norm 5.026847784117055e-07
+hd_11 (23076.351498577395+6.841539566344673e-07j)
+J contribution 57.73586262136624
+orbital energy -3472.375404682609
+total energy -7002.486671986582
+calc_dirac_mu 6302.678319429373 15306.4870135615 137.0359895
+Orbital_Error norm 3.072221475614482e-07
+hd_11 (23076.355426617323+6.84168078825787e-07j)
+J contribution 57.735883669148436
+orbital energy -3472.375394162009
+total energy -7002.486671993167
+calc_dirac_mu 6302.678302278875 15306.4870240821 137.0359895
+Orbital_Error norm 1.910705438536396e-07
+hd_11 (23076.357802658837+6.84158952472016e-07j)
+J contribution 57.73589639884292
+orbital energy -3472.3753877983454
+total energy -7002.486671995535
+calc_dirac_mu 6302.678291904941 15306.487030445764 137.0359895
+Orbital_Error norm 1.2383151373654756e-07
+hd_11 (23076.359240062342+6.841712632122518e-07j)
+J contribution 57.735904098126504
+orbital energy -3472.3753839491383
+total energy -7002.486671996405
+calc_dirac_mu 6302.678285630031 15306.48703429497 137.0359895
+Orbital_Error norm 8.711647820902105e-08
+hd_11 (23076.36010961477+6.841610365915688e-07j)
+J contribution 57.73590875531563
+orbital energy -3472.375381620681
+total energy -7002.486671996678
+Final classic-like energies: cke = 7080.339127567013, cpe = -7769.873072991341, cke + cpe = -689.5339454243285, total cte = -1436.8037996039727
+Dirac orbital energy: -3472.375381620681
+Dirac total energy: -7002.486671996678
+Kutzelnigg total energy: -7002.480873135741
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = False
+prec        = 7
+derivative  = BS
+box         = 1
+order       = 10
+
+-------------------------------
+Hg 0 0 7 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg017BS
+Now executing: python test.py Input_Making/input__Hg017BS.txt
+Input file: Input_Making/input__Hg017BS.txt
+Output file: outputs/output__Hg017BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 11
+box = 1
+prec = 1.0e-7                 # precision threshold for the MRA operations
+thr  = 1.0e-6                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True        # bool
+orbitalName = "spinorb1"
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = True         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+box = 1
+order = 10
+precision = 1e-07
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.1, 0.2, 0.3]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 10
+  nodes: 1496
+  endNodes: 1310
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=104
+    scale=3  nodes=104
+    scale=4  nodes=104
+    scale=5  nodes=104
+    scale=6  nodes=104
+    scale=7  nodes=104
+    scale=8  nodes=104
+    scale=9  nodes=104
+    scale=10  nodes=96
+    scale=11  nodes=104
+    scale=12  nodes=96
+    scale=13  nodes=112
+    scale=14  nodes=184
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction) 2e D2 J only
+Classic-like energies: cke = 7080.339127567013 cpe = -10231.677388861584 cke + cpe = -3151.3382612945716
+Orbital energy:  -3472.374302450132
+Orbital_Error norm 1.1609658615867874e-07
+Classic-like energies: cke = 7080.337540815277 cpe = -10231.676709002952 cke + cpe = -3151.3391681876747
+Orbital energy:  -3472.3754150777513
+Orbital_Error norm 1.611284491497179e-07
+Classic-like energies: cke = 7080.337891561713 cpe = -10231.677056726792 cke + cpe = -3151.339165165079
+Orbital energy:  -3472.3754113694613
+Orbital_Error norm 3.0707170030867785e-07
+Classic-like energies: cke = 7080.340980260264 cpe = -10231.680147522151 cke + cpe = -3151.3391672618873
+Orbital energy:  -3472.375413941944
+Orbital_Error norm 5.967012084983923e-07
+Classic-like energies: cke = 7080.33867656839 cpe = -10231.677838049523 cke + cpe = -3151.3391614811335
+Orbital energy:  -3472.375406849787
+Orbital_Error norm 1.0743465172722579e-06
+Classic-like energies: cke = 7080.344512475354 cpe = -10231.68368214221 cke + cpe = -3151.339169666855
+Orbital energy:  -3472.375416892493
+Orbital_Error norm 1.87706969235015e-06
+Classic-like energies: cke = 7080.336860050415 cpe = -10231.67601491059 cke + cpe = -3151.339154860175
+Orbital energy:  -3472.3753987268215
+Orbital_Error norm 3.193072170341494e-06
+Classic-like energies: cke = 7080.350279126775 cpe = -10231.689456305166 cke + cpe = -3151.3391771783918
+Orbital energy:  -3472.3754261080717
+Orbital_Error norm 5.35406796651749e-06
+Classic-like energies: cke = 7080.330127385052 cpe = -10231.669266216359 cke + cpe = -3151.3391388313066
+Orbital energy:  -3472.375379061701
+Orbital_Error norm 8.925529325143457e-06
+Classic-like energies: cke = 7080.362645226958 cpe = -10231.701839041323 cke + cpe = -3151.339193814365
+Orbital energy:  -3472.375446518021
+Orbital_Error norm 1.5467912385112448e-05
+Classic-like energies: cke = 7080.312178428839 cpe = -10231.651270262819 cke + cpe = -3151.33909183398
+Orbital energy:  -3472.375321402729
+Orbital_Error norm 2.7817514729739956e-05
+Classic-like energies: cke = 7080.391883777531 cpe = -10231.731093744347 cke + cpe = -3151.3392099668163
+Orbital energy:  -3472.3754663347595
+Orbital_Error norm 5.134338391637689e-05
+Classic-like energies: cke = 7080.26718454068 cpe = -10231.606082190408 cke + cpe = -3151.338897649728
+Orbital energy:  -3472.375083166528
+Orbital_Error norm 9.66391960976441e-05
+Classic-like energies: cke = 7080.462893129138 cpe = -10231.801882371425 cke + cpe = -3151.3389892422865
+Orbital energy:  -3472.375195537447
+Orbital_Error norm 0.0001847908595846967
+Classic-like energies: cke = 7080.155814771162 cpe = -10231.493323191286 cke + cpe = -3151.3375084201234
+Orbital energy:  -3472.3733787813494
+Orbital_Error norm 0.0003580008434464471
+Classic-like energies: cke = 7080.635763730968 cpe = -10231.970896444429 cke + cpe = -3151.3351327134606
+Orbital energy:  -3472.3704641309537
+Orbital_Error norm 0.000699702345770992
+Classic-like energies: cke = 7079.878017657305 cpe = -10231.199769842693 cke + cpe = -3151.3217521853885
+Orbital energy:  -3472.3540481578
+Orbital_Error norm 0.0013755084373734134
+Classic-like energies: cke = 7081.045492247781 cpe = -10232.324254311474 cke + cpe = -3151.2787620636927
+Orbital energy:  -3472.301305613891
+Orbital_Error norm 0.002713799324352644
+Classic-like energies: cke = 7079.140449190747 cpe = -10230.242950803258 cke + cpe = -3151.1025016125113
+Orbital energy:  -3472.085061915685
+Orbital_Error norm 0.005367610165095646
+Classic-like energies: cke = 7081.839892014925 cpe = -10232.278901876789 cke + cpe = -3150.439009861864
+Orbital energy:  -3471.271089860317
+Orbital_Error norm 0.010629545727501336
+Classic-like energies: cke = 7076.509375416556 cpe = -10224.33607703675 cke + cpe = -3147.8267016201944
+Orbital energy:  -3468.0667292232592
+Orbital_Error norm 0.02107603610714847
+Classic-like energies: cke = 7080.584367411259 cpe = -10218.241037809072 cke + cpe = -3137.6566703978124
+Orbital energy:  -3455.598148997554
+Orbital_Error norm 0.04177508392829589
+Classic-like energies: cke = 7057.525434549152 cpe = -10155.429960328202 cke + cpe = -3097.9045257790494
+Orbital energy:  -3406.958568218898
+Orbital_Error norm 0.08280775546156552
+Classic-like energies: cke = 7027.751621529969 cpe = -9972.237772303813 cke + cpe = -2944.486150773844
+Orbital energy:  -3220.666086801106
+Orbital_Error norm 0.16315766212543062
+Classic-like energies: cke = 6813.499308000462 cpe = -9199.441128960167 cke + cpe = -2385.9418209597043
+Orbital energy:  -2560.504692017116
+Orbital_Error norm 0.31686585296421876
+Classic-like energies: cke = 6067.269298920766 cpe = -6837.350744661169 cke + cpe = -770.0814457404031
+Orbital energy:  -786.553875910306
+Orbital_Error norm 0.6052394884362293
+Classic-like energies: cke = 2896.876901540295 cpe = -2563.895451673806 cke + cpe = 332.98144986648913
+Orbital energy:  330.08049843973185
+Positive energy
+>>> Elaboro tutti i file contenenti Hg008BS
+Now executing: python test.py Input_Making/input__Hg008BS.txt
+Input file: Input_Making/input__Hg008BS.txt
+Output file: outputs/output__Hg008BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 12
+box = 1
+prec = 1.0e-8                 # precision threshold for the MRA operations
+thr  = 1.0e-7                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = False         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.0001243324938394
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.553690690280861
+The normalization constant is: 9.352687967885029
+Integral of the Fermi-Dirac distribution via 3D integration: 79.99999999999997
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.76652e+14
+  root scale: 0
+  order: 11
+  nodes: 392
+  endNodes: 344
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=8
+    scale=2  nodes=8
+    scale=3  nodes=8
+    scale=4  nodes=8
+    scale=5  nodes=8
+    scale=6  nodes=8
+    scale=7  nodes=8
+    scale=8  nodes=8
+    scale=9  nodes=8
+    scale=10  nodes=16
+    scale=11  nodes=96
+    scale=12  nodes=16
+    scale=13  nodes=56
+    scale=14  nodes=128
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 11
+  nodes: 1800
+  endNodes: 1576
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=120
+    scale=3  nodes=112
+    scale=4  nodes=120
+    scale=5  nodes=112
+    scale=6  nodes=120
+    scale=7  nodes=112
+    scale=8  nodes=120
+    scale=9  nodes=112
+    scale=10  nodes=120
+    scale=11  nodes=112
+    scale=12  nodes=120
+    scale=13  nodes=112
+    scale=14  nodes=192
+    scale=15  nodes=144
+
+box = 1
+order = 11
+precision = 1e-08
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.1, 0.2, 0.3]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 11
+  nodes: 1800
+  endNodes: 1576
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=120
+    scale=3  nodes=112
+    scale=4  nodes=120
+    scale=5  nodes=112
+    scale=6  nodes=120
+    scale=7  nodes=112
+    scale=8  nodes=120
+    scale=9  nodes=112
+    scale=10  nodes=120
+    scale=11  nodes=112
+    scale=12  nodes=120
+    scale=13  nodes=112
+    scale=14  nodes=192
+    scale=15  nodes=144
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction)
+hd_11 (21727.62170191622-1.741596717957944e-08j)
+J contribution 50.00000000231771
+orbital energy -3400.9531659448385
+total energy -6851.906331891994
+calc_dirac_mu 6185.9753889315425 15377.90925229927 137.0359895
+Orbital_Error norm 0.0442575590860366
+hd_11 (22208.807877635852-1.4396806395060578e-08j)
+J contribution 52.462122266695296
+orbital energy -3434.981680539806
+total energy -6922.425483346306
+calc_dirac_mu 6241.645261566784 15343.880737704303 137.0359895
+Orbital_Error norm 0.03168949463496007
+hd_11 (22490.887707480448-2.903297085460827e-08j)
+J contribution 54.31107409884579
+orbital energy -3457.0515206522014
+total energy -6968.414115403248
+calc_dirac_mu 6277.68508635774 15321.810897591908 137.0359895
+Orbital_Error norm 0.019046288461732185
+hd_11 (22708.770880739747-5.1094809542272065e-08j)
+J contribution 55.580088851717655
+orbital energy -3466.696239402232
+total energy -6988.972567656183
+calc_dirac_mu 6293.418525717201 15312.166178841877 137.0359895
+Orbital_Error norm 0.012529757443411829
+hd_11 (22845.881892743702-4.2597145370606644e-08j)
+J contribution 56.41593571931663
+orbital energy -3470.4427635949105
+total energy -6997.301462909138
+calc_dirac_mu 6299.527562732547 15308.419654649198 137.0359895
+Orbital_Error norm 0.007514114418785852
+hd_11 (22935.62825978887-3.039942193784049e-08j)
+J contribution 56.93455785920517
+orbital energy -3471.8009085545073
+total energy -7000.536374968218
+calc_dirac_mu 6301.741768284668 15307.061509689602 137.0359895
+Orbital_Error norm 0.004631112203555651
+hd_11 (22990.43837844173-2.4336125936111555e-08j)
+J contribution 57.25416182954697
+orbital energy -3472.2535823363723
+total energy -7001.761326502292
+calc_dirac_mu 6302.479725974728 15306.608835907737 137.0359895
+Orbital_Error norm 0.0027532704588255578
+hd_11 (23024.420390671836-2.23981680379285e-08j)
+J contribution 57.446428510436135
+orbital energy -3472.386140301631
+total energy -7002.218709113698
+calc_dirac_mu 6302.695820442145 15306.476277942478 137.0359895
+Orbital_Error norm 0.0016638946679436745
+hd_11 (23044.918737061686-2.290668021526617e-08j)
+J contribution 57.56241267315132
+orbital energy -3472.4128241454728
+total energy -7002.388060964098
+calc_dirac_mu 6302.739319910608 15306.449594098636 137.0359895
+Orbital_Error norm 0.0009904429438901366
+hd_11 (23057.3982535602-2.2777521550621606e-08j)
+J contribution 57.63175332389761
+orbital energy -3472.409356992368
+total energy -7002.450467308634
+calc_dirac_mu 6302.733667831257 15306.453061251741 137.0359895
+Orbital_Error norm 0.0005959999381973432
+hd_11 (23064.906692474025-2.3187345802300623e-08j)
+J contribution 57.67339277200012
+orbital energy -3472.400003481529
+total energy -7002.4733997350595
+calc_dirac_mu 6302.718419930168 15306.46241476258 137.0359895
+Orbital_Error norm 0.00035623841153350545
+hd_11 (23069.451697427576-2.367963499818638e-08j)
+J contribution 57.69832000934159
+orbital energy -3472.3917465916584
+total energy -7002.481813192659
+calc_dirac_mu 6302.704959710295 15306.47067165245 137.0359895
+Orbital_Error norm 0.00021442449665543458
+hd_11 (23072.18815471303-2.3768893041589544e-08j)
+J contribution 57.713298713207365
+orbital energy -3472.385799165939
+total energy -7002.484897045084
+calc_dirac_mu 6302.695264329073 15306.47661907817 137.0359895
+Orbital_Error norm 0.00012866421306908748
+hd_11 (23073.842124528404-2.3758977441774974e-08j)
+J contribution 57.72229112355313
+orbital energy -3472.3818678315893
+total energy -7002.486026786733
+calc_dirac_mu 6302.688855539905 15306.48055041252 137.0359895
+Orbital_Error norm 7.754199318242051e-05
+hd_11 (23074.839280676762-2.3956682335863802e-08j)
+J contribution 57.727704100470454
+orbital energy -3472.3793682129763
+total energy -7002.486440526423
+calc_dirac_mu 6302.6847807066215 15306.483050031133 137.0359895
+Orbital_Error norm 4.666362479560601e-05
+hd_11 (23075.441901246348-2.396430078908034e-08j)
+J contribution 57.73096194062731
+orbital energy -3472.377815040085
+total energy -7002.486592020796
+calc_dirac_mu 6302.682248751787 15306.484603204024 137.0359895
+Orbital_Error norm 2.8156311674025343e-05
+hd_11 (23075.805637813337-2.39398758647853e-08j)
+J contribution 57.73292613672621
+orbital energy -3472.3768606761987
+total energy -7002.486647489124
+calc_dirac_mu 6302.680692964619 15306.48555756791 137.0359895
+Orbital_Error norm 1.6977371898159177e-05
+hd_11 (23076.02550695412-2.3944618655511113e-08j)
+J contribution 57.7341104747308
+orbital energy -3472.3762786600437
+total energy -7002.486667794819
+calc_dirac_mu 6302.679744172105 15306.486139584065 137.0359895
+Orbital_Error norm 1.0253215149473334e-05
+hd_11 (23076.15833038411-2.3950310925653565e-08j)
+J contribution 57.734825379345565
+orbital energy -3472.375924924516
+total energy -7002.486675228378
+calc_dirac_mu 6302.679167518643 15306.486493319593 137.0359895
+Orbital_Error norm 6.19024749857518e-06
+hd_11 (23076.238639471096-2.3951294528208814e-08j)
+J contribution 57.735256975118375
+orbital energy -3472.3757104872693
+total energy -7002.486677949659
+calc_dirac_mu 6302.678817946792 15306.48670775684 137.0359895
+Orbital_Error norm 3.7408528410693766e-06
+hd_11 (23076.28718186372-2.3949687344196923e-08j)
+J contribution 57.7355177133986
+orbital energy -3472.375580616359
+total energy -7002.486678946116
+calc_dirac_mu 6302.678606233502 15306.48683762775 137.0359895
+Orbital_Error norm 2.260316796898578e-06
+hd_11 (23076.316538276253-2.3950185989316558e-08j)
+J contribution 57.735675250880256
+orbital energy -3472.3755020299177
+total energy -7002.486679310714
+calc_dirac_mu 6302.678478123257 15306.486916214191 137.0359895
+Orbital_Error norm 1.366515568575378e-06
+hd_11 (23076.334289084483-2.3950499768587548e-08j)
+J contribution 57.73577047482603
+orbital energy -3472.375454484636
+total energy -7002.486679444097
+calc_dirac_mu 6302.6784006157695 15306.486963759473 137.0359895
+Orbital_Error norm 8.261009354860919e-07
+hd_11 (23076.345025676328-2.3950573396881787e-08j)
+J contribution 57.735828038509425
+orbital energy -3472.3754257272794
+total energy -7002.486679493068
+calc_dirac_mu 6302.678353736029 15306.48699251683 137.0359895
+Orbital_Error norm 4.995720789970642e-07
+hd_11 (23076.351519221986-2.3950676344123668e-08j)
+J contribution 57.73586284521101
+orbital energy -3472.375408332844
+total energy -7002.486679510897
+calc_dirac_mu 6302.678325379923 15306.487009911265 137.0359895
+Orbital_Error norm 3.021020957595752e-07
+hd_11 (23076.355447262056-2.3950634921811752e-08j)
+J contribution 57.73588389299384
+orbital energy -3472.375397812273
+total energy -7002.48667951754
+calc_dirac_mu 6302.678308229472 15306.487020431836 137.0359895
+Orbital_Error norm 1.82724357327804e-07
+hd_11 (23076.357823304086-2.3950838014889518e-08j)
+J contribution 57.735896622691286
+orbital energy -3472.375391448617
+total energy -7002.486679519927
+calc_dirac_mu 6302.67829785555 15306.487026795492 137.0359895
+Orbital_Error norm 1.1051908291077974e-07
+hd_11 (23076.359260707624-2.3950645559832957e-08j)
+J contribution 57.73590432197445
+orbital energy -3472.375387599317
+total energy -7002.486679520607
+calc_dirac_mu 6302.678291580488 15306.487030644792 137.0359895
+Orbital_Error norm 6.685439318795486e-08
+hd_11 (23076.36013026029-2.395070185746175e-08j)
+J contribution 57.73590897916534
+orbital energy -3472.3753852708996
+total energy -7002.486679520964
+calc_dirac_mu 6302.678287784744 15306.48703297321 137.0359895
+Orbital_Error norm 4.044117791572796e-08
+hd_11 (23076.36065632668-2.395085527538752e-08j)
+J contribution 57.73591179632799
+orbital energy -3472.375383862405
+total energy -7002.486679521138
+calc_dirac_mu 6302.6782854886405 15306.487034381704 137.0359895
+Orbital_Error norm 2.4465192582019773e-08
+hd_11 (23076.36097458667-2.395072417136138e-08j)
+J contribution 57.735913500545855
+orbital energy -3472.3753830103724
+total energy -7002.486679521291
+calc_dirac_mu 6302.678284099671 15306.487035233737 137.0359895
+Orbital_Error norm 1.4800470599837482e-08
+hd_11 (23076.361167135117-2.3950838895544055e-08j)
+J contribution 57.73591453152078
+orbital energy -3472.37538249484
+total energy -7002.4866795212
+calc_dirac_mu 6302.67828325926 15306.48703574927 137.0359895
+Orbital_Error norm 8.954073909699489e-09
+hd_11 (23076.361283627204-2.3950837674998125e-08j)
+J contribution 57.73591515523589
+orbital energy -3472.3753821829723
+total energy -7002.486679521182
+Final classic-like energies: cke = 7080.343231039767, cpe = -7769.874247566068, cke + cpe = -689.5310165263018, total cte = -1436.7979482078395
+Dirac orbital energy: -3472.3753821829723
+Dirac total energy: -7002.486679521182
+Kutzelnigg total energy: -7002.480887343856
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+D2          = False
+prec        = 8
+derivative  = BS
+box         = 1
+order       = 11
+
+-------------------------------
+Hg 0 0 8 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg018BS
+Now executing: python test.py Input_Making/input__Hg018BS.txt
+Input file: Input_Making/input__Hg018BS.txt
+Output file: outputs/output__Hg018BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 12
+box = 1
+prec = 1.0e-8                 # precision threshold for the MRA operations
+thr  = 1.0e-7                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True        # bool
+orbitalName = "spinorb1"
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = True         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.1, 0.2, 0.3]
+box = 1
+order = 11
+precision = 1e-08
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.1, 0.2, 0.3]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 95063.9
+  root scale: 0
+  order: 11
+  nodes: 1800
+  endNodes: 1576
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=120
+    scale=3  nodes=112
+    scale=4  nodes=120
+    scale=5  nodes=112
+    scale=6  nodes=120
+    scale=7  nodes=112
+    scale=8  nodes=120
+    scale=9  nodes=112
+    scale=10  nodes=120
+    scale=11  nodes=112
+    scale=12  nodes=120
+    scale=13  nodes=112
+    scale=14  nodes=192
+    scale=15  nodes=144
+
+Number of Atoms =  1
+[['Hg', 80, 0.1, 0.2, 0.3, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction) 2e D2 J only
+Classic-like energies: cke = 7080.343231039767 cpe = -10231.682001796045 cke + cpe = -3151.338770756279
+Orbital energy:  -3472.3749274864826
+Orbital_Error norm 4.2090838775238545e-08
+Classic-like energies: cke = 7080.342593332956 cpe = -10231.681739812313 cke + cpe = -3151.3391464793567
+Orbital energy:  -3472.3753884447615
+Orbital_Error norm 5.011123851241875e-08
+Classic-like energies: cke = 7080.342753682673 cpe = -10231.681899612548 cke + cpe = -3151.3391459298746
+Orbital energy:  -3472.3753877706245
+Orbital_Error norm 7.746922472633951e-08
+Classic-like energies: cke = 7080.343355864757 cpe = -10231.682502202839 cke + cpe = -3151.339146338082
+Orbital energy:  -3472.3753882714377
+Orbital_Error norm 1.3391804348709558e-07
+Classic-like energies: cke = 7080.343033744259 cpe = -10231.682178896785 cke + cpe = -3151.339145152526
+Orbital energy:  -3472.3753868169283
+Orbital_Error norm 2.2888163798213389e-07
+Classic-like energies: cke = 7080.343968807761 cpe = -10231.6831153484 cke + cpe = -3151.3391465406394
+Orbital energy:  -3472.3753885199462
+Orbital_Error norm 3.905344758301421e-07
+Classic-like energies: cke = 7080.342836834001 cpe = -10231.681980948848 cke + cpe = -3151.339144114847
+Orbital energy:  -3472.375385543847
+Orbital_Error norm 6.622481441644123e-07
+Classic-like energies: cke = 7080.344840688078 cpe = -10231.683988336397 cke + cpe = -3151.3391476483193
+Orbital energy:  -3472.375389878912
+Orbital_Error norm 1.1751644574236316e-06
+Classic-like energies: cke = 7080.341890700824 cpe = -10231.681032659999 cke + cpe = -3151.3391419591753
+Orbital energy:  -3472.3753828991466
+Orbital_Error norm 2.1674658268070144e-06
+Classic-like energies: cke = 7080.346640465906 cpe = -10231.685790983393 cke + cpe = -3151.339150517487
+Orbital energy:  -3472.375393398967
+Orbital_Error norm 4.090566180250031e-06
+Classic-like energies: cke = 7080.339310609224 cpe = -10231.678447027924 cke + cpe = -3151.339136418699
+Orbital energy:  -3472.3753761017783
+Orbital_Error norm 7.834464509675624e-06
+Classic-like energies: cke = 7080.350867245736 cpe = -10231.690023406354 cke + cpe = -3151.3391561606186
+Orbital energy:  -3472.3754003222803
+Orbital_Error norm 1.5172856055902665e-05
+Classic-like energies: cke = 7080.332824539378 cpe = -10231.671941708842 cke + cpe = -3151.3391171694648
+Orbital energy:  -3472.3753524857307
+Orbital_Error norm 2.9656591007121035e-05
+Classic-like energies: cke = 7080.361129205783 cpe = -10231.70027753331 cke + cpe = -3151.3391483275263
+Orbital energy:  -3472.375390712198
+Orbital_Error norm 5.8311353526763654e-05
+Classic-like energies: cke = 7080.316781942251 cpe = -10231.655768624278 cke + cpe = -3151.338986682027
+Orbital energy:  -3472.375192396376
+Orbital_Error norm 0.00011507529130198758
+Classic-like energies: cke = 7080.386168328244 cpe = -10231.724975364024 cke + cpe = -3151.3388070357805
+Orbital energy:  -3472.3749719962248
+Orbital_Error norm 0.00022762187635047055
+Classic-like energies: cke = 7080.276951515003 cpe = -10231.614362689908 cke + cpe = -3151.3374111749054
+Orbital energy:  -3472.373259475442
+Orbital_Error norm 0.00045089482500336393
+Classic-like energies: cke = 7080.4461574224815 cpe = -10231.77921444762 cke + cpe = -3151.333057025139
+Orbital energy:  -3472.367917560369
+Orbital_Error norm 0.0008939692940710394
+Classic-like energies: cke = 7080.173358770711 cpe = -10231.4876238175 cke + cpe = -3151.314265046789
+Orbital energy:  -3472.3448625290393
+Orbital_Error norm 0.0017734738959927266
+Classic-like energies: cke = 7080.570965765499 cpe = -10231.814114135821 cke + cpe = -3151.243148370322
+Orbital energy:  -3472.2576129981194
+Orbital_Error norm 0.003519366763652858
+Classic-like energies: cke = 7079.830507233445 cpe = -10230.789673852209 cke + cpe = -3150.9591666187634
+Orbital energy:  -3471.9092147988445
+Orbital_Error norm 0.006985878324837076
+Classic-like energies: cke = 7080.529486521512 cpe = -10230.377260186839 cke + cpe = -3149.8477736653267
+Orbital energy:  -3470.5457974267283
+Orbital_Error norm 0.013867079462702216
+Classic-like energies: cke = 7077.618748707249 cpe = -10223.080770929582 cke + cpe = -3145.462022222333
+Orbital energy:  -3465.166698102259
+Orbital_Error norm 0.027528714044203026
+Classic-like energies: cke = 7075.023029823957 cpe = -10203.250883832778 cke + cpe = -3128.227854008821
+Orbital energy:  -3444.0473637141176
+Orbital_Error norm 0.05461110125427739
+Classic-like energies: cke = 7050.87030609991 cpe = -10111.723002478948 cke + cpe = -3060.852696379038
+Orbital energy:  -3361.761186569133
+Orbital_Error norm 0.10814611447538626
+Classic-like energies: cke = 6976.5415156807485 cpe = -9780.235660572846 cke + cpe = -2803.694144892097
+Orbital energy:  -3051.6471369614583
+Orbital_Error norm 0.21235350898027328
+Classic-like energies: cke = 6641.273116380687 cpe = -8556.1001917981 cke + cpe = -1914.8270754174127
+Orbital energy:  -2023.8892665092383
+Orbital_Error norm 0.40712290977872984
+Classic-like energies: cke = 5282.105483339684 cpe = -5195.060503305471 cke + cpe = 87.04498003421304
+Orbital energy:  86.84417154106217
+Positive energy
+>>> Elaboro tutti i file contenenti Hg104BS
+Now executing: python test.py Input_Making/input__Hg104BS.txt
+Input file: Input_Making/input__Hg104BS.txt
+Output file: outputs/output__Hg104BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 8
+box = 1
+prec = 1.0e-4                 # precision threshold for the MRA operations
+thr  = 1.0e-3                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = False         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.0, 0.0, 0.0, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.0, 0.0, 0.0]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.0001243324938394
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.615393741850951
+The normalization constant is: 9.285704449163413
+Integral of the Fermi-Dirac distribution via 3D integration: 80.00000000000007
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.77196e+14
+  root scale: 0
+  order: 7
+  nodes: 712
+  endNodes: 624
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.4
+  root scale: 0
+  order: 7
+  nodes: 840
+  endNodes: 736
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+
+box = 1
+order = 7
+precision = 0.0001
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.0, 0.0, 0.0]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.4
+  root scale: 0
+  order: 7
+  nodes: 840
+  endNodes: 736
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+
+Number of Atoms =  1
+[['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction)
+hd_11 (21726.977677219624-8.07536949830435e-14j)
+J contribution 49.999885412717646
+orbital energy -3401.646329551937
+total energy -6853.292544516593
+calc_dirac_mu 6187.110619231618 15377.216088692172 137.0359895
+Orbital_Error norm 0.044289214756523906
+hd_11 (22208.728645470255-4.924314106587426e-14j)
+J contribution 52.46399808310564
+orbital energy -3434.9722100225536
+total energy -6922.408418128212
+calc_dirac_mu 6241.629785173289 15343.890208221555 137.0359895
+Orbital_Error norm 0.03165978008118821
+hd_11 (22490.186684531433-3.8414856421811607e-14j)
+J contribution 54.31117157217573
+orbital energy -3456.676132366538
+total energy -6967.663436305251
+calc_dirac_mu 6277.072514769942 15322.186285877571 137.0359895
+Orbital_Error norm 0.018996270548039585
+hd_11 (22706.892698084754+1.0090465008332319e-13j)
+J contribution 55.57708403014065
+orbital energy -3466.274112702402
+total energy -6988.125309434945
+calc_dirac_mu 6292.730117321865 15312.588305541707 137.0359895
+Orbital_Error norm 0.012484109778381115
+hd_11 (22842.971644684203-2.247361326400958e-14j)
+J contribution 56.410107510518415
+orbital energy -3469.9593753343506
+total energy -6996.3288581792185
+calc_dirac_mu 6298.7394396805685 15308.903042909758 137.0359895
+Orbital_Error norm 0.007478791806186924
+hd_11 (22931.761412210788-9.124889259489627e-14j)
+J contribution 56.92640466791976
+orbital energy -3471.322465776462
+total energy -6999.571336220844
+calc_dirac_mu 6300.961777748177 15307.539952467647 137.0359895
+Orbital_Error norm 0.0046013665996442535
+hd_11 (22985.873206207136-2.999237289459095e-14j)
+J contribution 57.244081148134846
+orbital energy -3471.77315131847
+total energy -7000.790383785075
+calc_dirac_mu 6301.696517183177 15307.08926692564 137.0359895
+Orbital_Error norm 0.0027326450778604903
+hd_11 (23019.306993268325-8.450622039075937e-14j)
+J contribution 57.434960250950894
+orbital energy -3471.9155546620823
+total energy -7001.266069575115
+calc_dirac_mu 6301.928668684655 15306.946863582027 137.0359895
+Orbital_Error norm 0.0016473923726818293
+hd_11 (23039.423177447243-4.4678929257899654e-14j)
+J contribution 57.549879661553874
+orbital energy -3471.9474011652237
+total energy -7001.444681992001
+calc_dirac_mu 6301.980585804384 15306.915017078885 137.0359895
+Orbital_Error norm 0.0009792613945400193
+hd_11 (23051.623403076806+2.3834597762763457e-13j)
+J contribution 57.61847759539886
+orbital energy -3471.94927392534
+total energy -7001.517025446079
+calc_dirac_mu 6301.983638830447 15306.913144318769 137.0359895
+Orbital_Error norm 0.0005874280802172608
+hd_11 (23058.944030443745+1.0602568553555945e-14j)
+J contribution 57.65956369051811
+orbital energy -3471.943272735727
+total energy -7001.546109161973
+calc_dirac_mu 6301.97385552152 15306.919145508382 137.0359895
+Orbital_Error norm 0.00035043750520118454
+hd_11 (23063.35811316575+5.393374210133274e-14j)
+J contribution 57.68410732537288
+orbital energy -3471.937593750785
+total energy -7001.559294826944
+calc_dirac_mu 6301.964597476222 15306.924824493324 137.0359895
+Orbital_Error norm 0.00021019190550286738
+hd_11 (23066.007190445154-7.140152267718719e-14j)
+J contribution 57.69881124378211
+orbital energy -3471.9332042959613
+total energy -7001.565219835706
+calc_dirac_mu 6301.957441657819 15306.929213948148 137.0359895
+Orbital_Error norm 0.00012581241036343222
+hd_11 (23067.601601475882-1.354104462837413e-13j)
+J contribution 57.70761556093874
+orbital energy -3471.9302497554727
+total energy -7001.568115071885
+calc_dirac_mu 6301.952625077828 15306.932168488636 137.0359895
+Orbital_Error norm 7.552073196119308e-05
+hd_11 (23068.559540835184-1.6735308826078943e-13j)
+J contribution 57.71289651494803
+orbital energy -3471.928386072612
+total energy -7001.569668660173
+Final classic-like energies: cke = 6963.450871162078, cpe = -7761.625508663687, cke + cpe = -798.1746375016082, total cte = -1654.0621715181644
+Dirac orbital energy: -3471.928386072612
+Dirac total energy: -7001.569668660173
+Kutzelnigg total energy: -6856.786092108712
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+D2          = False
+prec        = 4
+derivative  = BS
+box         = 1
+order       = 7
+
+-------------------------------
+Hg 1 0 4 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg114BS
+Now executing: python test.py Input_Making/input__Hg114BS.txt
+Input file: Input_Making/input__Hg114BS.txt
+Output file: outputs/output__Hg114BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 8
+box = 1
+prec = 1.0e-4                 # precision threshold for the MRA operations
+thr  = 1.0e-3                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True        # bool
+orbitalName = "spinorb1"
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = True         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.0, 0.0, 0.0, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.0, 0.0, 0.0]
+box = 1
+order = 7
+precision = 0.0001
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.0, 0.0, 0.0]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.4
+  root scale: 0
+  order: 7
+  nodes: 840
+  endNodes: 736
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+
+Number of Atoms =  1
+[['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction) 2e D2 J only
+Classic-like energies: cke = 6963.450871162078 cpe = -10060.74816685676 cke + cpe = -3097.2972956946815
+Orbital energy:  -3406.21677233003
+Orbital_Error norm 0.005188396055225776
+Classic-like energies: cke = 6877.62704979511 cpe = -10005.465113241698 cke + cpe = -3127.8380634465884
+Orbital energy:  -3443.570037486583
+Orbital_Error norm 0.003828322369084594
+Classic-like energies: cke = 6835.503573625923 cpe = -9959.89714055734 cke + cpe = -3124.393566931416
+Orbital energy:  -3439.3526524257454
+Orbital_Error norm 0.009003621048473392
+Classic-like energies: cke = 6924.352733941088 cpe = -10025.97560373967 cke + cpe = -3101.6228697985807
+Orbital energy:  -3411.5017003821454
+Orbital_Error norm 0.017395064348805184
+Classic-like energies: cke = 6785.918091156914 cpe = -9828.087891355215 cke + cpe = -3042.1698001983013
+Orbital energy:  -3339.021180018283
+Orbital_Error norm 0.032827161821821695
+Classic-like energies: cke = 6949.294374461042 cpe = -9847.778752546543 cke + cpe = -2898.484378085501
+Orbital energy:  -3165.240320590212
+Orbital_Error norm 0.05360971305773456
+Classic-like energies: cke = 6444.794438826309 cpe = -9034.118645131299 cke + cpe = -2589.32420630499
+Orbital energy:  -2797.731429778996
+Orbital_Error norm 0.0948822475890306
+Classic-like energies: cke = 6479.435889965087 cpe = -8469.08279007508 cke + cpe = -1989.6469001099922
+Orbital energy:  -2107.957735916933
+Orbital_Error norm 0.139037234348121
+Classic-like energies: cke = 4877.506658577247 cpe = -6185.683231148129 cke + cpe = -1308.176572570882
+Orbital energy:  -1357.2224847251189
+Orbital_Error norm 0.22066426556397706
+Classic-like energies: cke = 3829.941784503331 cpe = -4858.983777062272 cke + cpe = -1029.0419925589408
+Orbital energy:  -1058.8963426100831
+Orbital_Error norm 0.1973140184191317
+Classic-like energies: cke = 2362.4450832452894 cpe = -3435.531155305107 cke + cpe = -1073.0860720598175
+Orbital energy:  -1105.634011893152
+Orbital_Error norm 0.188330770738734
+Classic-like energies: cke = 2213.47475168663 cpe = -3250.0053741345355 cke + cpe = -1036.5306224479054
+Orbital energy:  -1066.8342503337872
+Orbital_Error norm 0.1724515140247826
+Classic-like energies: cke = 1741.0783109496367 cpe = -2782.2482969219236 cke + cpe = -1041.169985972287
+Orbital energy:  -1071.7537360740148
+Orbital_Error norm 0.18135915664746727
+Classic-like energies: cke = 1822.7071330483259 cpe = -2861.0796578406785 cke + cpe = -1038.3725247923526
+Orbital energy:  -1068.787202158202
+Orbital_Error norm 0.17755994533269584
+Classic-like energies: cke = 1561.1153281312554 cpe = -2598.359613623055 cke + cpe = -1037.2442854917995
+Orbital energy:  -1067.5909150284192
+Orbital_Error norm 0.18257515993945023
+Classic-like energies: cke = 1705.7208291460493 cpe = -2743.698641457653 cke + cpe = -1037.9778123116039
+Orbital energy:  -1068.3686740775802
+Orbital_Error norm 0.1821190972889601
+Classic-like energies: cke = 1501.9646544770694 cpe = -2538.7370915903807 cke + cpe = -1036.7724371133113
+Orbital energy:  -1067.0906318816862
+Orbital_Error norm 0.18446948220867473
+Classic-like energies: cke = 1666.6169680997618 cpe = -2704.455530127659 cke + cpe = -1037.8385620278973
+Orbital energy:  -1068.2210242685478
+Orbital_Error norm 0.18469687850981645
+Classic-like energies: cke = 1481.567354537142 cpe = -2518.281576235352 cke + cpe = -1036.7142216982102
+Orbital energy:  -1067.028909238738
+Orbital_Error norm 0.18578875610260998
+Classic-like energies: cke = 1653.0627792337002 cpe = -2690.870497373365 cke + cpe = -1037.807718139665
+Orbital energy:  -1068.1883200549692
+Orbital_Error norm 0.1860518028315807
+Classic-like energies: cke = 1474.398049562672 cpe = -2511.112797187927 cke + cpe = -1036.7147476252549
+Orbital energy:  -1067.0294668496563
+Orbital_Error norm 0.18656473756363415
+Classic-like energies: cke = 1648.3102346875337 cpe = -2686.110567294564 cke + cpe = -1037.8003326070304
+Orbital energy:  -1068.180489078588
+Orbital_Error norm 0.18674635909520024
+Classic-like energies: cke = 1471.8575076972731 cpe = -2508.5703956000393 cke + cpe = -1036.7128879027662
+Orbital energy:  -1067.0274950903863
+Orbital_Error norm 0.1869902038512059
+Classic-like energies: cke = 1646.628749983634 cpe = -2684.428129221104 cke + cpe = -1037.79937923747
+Orbital energy:  -1068.1794782086854
+Orbital_Error norm 0.18709757604460195
+Classic-like energies: cke = 1470.9480337633554 cpe = -2507.6601873424293 cke + cpe = -1036.7121535790739
+Orbital energy:  -1067.026716528293
+Orbital_Error norm 0.18721458333534854
+Classic-like energies: cke = 1646.030174538249 cpe = -2683.8296799497775 cke + cpe = -1037.7995054115286
+Orbital energy:  -1068.1796119926444
+Orbital_Error norm 0.1872736825778278
+Classic-like energies: cke = 1470.6190557684426 cpe = -2507.3309915713094 cke + cpe = -1036.7119358028667
+Orbital energy:  -1067.0264856324388
+Orbital_Error norm 0.18733022260298918
+Classic-like energies: cke = 1645.815511914464 cpe = -2683.6151631905627 cke + cpe = -1037.7996512760988
+Orbital energy:  -1068.1797666547068
+Orbital_Error norm 0.1873614876080323
+Classic-like energies: cke = 1470.4985099238586 cpe = -2507.2103141468215 cke + cpe = -1036.7118042229629
+Orbital energy:  -1067.0263461256777
+Orbital_Error norm 0.18738894986120846
+Classic-like energies: cke = 1645.737641221445 cpe = -2683.5374422705477 cke + cpe = -1037.7998010491026
+Orbital energy:  -1068.1799254609307
+Orbital_Error norm 0.18740509859818227
+Classic-like energies: cke = 1470.4536893260217 cpe = -2507.165233540958 cke + cpe = -1036.7115442149363
+Orbital energy:  -1067.0260704538102
+Orbital_Error norm 0.1874184870390792
+Classic-like energies: cke = 1645.7088943882777 cpe = -2683.508794973444 cke + cpe = -1037.7999005851661
+Orbital energy:  -1068.1800310002875
+Orbital_Error norm 0.18742669312002275
+Classic-like energies: cke = 1470.4365646335832 cpe = -2507.148063829606 cke + cpe = -1036.711499196023
+Orbital energy:  -1067.0260227227923
+Orbital_Error norm 0.187433236983561
+Classic-like energies: cke = 1645.6981573058158 cpe = -2683.498087369256 cke + cpe = -1037.7999300634403
+Orbital energy:  -1068.1800622564776
+Orbital_Error norm 0.18743736674593978
+Classic-like energies: cke = 1470.4298814269193 cpe = -2507.141357028865 cke + cpe = -1036.7114756019457
+Orbital energy:  -1067.02599770732
+Orbital_Error norm 0.18744057144448192
+Classic-like energies: cke = 1645.6940452248036 cpe = -2683.493991761988 cke + cpe = -1037.7999465371845
+Orbital energy:  -1068.1800797238004
+Orbital_Error norm 0.18744263549140242
+Classic-like energies: cke = 1470.427198972039 cpe = -2507.1386639512143 cke + cpe = -1036.7114649791754
+Orbital energy:  -1067.0259864445945
+Orbital_Error norm 0.18744420708138762
+Classic-like energies: cke = 1645.6924309021535 cpe = -2683.4923853459272 cke + cpe = -1037.7999544437737
+Orbital energy:  -1068.1800881072563
+Orbital_Error norm 0.18744523384917428
+Classic-like energies: cke = 1470.426090143845 cpe = -2507.1375497290783 cke + cpe = -1036.7114595852333
+Orbital energy:  -1067.0259807257037
+Orbital_Error norm 0.18744600532372463
+Classic-like energies: cke = 1645.6917785129315 cpe = -2683.491736874363 cke + cpe = -1037.7999583614317
+Orbital energy:  -1068.1800922612003
+Orbital_Error norm 0.18744651527785708
+Classic-like energies: cke = 1470.4260278820352 cpe = -2507.136418885465 cke + cpe = -1036.7103910034298
+Orbital energy:  -1067.0248477686484
+Orbital_Error norm 0.18744688719123376
+Classic-like energies: cke = 1645.6906841960863 cpe = -2683.490849786379 cke + cpe = -1037.8001655902926
+Orbital energy:  -1068.1803119886072
+Orbital_Error norm 0.18744711150180426
+Classic-like energies: cke = 1470.4256087386634 cpe = -2507.1359760323553 cke + cpe = -1036.710367293692
+Orbital energy:  -1067.02482263055
+Orbital_Error norm 0.18744728819629977
+Classic-like energies: cke = 1645.6904037037016 cpe = -2683.4905744920334 cke + cpe = -1037.8001707883318
+Orbital energy:  -1068.1803175001533
+Orbital_Error norm 0.18744739903794982
+Classic-like energies: cke = 1470.4254437470568 cpe = -2507.1358100541556 cke + cpe = -1036.7103663070989
+Orbital energy:  -1067.0248215845215
+Orbital_Error norm 0.18744748427254035
+Classic-like energies: cke = 1645.6903033105946 cpe = -2683.490474609217 cke + cpe = -1037.8001712986224
+Orbital energy:  -1068.1803180412214
+Orbital_Error norm 0.18744753914383466
+Classic-like energies: cke = 1470.4253788963968 cpe = -2507.135744921498 cke + cpe = -1036.7103660251012
+Orbital energy:  -1067.0248212855363
+Orbital_Error norm 0.18744758056824143
+Classic-like energies: cke = 1645.6902648145158 cpe = -2683.4904363222195 cke + cpe = -1037.8001715077037
+Orbital energy:  -1068.1803182629121
+Orbital_Error norm 0.1874476076774824
+Classic-like energies: cke = 1470.4253522571396 cpe = -2507.135718139885 cke + cpe = -1036.7103658827452
+Orbital energy:  -1067.024821134604
+Orbital_Error norm 0.1874476279021281
+Classic-like energies: cke = 1645.690249349277 cpe = -2683.490420958016 cke + cpe = -1037.8001716087388
+Orbital energy:  -1068.1803183700413
+Orbital_Error norm 0.1874476412798175
+Classic-like energies: cke = 1470.4253408596587 cpe = -2507.13570666759 cke + cpe = -1036.7103658079313
+Orbital energy:  -1067.024821055283
+Orbital_Error norm 0.1874476511863265
+Classic-like energies: cke = 1645.6902428717776 cpe = -2683.490414525827 cke + cpe = -1037.8001716540493
+Orbital energy:  -1068.180318418083
+Orbital_Error norm 0.18744765779001013
+Classic-like energies: cke = 1470.4253358102505 cpe = -2507.135701572856 cke + cpe = -1036.7103657626053
+Orbital energy:  -1067.0248210072266
+Orbital_Error norm 0.18744766266563156
+Classic-like energies: cke = 1645.6902400469069 cpe = -2683.4904117090755 cke + cpe = -1037.8001716621686
+Orbital energy:  -1068.1803184266935
+Orbital_Error norm 0.18744766584150516
+Classic-like energies: cke = 1470.425282244843 cpe = -2507.135781192973 cke + cpe = -1036.71049894813
+Orbital energy:  -1067.0249622163258
+Orbital_Error norm 0.18744766917276165
+Classic-like energies: cke = 1645.6903415639922 cpe = -2683.4904875183047 cke + cpe = -1037.8001459543125
+Orbital energy:  -1068.1802911683255
+Orbital_Error norm 0.18744767432541443
+Classic-like energies: cke = 1470.4253076304292 cpe = -2507.1358092728233 cke + cpe = -1036.710501642394
+Orbital energy:  -1067.0249650729013
+Orbital_Error norm 0.18744767689806732
+Classic-like energies: cke = 1645.6903613010036 cpe = -2683.4905065545854 cke + cpe = -1037.8001452535818
+Orbital energy:  -1068.1802904253311
+Orbital_Error norm 0.1874476794031825
+Classic-like energies: cke = 1470.4251621338 cpe = -2507.136063206295 cke + cpe = -1036.710901072495
+Orbital energy:  -1067.0253885661184
+Orbital_Error norm 0.1874476840661248
+Classic-like energies: cke = 1645.6906750580777 cpe = -2683.4907427969447 cke + cpe = -1037.800067738867
+Orbital energy:  -1068.18020823549
+Orbital_Error norm 0.1874476966703078
+Classic-like energies: cke = 1470.425243532632 cpe = -2507.136151999832 cke + cpe = -1036.7109084671997
+Orbital energy:  -1067.0253964063068
+Orbital_Error norm 0.18744770302213723
+Classic-like energies: cke = 1645.6907382345091 cpe = -2683.4908011168945 cke + cpe = -1037.8000628823854
+Orbital energy:  -1068.1802030861008
+Orbital_Error norm 0.1874477119732922
+Classic-like energies: cke = 1470.4252669283399 cpe = -2507.136174916699 cke + cpe = -1036.7109079883592
+Orbital energy:  -1067.0253958986193
+Orbital_Error norm 0.18744772114767108
+Classic-like energies: cke = 1645.6907525815902 cpe = -2683.4908062222953 cke + cpe = -1037.800053640705
+Orbital energy:  -1068.180193287029
+Orbital_Error norm 0.1874477358074707
+Classic-like energies: cke = 1470.4252642576994 cpe = -2507.1361619206364 cke + cpe = -1036.710897662937
+Orbital energy:  -1067.0253849511557
+Orbital_Error norm 0.18744775827030233
+Classic-like energies: cke = 1645.6905167568875 cpe = -2683.4911330249643 cke + cpe = -1037.8006162680767
+Orbital energy:  -1068.1807898480217
+Orbital_Error norm 0.18744782313019195
+Classic-like energies: cke = 1470.4256205291822 cpe = -2507.1364172561334 cke + cpe = -1036.7107967269512
+Orbital energy:  -1067.025277934421
+Orbital_Error norm 0.18744787735611976
+Classic-like energies: cke = 1645.690140745217 cpe = -2683.492047234069 cke + cpe = -1037.8019064888522
+Orbital energy:  -1068.182157885677
+Orbital_Error norm 0.18744804674832405
+Classic-like energies: cke = 1470.4265164271337 cpe = -2507.1370914179815 cke + cpe = -1036.7105749908478
+Orbital energy:  -1067.0250428401316
+Orbital_Error norm 0.18744824062657503
+Classic-like energies: cke = 1645.6902910322551 cpe = -2683.492651487574 cke + cpe = -1037.802360455319
+Orbital energy:  -1068.1826392321766
+Orbital_Error norm 0.18744858064329045
+Classic-like energies: cke = 1470.4269408430011 cpe = -2507.1372269728718 cke + cpe = -1036.7102861298706
+Orbital energy:  -1067.0247365771295
+Orbital_Error norm 0.18744918174240932
+Classic-like energies: cke = 1645.690130532807 cpe = -2683.4921656611805 cke + cpe = -1037.8020351283735
+Orbital energy:  -1068.18229428382
+Orbital_Error norm 0.18745035260529597
+Classic-like energies: cke = 1470.4265642637163 cpe = -2507.1356971947935 cke + cpe = -1036.7091329310772
+Orbital energy:  -1067.0235139055403
+Orbital_Error norm 0.1874527164997546
+Classic-like energies: cke = 1645.6883328708107 cpe = -2683.4881877885227 cke + cpe = -1037.799854917712
+Orbital energy:  -1068.1799825785033
+Orbital_Error norm 0.18745727332265652
+Classic-like energies: cke = 1470.4236238039452 cpe = -2507.1282154573896 cke + cpe = -1036.7045916534444
+Orbital energy:  -1067.018699046013
+Orbital_Error norm 0.18746733643376323
+Classic-like energies: cke = 1645.6804516951468 cpe = -2683.4693650495005 cke + cpe = -1037.7889133543538
+Orbital energy:  -1068.1683811031578
+Orbital_Error norm 0.18748749001299014
+Classic-like energies: cke = 1470.4103086019268 cpe = -2507.091042477139 cke + cpe = -1036.6807338752124
+Orbital energy:  -1066.9934040161893
+Orbital_Error norm 0.18753465567269414
+Classic-like energies: cke = 1645.6423126446196 cpe = -2683.3749458885336 cke + cpe = -1037.732633243914
+Orbital energy:  -1068.1087067240442
+Orbital_Error norm 0.18763155443219673
+Classic-like energies: cke = 1470.344720796667 cpe = -2506.9025522474453 cke + cpe = -1036.5578314507784
+Orbital energy:  -1066.863098217989
+Orbital_Error norm 0.18786163100690534
+Classic-like energies: cke = 1645.455568912354 cpe = -2682.876641032999 cke + cpe = -1037.421072120645
+Orbital energy:  -1067.778358902647
+Orbital_Error norm 0.18834870563813874
+Classic-like energies: cke = 1470.0154686696649 cpe = -2505.8640244291064 cke + cpe = -1035.8485557594415
+Orbital energy:  -1066.1111160365913
+Orbital_Error norm 0.189545282498668
+Classic-like energies: cke = 1644.4447265649321 cpe = -2680.1233266966283 cke + cpe = -1035.6786001316962
+Orbital energy:  -1065.930931882079
+Orbital_Error norm 0.19210681663854676
+Classic-like energies: cke = 1468.222712054704 cpe = -2500.1390145678674 cke + cpe = -1031.9163025131634
+Orbital energy:  -1061.9426752621134
+Orbital_Error norm 0.1983640618640283
+Classic-like energies: cke = 1638.9086374927451 cpe = -2664.9706921377356 cke + cpe = -1026.0620546449904
+Orbital energy:  -1055.7386131745661
+Orbital_Error norm 0.21131644610797118
+Classic-like energies: cke = 1458.4080920810961 cpe = -2468.7586765399624 cke + cpe = -1010.3505844588663
+Orbital energy:  -1039.0990465457749
+Orbital_Error norm 0.24055633762368148
+Classic-like energies: cke = 1608.808636783277 cpe = -2583.089311500104 cke + cpe = -974.280674716827
+Orbital energy:  -1000.9573608753315
+Orbital_Error norm 0.29345372519245483
+Classic-like energies: cke = 1405.297661433652 cpe = -2304.722732140689 cke + cpe = -899.4250707070371
+Orbital energy:  -922.0621895724802
+Orbital_Error norm 0.39092925078420004
+Classic-like energies: cke = 1454.9905809047505 cpe = -2190.0941385887577 cke + cpe = -735.1035576840072
+Orbital energy:  -750.0838523644585
+Orbital_Error norm 0.5313307577717133
+Classic-like energies: cke = 1147.0797767829413 cpe = -1639.5884747146802 cke + cpe = -492.5086979317389
+Orbital energy:  -499.1423009435253
+Orbital_Error norm 0.7225937967628197
+Classic-like energies: cke = 885.5306439526552 cpe = -1088.5892609181121 cke + cpe = -203.05861696545696
+Orbital energy:  -204.16850255132567
+Orbital_Error norm 0.9243142452675839
+Classic-like energies: cke = 443.51171191777894 cpe = -568.9652810568776 cke + cpe = -125.4535691390987
+Orbital energy:  -125.87544312778181
+Orbital_Error norm 1.0781656644156417
+Classic-like energies: cke = 245.60060314732507 cpe = -252.55194892363215 cke + cpe = -6.951345776307079
+Orbital energy:  -6.952632837853219
+Orbital_Error norm 1.2381971735669624
+Classic-like energies: cke = 39.99530770756719 cpe = -118.76607241078202 cke + cpe = -78.77076470321482
+Orbital energy:  -78.93666926163094
+Orbital_Error norm 1.2553729250792034
+Classic-like energies: cke = 59.79573775336562 cpe = -54.43122475748203 cke + cpe = 5.364512995883594
+Orbital energy:  5.36374698085669
+Positive energy
+>>> Elaboro tutti i file contenenti Hg105BS
+Now executing: python test.py Input_Making/input__Hg105BS.txt
+Input file: Input_Making/input__Hg105BS.txt
+Output file: outputs/output__Hg105BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 9
+box = 1
+prec = 1.0e-5                 # precision threshold for the MRA operations
+thr  = 1.0e-4                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = False         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.0, 0.0, 0.0, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.0, 0.0, 0.0]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.0001243324938394
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.528385375876153
+The normalization constant is: 9.38043914224283
+Integral of the Fermi-Dirac distribution via 3D integration: 79.99999999999811
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.74986e+14
+  root scale: 0
+  order: 8
+  nodes: 712
+  endNodes: 624
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.3
+  root scale: 0
+  order: 8
+  nodes: 904
+  endNodes: 792
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+    scale=14  nodes=64
+
+box = 1
+order = 8
+precision = 1e-05
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.0, 0.0, 0.0]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.3
+  root scale: 0
+  order: 8
+  nodes: 904
+  endNodes: 792
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+    scale=14  nodes=64
+
+Number of Atoms =  1
+[['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction)
+hd_11 (21727.42534854742-7.019313439590141e-14j)
+J contribution 49.99998976615903
+orbital energy -3401.151195659977
+total energy -6852.302381086112
+calc_dirac_mu 6186.299717776705 15377.711222584132 137.0359895
+Orbital_Error norm 0.044267837156586075
+hd_11 (22208.85089169679+9.382777476772005e-14j)
+J contribution 52.462890842727816
+orbital energy -3435.00955827518
+total energy -6922.48200739309
+calc_dirac_mu 6241.690818347457 15343.852859968929 137.0359895
+Orbital_Error norm 0.031685791585388055
+hd_11 (22490.854744808476-5.93798063577705e-14j)
+J contribution 54.31164265301076
+orbital energy -3457.0478425930414
+total energy -6968.407327839093
+calc_dirac_mu 6277.6790844463985 15321.814575651068 137.0359895
+Orbital_Error norm 0.019041204110169005
+hd_11 (22708.61058618067-5.26898562635314e-14j)
+J contribution 55.58033669987088
+orbital energy -3466.696487619356
+total energy -6988.973311938582
+calc_dirac_mu 6293.418930506557 15312.165930624753 137.0359895
+Orbital_Error norm 0.012525703855679598
+hd_11 (22845.609236447177-6.107705561617597e-14j)
+J contribution 56.41593829929904
+orbital energy -3470.4421924552535
+total energy -6997.300323209805
+calc_dirac_mu 6299.526631553064 15308.420225788856 137.0359895
+Orbital_Error norm 0.007511156946384322
+hd_11 (22935.25145109128-4.102612320437281e-15j)
+J contribution 56.9343716333875
+orbital energy -3471.8069216514905
+total energy -7000.548214936367
+calc_dirac_mu 6301.751571096495 15307.055496592619 137.0359895
+Orbital_Error norm 0.00462870710233101
+hd_11 (22989.9854531412-6.122099411121066e-14j)
+J contribution 57.25383069217829
+orbital energy -3472.2625529287598
+total energy -7001.778936549697
+calc_dirac_mu 6302.494349790102 15306.59986531535 137.0359895
+Orbital_Error norm 0.0027516793241051905
+hd_11 (23023.906918821867-3.117416258834687e-14j)
+J contribution 57.445994430356
+orbital energy -3472.399030629731
+total energy -7002.244055689818
+calc_dirac_mu 6302.716834006631 15306.463387614378 137.0359895
+Orbital_Error norm 0.0016625695439963875
+hd_11 (23044.36393932041-1.803542672931873e-13j)
+J contribution 57.561895517280526
+orbital energy -3472.427906714571
+total energy -7002.417708946421
+calc_dirac_mu 6302.763907179503 15306.434511529538 137.0359895
+Orbital_Error norm 0.0009895747900669101
+hd_11 (23056.812774275226+3.162880110641121e-14j)
+J contribution 57.63118314395035
+orbital energy -3472.4262460285972
+total energy -7002.483675201143
+calc_dirac_mu 6302.761199967329 15306.436172215512 137.0359895
+Orbital_Error norm 0.0005952917223218569
+hd_11 (23064.300622814004+2.6068373636565848e-14j)
+J contribution 57.67278049309071
+orbital energy -3472.417935086991
+total energy -7002.508650667074
+calc_dirac_mu 6302.747651656581 15306.444483157118 137.0359895
+Orbital_Error norm 0.0003557597577449526
+hd_11 (23068.830930955235-6.03553896375973e-14j)
+J contribution 57.69767816550099
+orbital energy -3472.4104150835938
+total energy -7002.518508332687
+calc_dirac_mu 6302.735392709236 15306.452003160515 137.0359895
+Orbital_Error norm 0.00021405130298186428
+hd_11 (23071.557586621766-1.4799210522498222e-15j)
+J contribution 57.712633162025504
+orbital energy -3472.404913271899
+total energy -7002.522459705822
+calc_dirac_mu 6302.72642377066 15306.45750497221 137.0359895
+Orbital_Error norm 0.00012840889496621772
+hd_11 (23073.204749714223+1.5074216278882963e-13j)
+J contribution 57.721609725736045
+orbital energy -3472.401276237302
+total energy -7002.524162200341
+calc_dirac_mu 6302.720494751014 15306.461142006807 137.0359895
+Orbital_Error norm 7.73526232673288e-05
+hd_11 (23074.197350366685-3.374365311399046e-14j)
+J contribution 57.72701115955722
+orbital energy -3472.3989572656574
+total energy -7002.524925690872
+calc_dirac_mu 6302.716714409982 15306.463460978452 137.0359895
+Orbital_Error norm 0.00026456215113284173
+hd_11 (23074.89934178637-1.137586326664382e-13j)
+J contribution 57.73025126009358
+orbital energy -3472.4034017760896
+total energy -7002.537054812274
+calc_dirac_mu 6302.72395976118 15306.45901646802 137.0359895
+Orbital_Error norm 5.2602156263353266e-05
+hd_11 (23075.391162235996-1.1330691727830347e-13j)
+J contribution 57.732236602935615
+orbital energy -3472.4024802762506
+total energy -7002.537197155438
+calc_dirac_mu 6302.722457550915 15306.459937967858 137.0359895
+Orbital_Error norm 2.6947702156430317e-05
+hd_11 (23075.69867505544+8.444036721401973e-14j)
+J contribution 57.733575810358204
+orbital energy -3472.4042308940207
+total energy -7002.5420375983995
+calc_dirac_mu 6302.725311372263 15306.458187350088 137.0359895
+Orbital_Error norm 1.3682100113206183e-05
+hd_11 (23075.911931444334+2.606288693045041e-13j)
+J contribution 57.73441653557804
+orbital energy -3472.403863409507
+total energy -7002.542143354593
+calc_dirac_mu 6302.724712306539 15306.458554834602 137.0359895
+Orbital_Error norm 9.700315411442815e-06
+hd_11 (23076.042470803746+6.276060818080763e-14j)
+J contribution 57.734998208502255
+orbital energy -3472.4037946621975
+total energy -7002.542587532898
+Final classic-like energies: cke = 7077.126112031396, cpe = -7769.583847221834, cke + cpe = -692.4577351904381, total cte = -1442.6504685893785
+Dirac orbital energy: -3472.4037946621975
+Dirac total energy: -7002.542587532898
+Kutzelnigg total energy: -7001.879372909389
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+D2          = False
+prec        = 5
+derivative  = BS
+box         = 1
+order       = 8
+
+-------------------------------
+Hg 1 0 5 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg115BS
+Now executing: python test.py Input_Making/input__Hg115BS.txt
+Input file: Input_Making/input__Hg115BS.txt
+Output file: outputs/output__Hg115BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 9
+box = 1
+prec = 1.0e-5                 # precision threshold for the MRA operations
+thr  = 1.0e-4                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True        # bool
+orbitalName = "spinorb1"
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = True         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.0, 0.0, 0.0, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.0, 0.0, 0.0]
+box = 1
+order = 8
+precision = 1e-05
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.0, 0.0, 0.0]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.3
+  root scale: 0
+  order: 8
+  nodes: 904
+  endNodes: 792
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+    scale=14  nodes=64
+
+Number of Atoms =  1
+[['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction) 2e D2 J only
+Classic-like energies: cke = 7077.126112031396 cpe = -10227.479171641304 cke + cpe = -3150.353059609908
+Orbital energy:  -3471.16564920915
+Orbital_Error norm 0.00010673614474179533
+Classic-like energies: cke = 7074.775871980608 cpe = -10226.100601852815 cke + cpe = -3151.324729872207
+Orbital energy:  -3472.357701347437
+Orbital_Error norm 0.0001050504047520789
+Classic-like energies: cke = 7074.96080573676 cpe = -10226.290871749667 cke + cpe = -3151.330066012906
+Orbital energy:  -3472.3642480199337
+Orbital_Error norm 0.00018528914925572762
+Classic-like energies: cke = 7077.234971119563 cpe = -10228.562078516636 cke + cpe = -3151.3271073970727
+Orbital energy:  -3472.3606182260737
+Orbital_Error norm 0.000337520344919545
+Classic-like energies: cke = 7075.609097250677 cpe = -10226.916583232793 cke + cpe = -3151.3074859821154
+Orbital energy:  -3472.336545608633
+Orbital_Error norm 0.0005717140977879228
+Classic-like energies: cke = 7079.938333406261 cpe = -10231.21295635031 cke + cpe = -3151.274622944048
+Orbital energy:  -3472.2962275336577
+Orbital_Error norm 0.0009492961889476122
+Classic-like energies: cke = 7074.379140933537 cpe = -10225.547404565023 cke + cpe = -3151.1682636314854
+Orbital energy:  -3472.1657411555043
+Orbital_Error norm 0.0015409966300611166
+Classic-like energies: cke = 7084.167556660102 cpe = -10235.116331500069 cke + cpe = -3150.948774839967
+Orbital energy:  -3471.896465971533
+Orbital_Error norm 0.0024694454045162636
+Classic-like energies: cke = 7069.191018946769 cpe = -10219.53382317864 cke + cpe = -3150.342804231872
+Orbital energy:  -3471.153068331899
+Orbital_Error norm 0.003936394247644873
+Classic-like energies: cke = 7092.340000792608 cpe = -10241.301757837564 cke + cpe = -3148.9617570449554
+Orbital energy:  -3469.4589507140263
+Orbital_Error norm 0.006205771890006914
+Classic-like energies: cke = 7053.64119072868 cpe = -10199.052738700913 cke + cpe = -3145.411547972233
+Orbital energy:  -3465.1048027178863
+Orbital_Error norm 0.009841116431872266
+Classic-like energies: cke = 7107.552379411411 cpe = -10244.499522608552 cke + cpe = -3136.9471431971415
+Orbital energy:  -3454.7286387270774
+Orbital_Error norm 0.015337606867609098
+Classic-like energies: cke = 7005.703611314583 cpe = -10121.709721988784 cke + cpe = -3116.0061106742005
+Orbital energy:  -3429.088034565906
+Orbital_Error norm 0.024420081203571406
+Classic-like energies: cke = 7120.812079632051 cpe = -10186.269228016425 cke + cpe = -3065.457148384374
+Orbital energy:  -3367.3706784327137
+Orbital_Error norm 0.037414948096635474
+Classic-like energies: cke = 6835.951554004365 cpe = -9782.778843563945 cke + cpe = -2946.82728955958
+Orbital energy:  -3223.4921159527526
+Orbital_Error norm 0.06041054605966225
+Classic-like energies: cke = 7004.111129742907 cpe = -9679.438768942997 cke + cpe = -2675.32763920009
+Orbital energy:  -2899.1125964486664
+Orbital_Error norm 0.08907489047313608
+Classic-like energies: cke = 6140.127347144575 cpe = -8303.025223717621 cke + cpe = -2162.8978765730462
+Orbital energy:  -2304.271363362478
+Orbital_Error norm 0.14632114271093238
+Classic-like energies: cke = 5841.132456981481 cpe = -7246.860666655192 cke + cpe = -1405.7282096737117
+Orbital energy:  -1462.693083500164
+Orbital_Error norm 0.19702295654382113
+Classic-like energies: cke = 3687.5123335311146 cpe = -4742.056697813823 cke + cpe = -1054.5443642827086
+Orbital energy:  -1085.9433074319636
+Orbital_Error norm 0.23328966501654705
+Classic-like energies: cke = 2833.9678555402293 cpe = -3905.7871439745095 cke + cpe = -1071.8192884342802
+Orbital energy:  -1104.2880297648865
+Orbital_Error norm 0.17754618190348148
+Classic-like energies: cke = 2041.2397180058597 cpe = -3080.698438276779 cke + cpe = -1039.4587202709195
+Orbital energy:  -1069.9389860160047
+Orbital_Error norm 0.18857275193978926
+Classic-like energies: cke = 1996.10737309962 cpe = -3037.990018996335 cke + cpe = -1041.882645896715
+Orbital energy:  -1072.5095471178863
+Orbital_Error norm 0.1762800129130798
+Classic-like energies: cke = 1647.512761023208 cpe = -2684.8684467657426 cke + cpe = -1037.3556857425347
+Orbital energy:  -1067.7090306000298
+Orbital_Error norm 0.18331624390026
+Classic-like energies: cke = 1761.0524573422313 cpe = -2799.2609028204834 cke + cpe = -1038.208445478252
+Orbital energy:  -1068.6132216587996
+Orbital_Error norm 0.18083201595986215
+Classic-like energies: cke = 1530.258332156274 cpe = -2566.9197397623248 cke + cpe = -1036.6614076060507
+Orbital energy:  -1066.9729135112382
+Orbital_Error norm 0.18422078702299288
+Classic-like energies: cke = 1685.2329300470947 cpe = -2722.9827607384154 cke + cpe = -1037.7498306913208
+Orbital energy:  -1068.1269413328207
+Orbital_Error norm 0.18392437514073343
+Classic-like energies: cke = 1491.2342814229057 cpe = -2527.7558854045687 cke + cpe = -1036.521603981663
+Orbital energy:  -1066.8246886681495
+Orbital_Error norm 0.18547881157787735
+Classic-like energies: cke = 1659.3820057897117 cpe = -2697.0570158977707 cke + cpe = -1037.675010108059
+Orbital energy:  -1068.0476085296107
+Orbital_Error norm 0.1856217747457563
+Classic-like energies: cke = 1477.7135659807616 cpe = -2514.212416927703 cke + cpe = -1036.4988509469415
+Orbital energy:  -1066.8005651977635
+Orbital_Error norm 0.18633799614529653
+Classic-like energies: cke = 1650.379653317345 cpe = -2688.040444971927 cke + cpe = -1037.6607916545822
+Orbital energy:  -1068.0325326411855
+Orbital_Error norm 0.18650552564632958
+Classic-like energies: cke = 1472.9575214063568 cpe = -2509.4525578439457 cke + cpe = -1036.4950364375889
+Orbital energy:  -1066.7965209403108
+Orbital_Error norm 0.1868401735802874
+Classic-like energies: cke = 1647.2165849799078 cpe = -2684.874688482663 cke + cpe = -1037.658103502755
+Orbital energy:  -1068.0296823834856
+Orbital_Error norm 0.1869561412459827
+Classic-like energies: cke = 1471.270104011328 cpe = -2507.7647473692255 cke + cpe = -1036.4946433578975
+Orbital energy:  -1066.7961041854624
+Orbital_Error norm 0.18711457263025993
+Classic-like energies: cke = 1646.0991088721103 cpe = -2683.7569094753703 cke + cpe = -1037.65780060326
+Orbital energy:  -1068.0293612180164
+Orbital_Error norm 0.18718331939519753
+Classic-like energies: cke = 1470.6668191241135 cpe = -2507.161353738655 cke + cpe = -1036.4945346145416
+Orbital energy:  -1066.7959888925047
+Orbital_Error norm 0.1872591165293966
+Classic-like energies: cke = 1645.7019699980028 cpe = -2683.359848691382 cke + cpe = -1037.6578786933792
+Orbital energy:  -1068.0294440172618
+Orbital_Error norm 0.18729701757945685
+Classic-like energies: cke = 1470.4489792041602 cpe = -2506.943446065888 cke + cpe = -1036.494466861728
+Orbital energy:  -1066.7959170589447
+Orbital_Error norm 0.18733356764593243
+Classic-like energies: cke = 1645.5597348566948 cpe = -2683.2176877202915 cke + cpe = -1037.6579528635966
+Orbital energy:  -1068.029522660222
+Orbital_Error norm 0.18735363692549656
+Classic-like energies: cke = 1470.369280871841 cpe = -2506.8636990943937 cke + cpe = -1036.4944182225527
+Orbital energy:  -1066.7958654902375
+Orbital_Error norm 0.1873713637864805
+Classic-like energies: cke = 1645.5082399480668 cpe = -2683.1662559701444 cke + cpe = -1037.6580160220776
+Orbital energy:  -1068.0295896273956
+Orbital_Error norm 0.1873817345478996
+Classic-like energies: cke = 1470.3396381537536 cpe = -2506.8340237514917 cke + cpe = -1036.494385597738
+Orbital energy:  -1066.7958309004339
+Orbital_Error norm 0.1873903682214991
+Classic-like energies: cke = 1645.4893404624418 cpe = -2683.1473915088336 cke + cpe = -1037.6580510463918
+Orbital energy:  -1068.0296267638062
+Orbital_Error norm 0.1873956439512298
+Classic-like energies: cke = 1470.328381203162 cpe = -2506.822747363551 cke + cpe = -1036.494366160389
+Orbital energy:  -1066.7958102923758
+Orbital_Error norm 0.18739986156478416
+Classic-like energies: cke = 1645.4822795438608 cpe = -2683.14034899717 cke + cpe = -1037.658069453309
+Orbital energy:  -1068.0296462807296
+Orbital_Error norm 0.18740251773537644
+Classic-like energies: cke = 1470.32399945976 cpe = -2506.818354698183 cke + cpe = -1036.4943552384232
+Orbital energy:  -1066.7957987125808
+Orbital_Error norm 0.1874045824981451
+Classic-like energies: cke = 1645.4795832814925 cpe = -2683.137662147336 cke + cpe = -1037.6580788658434
+Orbital energy:  -1068.0296562608748
+Orbital_Error norm 0.18740591047906757
+Classic-like energies: cke = 1470.322245610644 cpe = -2506.8165949696104 cke + cpe = -1036.4943493589665
+Orbital energy:  -1066.7957924790057
+Orbital_Error norm 0.18740692284468558
+Classic-like energies: cke = 1645.4785269590775 cpe = -2683.136610558365 cke + cpe = -1037.6580835992877
+Orbital energy:  -1068.0296612797656
+Orbital_Error norm 0.1874075836195714
+Classic-like energies: cke = 1470.3215223717957 cpe = -2506.8158686438255 cke + cpe = -1036.4943462720298
+Orbital energy:  -1066.7957892061415
+Orbital_Error norm 0.18740808054446412
+Classic-like energies: cke = 1645.4781011156638 cpe = -2683.136187057914 cke + cpe = -1037.6580859422502
+Orbital energy:  -1068.0296637640163
+Orbital_Error norm 0.18740840827939154
+Classic-like energies: cke = 1470.321215025213 cpe = -2506.8155596774927 cke + cpe = -1036.4943446522798
+Orbital energy:  -1066.795787488834
+Orbital_Error norm 0.18740865245047544
+Classic-like energies: cke = 1645.4779241456304 cpe = -2683.136011028081 cke + cpe = -1037.6580868824508
+Orbital energy:  -1068.0296647609148
+Orbital_Error norm 0.18740881478018345
+Classic-like energies: cke = 1470.3210803984207 cpe = -2506.8154240258505 cke + cpe = -1036.4943436274298
+Orbital energy:  -1066.7957864022592
+Orbital_Error norm 0.18740893506243655
+Classic-like energies: cke = 1645.477847972259 cpe = -2683.1359352331056 cke + cpe = -1037.6580872608465
+Orbital energy:  -1068.0296651621297
+Orbital_Error norm 0.18740901565240825
+Classic-like energies: cke = 1470.3210197124395 cpe = -2506.815362826298 cke + cpe = -1036.4943431138586
+Orbital energy:  -1066.795785857755
+Orbital_Error norm 0.1874090760974914
+Classic-like energies: cke = 1645.477815053012 cpe = -2683.135900903697 cke + cpe = -1037.658085850685
+Orbital energy:  -1068.029663666928
+Orbital_Error norm 0.18740911724276285
+Classic-like energies: cke = 1470.3209907140722 cpe = -2506.8153335069105 cke + cpe = -1036.4943427928383
+Orbital energy:  -1066.7957855173995
+Orbital_Error norm 0.18740914898775102
+Classic-like energies: cke = 1645.4777995600905 cpe = -2683.135882994191 cke + cpe = -1037.6580834341005
+Orbital energy:  -1068.0296611046153
+Orbital_Error norm 0.18740917214187033
+Classic-like energies: cke = 1470.320975001631 cpe = -2506.8153159311482 cke + cpe = -1036.4943409295172
+Orbital energy:  -1066.7957835418515
+Orbital_Error norm 0.18740919243785517
+Classic-like energies: cke = 1645.4777878240805 cpe = -2683.1358652704184 cke + cpe = -1037.658077446338
+Orbital energy:  -1068.0296547557678
+Orbital_Error norm 0.18740921370613098
+Classic-like energies: cke = 1470.3209609297783 cpe = -2506.815288617687 cke + cpe = -1036.494327687909
+Orbital energy:  -1066.7957695027035
+Orbital_Error norm 0.18740924368677472
+Classic-like energies: cke = 1645.4777598017529 cpe = -2683.135817545386 cke + cpe = -1037.6580577436332
+Orbital energy:  -1068.0296338649175
+Orbital_Error norm 0.1874092930521631
+Classic-like energies: cke = 1470.320926942225 cpe = -2506.8152092422624 cke + cpe = -1036.4942823000374
+Orbital energy:  -1066.7957213811244
+Orbital_Error norm 0.18740939326772257
+Classic-like energies: cke = 1645.4776798519422 cpe = -2683.13563323793 cke + cpe = -1037.6579533859879
+Orbital energy:  -1068.0295232141143
+Orbital_Error norm 0.18740958966089452
+Classic-like energies: cke = 1470.320802092996 cpe = -2506.8148424973942 cke + cpe = -1036.4940404043982
+Orbital energy:  -1066.7954649161409
+Orbital_Error norm 0.18741004096406416
+Classic-like energies: cke = 1645.4772983809767 cpe = -2683.1347456625745 cke + cpe = -1037.6574472815978
+Orbital energy:  -1068.028986589744
+Orbital_Error norm 0.18741096671045274
+Classic-like energies: cke = 1470.3202033605257 cpe = -2506.813105799788 cke + cpe = -1036.4929024392623
+Orbital energy:  -1066.7942584115563
+Orbital_Error norm 0.18741315775663112
+Classic-like energies: cke = 1645.4754544752755 cpe = -2683.130178651898 cke + cpe = -1037.6547241766225
+Orbital energy:  -1068.0260992716667
+Orbital_Error norm 0.18741779577585463
+Classic-like energies: cke = 1470.3171937379823 cpe = -2506.803542937277 cke + cpe = -1036.4863491992949
+Orbital energy:  -1066.7873104726414
+Orbital_Error norm 0.18742917815014065
+Classic-like energies: cke = 1645.4660344691667 cpe = -2683.1044143423696 cke + cpe = -1037.638379873203
+Orbital energy:  -1068.0087693573955
+Orbital_Error norm 0.18745374728083453
+Classic-like energies: cke = 1470.3004291958136 cpe = -2506.7495733258293 cke + cpe = -1036.4491441300156
+Orbital energy:  -1066.7478646090146
+Orbital_Error norm 0.18751515760862986
+Classic-like energies: cke = 1645.413936791871 cpe = -2682.9612138375983 cke + cpe = -1037.5472770457272
+Orbital energy:  -1067.9121730650004
+Orbital_Error norm 0.1876488680093333
+Classic-like energies: cke = 1470.2076708408574 cpe = -2506.4513611970306 cke + cpe = -1036.2436903561731
+Orbital energy:  -1066.5300383062058
+Orbital_Error norm 0.18798542856883468
+Classic-like energies: cke = 1645.126556944796 cpe = -2682.169048774566 cke + cpe = -1037.04249182977
+Orbital energy:  -1067.3769590441273
+Orbital_Error norm 0.1887199355719867
+Classic-like energies: cke = 1469.6956169520604 cpe = -2504.7992061721675 cke + cpe = -1035.103589220107
+Orbital energy:  -1065.3213283843259
+Orbital_Error norm 0.19056345145576384
+Classic-like energies: cke = 1643.535122005827 cpe = -2677.774315678047 cke + cpe = -1034.2391936722202
+Orbital energy:  -1064.4049703771752
+Orbital_Error norm 0.1945400721338492
+Classic-like energies: cke = 1466.858917228325 cpe = -2495.6375389017867 cke + cpe = -1028.7786216734617
+Orbital energy:  -1058.6172356043514
+Orbital_Error norm 0.20422784106315553
+Classic-like energies: cke = 1634.7286127043951 cpe = -2653.5164200773197 cke + cpe = -1018.7878073729246
+Orbital energy:  -1048.0327256645912
+Orbital_Error norm 0.2238905443414933
+Classic-like energies: cke = 1451.190423704112 cpe = -2445.5713993451886 cke + cpe = -994.3809756410767
+Orbital energy:  -1022.2020718395875
+Orbital_Error norm 0.2664928041867111
+Classic-like energies: cke = 1586.925695185982 cpe = -2524.353968832025 cke + cpe = -937.4282736460432
+Orbital energy:  -962.0725679989552
+Orbital_Error norm 0.3393359479082785
+Classic-like energies: cke = 1367.2971355417967 cpe = -2192.9810597815026 cke + cpe = -825.6839242397059
+Orbital energy:  -844.6809734489692
+Orbital_Error norm 0.4643060755110155
+Classic-like energies: cke = 1353.4839314514936 cpe = -1954.0686703725667 cke + cpe = -600.584738921073
+Orbital energy:  -610.5086855046105
+Orbital_Error norm 0.6315678299071861
+Classic-like energies: cke = 990.7001044992451 cpe = -1326.1379550648985 cke + cpe = -335.43785056565343
+Orbital energy:  -338.4884732273447
+Orbital_Error norm 0.8340948887613563
+Classic-like energies: cke = 650.7863360707347 cpe = -769.9926117654695 cke + cpe = -119.20627569473481
+Orbital energy:  -119.58705123117726
+Orbital_Error norm 1.022553724348563
+Classic-like energies: cke = 285.8383934416482 cpe = -380.66964423110187 cke + cpe = -94.83125078945369
+Orbital energy:  -95.07191148957912
+Orbital_Error norm 1.145624093045875
+Classic-like energies: cke = 168.59901610555724 cpe = -155.5832019716629 cke + cpe = 13.015814133894338
+Orbital energy:  13.011306563234305
+Positive energy
+>>> Elaboro tutti i file contenenti Hg106BS
+Now executing: python test.py Input_Making/input__Hg106BS.txt
+Input file: Input_Making/input__Hg106BS.txt
+Output file: outputs/output__Hg106BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 10
+box = 1
+prec = 1.0e-6                 # precision threshold for the MRA operations
+thr  = 1.0e-5                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = False         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.0, 0.0, 0.0, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.0, 0.0, 0.0]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.0001243324938394
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.553690690557746
+The normalization constant is: 9.35268796758228
+Integral of the Fermi-Dirac distribution via 3D integration: 79.99999999999972
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.76652e+14
+  root scale: 0
+  order: 9
+  nodes: 840
+  endNodes: 736
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.3
+  root scale: 0
+  order: 9
+  nodes: 1096
+  endNodes: 960
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+    scale=14  nodes=256
+
+box = 1
+order = 9
+precision = 1e-06
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.0, 0.0, 0.0]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.3
+  root scale: 0
+  order: 9
+  nodes: 1096
+  endNodes: 960
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+    scale=14  nodes=256
+
+Number of Atoms =  1
+[['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction)
+hd_11 (21727.610872047182-7.60205999548761e-15j)
+J contribution 49.99999902727954
+orbital energy -3400.9641563822825
+total energy -6851.928311791846
+calc_dirac_mu 6185.993388945121 15377.898261861827 137.0359895
+Orbital_Error norm 0.044258083754776495
+hd_11 (22208.81230605973+1.5793156352582233e-13j)
+J contribution 52.46216143482982
+orbital energy -3434.98219981715
+total energy -6922.426561069129
+calc_dirac_mu 6241.64611015168 15343.880218426959 137.0359895
+Orbital_Error norm 0.03168922298253177
+hd_11 (22490.89040500414-1.9206565874069823e-13j)
+J contribution 54.31109676702834
+orbital energy -3457.0513814370825
+total energy -6968.413859641194
+calc_dirac_mu 6277.684859184476 15321.811036807027 137.0359895
+Orbital_Error norm 0.019046084003546144
+hd_11 (22708.772106141918-5.860005129442159e-15j)
+J contribution 55.58009823179094
+orbital energy -3466.6958509631077
+total energy -6988.971800158008
+calc_dirac_mu 6293.417892255561 15312.166567281001 137.0359895
+Orbital_Error norm 0.012529642495434319
+hd_11 (22845.881881330613+8.775649224509166e-14j)
+J contribution 56.415936662815
+orbital energy -3470.4422631746856
+total energy -6997.300463012187
+calc_dirac_mu 6299.526746853209 15308.420155069423 137.0359895
+Orbital_Error norm 0.007514033277166993
+hd_11 (22935.62750088371-1.1923838851012792e-13j)
+J contribution 56.934552963471546
+orbital energy -3471.800289633449
+total energy -7000.535132230369
+calc_dirac_mu 6301.740759292465 15307.06212861066 137.0359895
+Orbital_Error norm 0.004631063346766433
+hd_11 (22990.436885511277-4.133823535679497e-15j)
+J contribution 57.25415326561345
+orbital energy -3472.2529429570986
+total energy -7001.760039179811
+calc_dirac_mu 6302.4786836614685 15306.60947528701 137.0359895
+Orbital_Error norm 0.0027532366875308275
+hd_11 (23024.418452861162+6.506506911658427e-14j)
+J contribution 57.44641734111988
+orbital energy -3472.3854989413576
+total energy -7002.217415223837
+calc_dirac_mu 6302.694774908525 15306.476919302751 137.0359895
+Orbital_Error norm 0.0016638752367457205
+hd_11 (23044.916481159875-1.8010961885136735e-14j)
+J contribution 57.562400040985395
+orbital energy -3472.412193729884
+total energy -7002.386787500753
+calc_dirac_mu 6302.7382922206 15306.450224514225 137.0359895
+Orbital_Error norm 0.0009904304427175476
+hd_11 (23057.39578294866-1.6261047643205366e-13j)
+J contribution 57.631739831858525
+orbital energy -3472.408718188117
+total energy -7002.449176208091
+calc_dirac_mu 6302.732626465995 15306.453700055992 137.0359895
+Orbital_Error norm 0.0005959918450057465
+hd_11 (23064.90404676124+2.6909727855611664e-15j)
+J contribution 57.673378706623396
+orbital energy -3472.399363679293
+total energy -7002.472106065208
+calc_dirac_mu 6302.717376937376 15306.463054564816 137.0359895
+Orbital_Error norm 0.00035623165695686774
+hd_11 (23069.4489070043-1.0803941672222929e-14j)
+J contribution 57.69830553631736
+orbital energy -3472.391104537026
+total energy -7002.480514610368
+calc_dirac_mu 6302.703913045127 15306.471313707083 137.0359895
+Orbital_Error norm 0.00021441980536733584
+hd_11 (23072.185243434564+1.360789983963805e-14j)
+J contribution 57.71328393686076
+orbital energy -3472.385156489381
+total energy -7002.483596915623
+calc_dirac_mu 6302.694216649647 15306.477261754728 137.0359895
+Orbital_Error norm 0.00012866055344800702
+hd_11 (23073.8391503947-1.1676437208262945e-13j)
+J contribution 57.72227610240377
+orbital energy -3472.3812255940993
+total energy -7002.484727290601
+calc_dirac_mu 6302.687808575969 15306.48119265001 137.0359895
+Orbital_Error norm 7.753950084351399e-05
+hd_11 (23074.836266312093+1.0458717230171952e-13j)
+J contribution 57.72768891089162
+orbital energy -3472.3787259859055
+total energy -7002.485140882702
+calc_dirac_mu 6302.683733759499 15306.483692258204 137.0359895
+Orbital_Error norm 4.666176074085439e-05
+hd_11 (23075.438845472505+1.9596466233118566e-13j)
+J contribution 57.730946635928845
+orbital energy -3472.377172771794
+total energy -7002.485292179517
+calc_dirac_mu 6302.681201737362 15306.485245472315 137.0359895
+Orbital_Error norm 2.815496129123262e-05
+hd_11 (23075.802552041125-6.003443076970632e-14j)
+J contribution 57.732910747474506
+orbital energy -3472.3762184281586
+total energy -7002.485347603793
+calc_dirac_mu 6302.679645983142 15306.48619981595 137.0359895
+Orbital_Error norm 1.6976298974885635e-05
+hd_11 (23076.02240113846-1.6560455606724822e-13j)
+J contribution 57.73409501868675
+orbital energy -3472.375636470726
+total energy -7002.48536796014
+calc_dirac_mu 6302.678697286317 15306.486781773383 137.0359895
+Orbital_Error norm 1.025247675246091e-05
+hd_11 (23076.15521086431-8.956248722327239e-14j)
+J contribution 57.734809875760575
+orbital energy -3472.3752827730405
+total energy -7002.485375421842
+calc_dirac_mu 6302.67812069452 15306.487135471069 137.0359895
+Orbital_Error norm 6.189717101630753e-06
+hd_11 (23076.23551110807+9.724821270124033e-14j)
+J contribution 57.73524143726961
+orbital energy -3472.375068363046
+total energy -7002.485378163361
+calc_dirac_mu 6302.677771167081 15306.487349881063 137.0359895
+Orbital_Error norm 3.740500423254331e-06
+hd_11 (23076.28404770158+1.2600163697166823e-13j)
+J contribution 57.735502152246276
+orbital energy -3472.374938509427
+total energy -7002.485379171099
+calc_dirac_mu 6302.67755948197 15306.487479734682 137.0359895
+Orbital_Error norm 2.260079248215848e-06
+hd_11 (23076.313400438936-9.664274489466974e-14j)
+J contribution 57.73565967395187
+orbital energy -3472.374859934722
+total energy -7002.4853795433955
+calc_dirac_mu 6302.677431390852 15306.487558309387 137.0359895
+Orbital_Error norm 1.366361983178846e-06
+hd_11 (23076.33114890117-1.1915903782048116e-13j)
+J contribution 57.73575488755513
+orbital energy -3472.3748123968
+total energy -7002.485379681155
+calc_dirac_mu 6302.677353895357 15306.48760584731 137.0359895
+Orbital_Error norm 8.260012683218989e-07
+hd_11 (23076.341884024205-1.529084381331186e-13j)
+J contribution 57.73581244450332
+orbital energy -3472.37478364416
+total energy -7002.4853797328215
+Final classic-like energies: cke = 7080.263522887481, cpe = -7769.8542494242565, cke + cpe = -689.590726536776, total cte = -1436.9172655180553
+Dirac orbital energy: -3472.37478364416
+Dirac total energy: -7002.4853797328215
+Kutzelnigg total energy: -7002.477611110367
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+D2          = False
+prec        = 6
+derivative  = BS
+box         = 1
+order       = 9
+
+-------------------------------
+Hg 1 0 6 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg116BS
+Now executing: python test.py Input_Making/input__Hg116BS.txt
+Input file: Input_Making/input__Hg116BS.txt
+Output file: outputs/output__Hg116BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 10
+box = 1
+prec = 1.0e-6                 # precision threshold for the MRA operations
+thr  = 1.0e-5                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True        # bool
+orbitalName = "spinorb1"
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = True         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.0, 0.0, 0.0, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.0, 0.0, 0.0]
+box = 1
+order = 9
+precision = 1e-06
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.0, 0.0, 0.0]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.3
+  root scale: 0
+  order: 9
+  nodes: 1096
+  endNodes: 960
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+    scale=14  nodes=256
+
+Number of Atoms =  1
+[['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction) 2e D2 J only
+Classic-like energies: cke = 7080.263522887481 cpe = -10231.689153124295 cke + cpe = -3151.425630236814
+Orbital energy:  -3472.4814919686155
+Orbital_Error norm 9.074318545223695e-06
+Classic-like energies: cke = 7080.544613568865 cpe = -10231.882773284042 cke + cpe = -3151.3381597151765
+Orbital energy:  -3472.3741778268045
+Orbital_Error norm 7.830696604784528e-06
+Classic-like energies: cke = 7080.549996500185 cpe = -10231.888303895756 cke + cpe = -3151.33830739557
+Orbital energy:  -3472.374359009436
+Orbital_Error norm 1.35873864193877e-05
+Classic-like energies: cke = 7080.404060212311 cpe = -10231.742217997617 cke + cpe = -3151.338157785305
+Orbital energy:  -3472.3741754591297
+Orbital_Error norm 2.480173993138301e-05
+Classic-like energies: cke = 7080.544627293819 cpe = -10231.883002545022 cke + cpe = -3151.3383752512036
+Orbital energy:  -3472.374442258551
+Orbital_Error norm 4.2032536481742616e-05
+Classic-like energies: cke = 7080.245122967801 cpe = -10231.582841044348 cke + cpe = -3151.3377180765474
+Orbital energy:  -3472.3736359996537
+Orbital_Error norm 6.971192440948646e-05
+Classic-like energies: cke = 7080.666054996231 cpe = -10232.004038826253 cke + cpe = -3151.3379838300225
+Orbital energy:  -3472.373962040987
+Orbital_Error norm 0.0001129347151612499
+Classic-like energies: cke = 7079.955601552181 cpe = -10231.291102791685 cke + cpe = -3151.335501239504
+Orbital energy:  -3472.37091625937
+Orbital_Error norm 0.00018101187828058895
+Classic-like energies: cke = 7081.039907907412 cpe = -10232.374305443762 cke + cpe = -3151.3343975363496
+Orbital energy:  -3472.3695621744864
+Orbital_Error norm 0.0002875341287096135
+Classic-like energies: cke = 7079.301239172998 cpe = -10230.624933841533 cke + cpe = -3151.3236946685347
+Orbital energy:  -3472.3564313026504
+Orbital_Error norm 0.0004547990050070893
+Classic-like energies: cke = 7081.99636158456 cpe = -10233.306386392293 cke + cpe = -3151.3100248077326
+Orbital energy:  -3472.339660375643
+Orbital_Error norm 0.0007164175814314352
+Classic-like energies: cke = 7077.711071763817 cpe = -10228.967613723917 cke + cpe = -3151.2565419600996
+Orbital energy:  -3472.2740448925797
+Orbital_Error norm 0.001127541564883193
+Classic-like energies: cke = 7084.325124756919 cpe = -10235.481592645847 cke + cpe = -3151.156467888928
+Orbital energy:  -3472.1512696776567
+Orbital_Error norm 0.0017691659733523586
+Classic-like energies: cke = 7073.709374196958 cpe = -10224.571092266679 cke + cpe = -3150.86171806972
+Orbital energy:  -3471.789663525332
+Orbital_Error norm 0.002781062168325059
+Classic-like energies: cke = 7089.767673084583 cpe = -10239.981935643631 cke + cpe = -3150.2142625590477
+Orbital energy:  -3470.9953795555507
+Orbital_Error norm 0.004351092603784752
+Classic-like energies: cke = 7063.18084074404 cpe = -10211.687874190337 cke + cpe = -3148.507033446296
+Orbital energy:  -3468.901186568269
+Orbital_Error norm 0.006849567634933497
+Classic-like energies: cke = 7101.354971268209 cpe = -10245.851378556265 cke + cpe = -3144.4964072880557
+Orbital energy:  -3463.982630629372
+Orbital_Error norm 0.010669621133024077
+Classic-like energies: cke = 7033.0702599381975 cpe = -10167.495451588708 cke + cpe = -3134.42519165051
+Orbital energy:  -3451.6384407988044
+Orbital_Error norm 0.01688166027000433
+Classic-like energies: cke = 7118.829889197542 cpe = -10228.979089761146 cke + cpe = -3110.1492005636037
+Orbital energy:  -3421.9243820290335
+Orbital_Error norm 0.02603287789757205
+Classic-like energies: cke = 6934.120328817477 cpe = -9985.65158433676 cke + cpe = -3051.531255519283
+Orbital energy:  -3350.4113456767686
+Orbital_Error norm 0.04167392724408176
+Classic-like energies: cke = 7092.711997352475 cpe = -10004.955520650965 cke + cpe = -2912.24352329849
+Orbital energy:  -3181.797539926414
+Orbital_Error norm 0.06262130074926522
+Classic-like energies: cke = 6550.255939270736 cpe = -9162.0849370154 cke + cpe = -2611.828997744663
+Orbital energy:  -2824.197930825826
+Orbital_Error norm 0.10225555930909254
+Classic-like energies: cke = 6590.087354035235 cpe = -8612.574009544127 cke + cpe = -2022.486655508892
+Orbital energy:  -2144.9910579663488
+Orbital_Error norm 0.1451267948836105
+Classic-like energies: cke = 4971.493111385322 cpe = -6303.499599485906 cke + cpe = -1332.0064881005846
+Orbital energy:  -1382.9278195270233
+Orbital_Error norm 0.22454452169726558
+Classic-like energies: cke = 3922.7123332917863 cpe = -4945.786811542369 cke + cpe = -1023.0744782505826
+Orbital energy:  -1052.5733542021985
+Orbital_Error norm 0.205173372477861
+Classic-like energies: cke = 2384.5935903634017 cpe = -3459.0678419967408 cke + cpe = -1074.474251633339
+Orbital energy:  -1107.1090972913628
+Orbital_Error norm 0.19269083748571597
+Classic-like energies: cke = 2228.3804320034196 cpe = -3263.4314240782332 cke + cpe = -1035.0509920748136
+Orbital energy:  -1065.2655680484663
+Orbital_Error norm 0.17586834510046012
+Classic-like energies: cke = 1745.6198920581044 cpe = -2786.444782013762 cke + cpe = -1040.8248899556577
+Orbital energy:  -1071.3877562992775
+Orbital_Error norm 0.1837565624064409
+Classic-like energies: cke = 1825.595185923995 cpe = -2863.5925366360143 cke + cpe = -1037.9973507120194
+Orbital energy:  -1068.3893911255157
+Orbital_Error norm 0.17926366878115726
+Classic-like energies: cke = 1562.0863211510923 cpe = -2598.976790179112 cke + cpe = -1036.8904690280197
+Orbital energy:  -1067.215775370685
+Orbital_Error norm 0.1838050506828659
+Classic-like energies: cke = 1706.2268326800113 cpe = -2743.986854649108 cke + cpe = -1037.7600219690967
+Orbital energy:  -1068.1377472455301
+Orbital_Error norm 0.1829770660361664
+Classic-like energies: cke = 1502.0572816717195 cpe = -2538.554282693679 cke + cpe = -1036.4970010219595
+Orbital energy:  -1066.7986038515874
+Orbital_Error norm 0.18507711974022273
+Classic-like energies: cke = 1666.5508804047836 cpe = -2704.1928030830295 cke + cpe = -1037.641922678246
+Orbital energy:  -1068.0125258028427
+Orbital_Error norm 0.18511350865101636
+Classic-like energies: cke = 1481.4514439118673 cpe = -2517.9003709063013 cke + cpe = -1036.448926994434
+Orbital energy:  -1066.747634396004
+Orbital_Error norm 0.18607379291617726
+Classic-like energies: cke = 1652.835106628374 cpe = -2690.451389831471 cke + cpe = -1037.6162832030968
+Orbital energy:  -1067.985340218317
+Orbital_Error norm 0.18623945721963603
+Classic-like energies: cke = 1474.237379296505 cpe = -2510.679889093598 cke + cpe = -1036.442509797093
+Orbital energy:  -1066.7408307113908
+Orbital_Error norm 0.18668430060914143
+Classic-like energies: cke = 1648.0314890091252 cpe = -2685.642806669564 cke + cpe = -1037.6113176604388
+Orbital energy:  -1067.9800752487638
+Orbital_Error norm 0.18681657565610857
+Classic-like energies: cke = 1471.687245658103 cpe = -2508.1289732080186 cke + cpe = -1036.4417275499156
+Orbital energy:  -1066.7400013521474
+Orbital_Error norm 0.18702567970342682
+Classic-like energies: cke = 1646.3386016765703 cpe = -2683.9491393719477 cke + cpe = -1037.6105376953774
+Orbital energy:  -1067.9792482512182
+Orbital_Error norm 0.18710841688032046
+Classic-like energies: cke = 1470.7789680817175 cpe = -2507.22058589187 cke + cpe = -1036.4416178101526
+Orbital energy:  -1066.7398850031373
+Orbital_Error norm 0.18720791381236979
+Classic-like energies: cke = 1645.7387498035812 cpe = -2683.349288589874 cke + cpe = -1037.6105387862929
+Orbital energy:  -1067.979249407918
+Orbital_Error norm 0.1872547893230965
+Classic-like energies: cke = 1470.4526377606621 cpe = -2506.8941896513948 cke + cpe = -1036.4415518907326
+Orbital energy:  -1066.7398151136188
+Orbital_Error norm 0.18730258914454678
+Classic-like energies: cke = 1645.5247526458493 cpe = -2683.1353630532803 cke + cpe = -1037.610610407431
+Orbital energy:  -1067.9793253478617
+Orbital_Error norm 0.18732783617299556
+Classic-like energies: cke = 1470.3340292985888 cpe = -2506.7754815653852 cke + cpe = -1036.4414522667964
+Orbital energy:  -1066.7397094896787
+Orbital_Error norm 0.18735103127656771
+Classic-like energies: cke = 1645.4476437228823 cpe = -2683.058200763413 cke + cpe = -1037.6105570405307
+Orbital energy:  -1067.979268762899
+Orbital_Error norm 0.18736437629157626
+Classic-like energies: cke = 1470.290161321403 cpe = -2506.731298925336 cke + cpe = -1036.441137603933
+Orbital energy:  -1066.7393758757653
+Orbital_Error norm 0.18737608052842
+Classic-like energies: cke = 1645.4191707522768 cpe = -2683.0290755355786 cke + cpe = -1037.6099047833018
+Orbital energy:  -1067.978577174093
+Orbital_Error norm 0.1873838474186647
+Classic-like energies: cke = 1470.2730152141091 cpe = -2506.71255054932 cke + cpe = -1036.4395353352108
+Orbital energy:  -1066.7376771080694
+Orbital_Error norm 0.18739192435887628
+Classic-like energies: cke = 1645.406566071766 cpe = -2683.0126082641377 cke + cpe = -1037.6060421923717
+Orbital energy:  -1067.9744816667248
+Orbital_Error norm 0.18740101716169794
+Classic-like energies: cke = 1470.2627500138215 cpe = -2506.693491086353 cke + cpe = -1036.4307410725314
+Orbital energy:  -1066.7283532009776
+Orbital_Error norm 0.18741807558403045
+Classic-like energies: cke = 1645.390383226731 cpe = -2682.9748016405815 cke + cpe = -1037.5844184138505
+Orbital energy:  -1067.951553979506
+Orbital_Error norm 0.18745131031029394
+Classic-like energies: cke = 1470.2383777209154 cpe = -2506.6201821072455 cke + cpe = -1036.38180438633
+Orbital energy:  -1066.67646933718
+Orbital_Error norm 0.18753242400015033
+Classic-like energies: cke = 1645.3206986245618 cpe = -2682.784746656195 cke + cpe = -1037.464048031633
+Orbital energy:  -1067.8239258343615
+Orbital_Error norm 0.1877082719192395
+Classic-like energies: cke = 1470.1157525202889 cpe = -2506.225263977962 cke + cpe = -1036.1095114576733
+Orbital energy:  -1066.3877805333912
+Orbital_Error norm 0.18815147494630777
+Classic-like energies: cke = 1644.941017790878 cpe = -2681.735370838984 cke + cpe = -1036.7943530481061
+Orbital energy:  -1067.1138682128214
+Orbital_Error norm 0.18911948688643043
+Classic-like energies: cke = 1469.4389497126724 cpe = -2504.0346486356243 cke + cpe = -1034.595698922952
+Orbital energy:  -1064.7829009172615
+Orbital_Error norm 0.19154778227762276
+Classic-like energies: cke = 1642.8338447850847 cpe = -2675.910019326639 cke + cpe = -1033.0761745415543
+Orbital energy:  -1063.172112055715
+Orbital_Error norm 0.19676481955739106
+Classic-like energies: cke = 1465.6813316871753 cpe = -2491.89845684839 cke + cpe = -1026.2171251612149
+Orbital energy:  -1055.9029217592138
+Orbital_Error norm 0.20934435073088248
+Classic-like energies: cke = 1631.1779421995375 cpe = -2643.8345908096912 cke + cpe = -1012.6566486101538
+Orbital energy:  -1041.540355401576
+Orbital_Error norm 0.23438528012719892
+Classic-like energies: cke = 1444.960346814164 cpe = -2425.9537364791454 cke + cpe = -980.9933896649814
+Orbital energy:  -1008.0494394327633
+Orbital_Error norm 0.28694961461275176
+Classic-like energies: cke = 1568.379648698801 cpe = -2475.4267313452815 cke + cpe = -907.0470826464805
+Orbital energy:  -930.079575160239
+Orbital_Error norm 0.3735590126867404
+Classic-like energies: cke = 1335.3611225170512 cpe = -2103.34783509876 cke + cpe = -767.9867125817086
+Orbital energy:  -784.3677019671876
+Orbital_Error norm 0.5154650948335978
+Classic-like energies: cke = 1273.674228931603 cpe = -1781.4034655924656 cke + cpe = -507.7292366608626
+Orbital energy:  -514.7851417597562
+Orbital_Error norm 0.6965771324633578
+Classic-like energies: cke = 876.4796823759384 cpe = -1131.3223360859715 cke + cpe = -254.84265371003312
+Orbital energy:  -256.59572491796183
+Orbital_Error norm 0.8986297022939442
+Classic-like energies: cke = 520.2032270905986 cpe = -613.6088823844061 cke + cpe = -93.40565529380751
+Orbital energy:  -93.6391168317247
+Orbital_Error norm 1.0713486135855146
+Classic-like energies: cke = 224.46425281467816 cpe = -293.9981580820988 cke + cpe = -69.53390526742066
+Orbital energy:  -69.6631183675712
+Orbital_Error norm 1.1818973977792206
+Classic-like energies: cke = 126.41297647760055 cpe = -119.75490336173971 cke + cpe = 6.658073115860844
+Orbital energy:  6.656893219382262
+Positive energy
+>>> Elaboro tutti i file contenenti Hg107BS
+Now executing: python test.py Input_Making/input__Hg107BS.txt
+Input file: Input_Making/input__Hg107BS.txt
+Output file: outputs/output__Hg107BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 11
+box = 1
+prec = 1.0e-7                 # precision threshold for the MRA operations
+thr  = 1.0e-6                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = False         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.0, 0.0, 0.0, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.0, 0.0, 0.0]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.0001243324938394
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.553690690186071
+The normalization constant is: 9.352687967988674
+Integral of the Fermi-Dirac distribution via 3D integration: 79.99999999999869
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.76652e+14
+  root scale: 0
+  order: 10
+  nodes: 840
+  endNodes: 736
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.3
+  root scale: 0
+  order: 10
+  nodes: 1096
+  endNodes: 960
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+    scale=14  nodes=256
+
+box = 1
+order = 10
+precision = 1e-07
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.0, 0.0, 0.0]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.3
+  root scale: 0
+  order: 10
+  nodes: 1096
+  endNodes: 960
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+    scale=14  nodes=256
+
+Number of Atoms =  1
+[['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction)
+hd_11 (21727.62263181417+5.708339488904955e-14j)
+J contribution 49.999999955331916
+orbital energy -3400.952242551766
+total energy -6851.904485058865
+calc_dirac_mu 6185.973876608274 15377.910175692343 137.0359895
+Orbital_Error norm 0.044257513266768404
+hd_11 (22208.807347409667-4.122104034707367e-17j)
+J contribution 52.462118675682426
+orbital energy -3434.981714757796
+total energy -6922.425548191273
+calc_dirac_mu 6241.645317484629 15343.880703486313 137.0359895
+Orbital_Error norm 0.03168952096288252
+hd_11 (22490.887283322616+1.5593734075485226e-13j)
+J contribution 54.31107203855736
+orbital energy -3457.0516063717823
+total energy -6968.41428478212
+calc_dirac_mu 6277.6852262362045 15321.810811872327 137.0359895
+Orbital_Error norm 0.01904630517119177
+hd_11 (22708.77058247693-1.3307196637855377e-13j)
+J contribution 55.580087862578836
+orbital energy -3466.696340103508
+total energy -6988.972768069594
+calc_dirac_mu 6293.4186899395745 15312.1660781406 137.0359895
+Orbital_Error norm 0.012529767554226365
+hd_11 (22845.881658092352-1.3557513165056388e-13j)
+J contribution 56.41593539925769
+orbital energy -3470.4428849244323
+total energy -6997.301705248123
+calc_dirac_mu 6299.527760546792 15308.419533319677 137.0359895
+Orbital_Error norm 0.00751412112526075
+hd_11 (22935.628192742184-1.8649262564923797e-13j)
+J contribution 56.93455801999692
+orbital energy -3471.8009227627917
+total energy -7000.536403545579
+calc_dirac_mu 6301.741791447635 15307.061495481317 137.0359895
+Orbital_Error norm 0.0046311094008161515
+hd_11 (22990.438285368386+1.1585114814296207e-13j)
+J contribution 57.254161786197386
+orbital energy -3472.2535967068798
+total energy -7001.761355199957
+calc_dirac_mu 6302.479749401465 15306.60882153723 137.0359895
+Orbital_Error norm 0.0027532689039212192
+hd_11 (23024.420279523383-1.2474848526563947e-13j)
+J contribution 57.4464283502747
+orbital energy -3472.3861558680583
+total energy -7002.218740086391
+calc_dirac_mu 6302.695845818246 15306.47626237605 137.0359895
+Orbital_Error norm 0.0016638939730061727
+hd_11 (23044.918606163996-1.341226306660393e-14j)
+J contribution 57.562412459417956
+orbital energy -3472.412840636618
+total energy -7002.388093732654
+calc_dirac_mu 6302.739346794118 15306.449577607491 137.0359895
+Orbital_Error norm 0.000990442467744061
+hd_11 (23057.39810679212-1.1393451858863272e-13j)
+J contribution 57.63175307914678
+orbital energy -3472.4093740968183
+total energy -7002.450501272782
+calc_dirac_mu 6302.733695714573 15306.45304414729 137.0359895
+Orbital_Error norm 0.0005959995763589617
+hd_11 (23064.906536712537-9.792606329044285e-14j)
+J contribution 57.67339250457987
+orbital energy -3472.4000204989206
+total energy -7002.473433502422
+calc_dirac_mu 6302.718447671578 15306.462397745188 137.0359895
+Orbital_Error norm 0.00035623808844836326
+hd_11 (23069.451534845684+1.7238547525510085e-13j)
+J contribution 57.698319721522815
+orbital energy -3472.3917638510284
+total energy -7002.48184742358
+calc_dirac_mu 6302.70498784619 15306.47065439308 137.0359895
+Orbital_Error norm 0.0002144243123916896
+hd_11 (23072.18798743308+3.850685897004955e-14j)
+J contribution 57.71329841280215
+orbital energy -3472.385816569644
+total energy -7002.484931552091
+calc_dirac_mu 6302.69529270027 15306.476601674465 137.0359895
+Orbital_Error norm 0.0001286640570790351
+hd_11 (23073.841954963067+4.633787878235925e-15j)
+J contribution 57.72229081302794
+orbital energy -3472.3818853242046
+total energy -7002.486061461437
+calc_dirac_mu 6302.68888405605 15306.480532919904 137.0359895
+Orbital_Error norm 7.754190813921793e-05
+hd_11 (23074.839109577933+2.9359301782166575e-13j)
+J contribution 57.72770378400015
+orbital energy -3472.3793857710843
+total energy -7002.486475326168
+calc_dirac_mu 6302.684809329535 15306.483032473025 137.0359895
+Orbital_Error norm 4.66635655161379e-05
+hd_11 (23075.441729118582+1.995672426742726e-13j)
+J contribution 57.73096162021451
+orbital energy -3472.3778327854798
+total energy -7002.486627191174
+calc_dirac_mu 6302.682277680015 15306.48458545863 137.0359895
+Orbital_Error norm 2.81562843200219e-05
+hd_11 (23075.8054650413+3.36378027938509e-13j)
+J contribution 57.732925814533836
+orbital energy -3472.376878440993
+total energy -7002.486682696519
+calc_dirac_mu 6302.680721924474 15306.485539803116 137.0359895
+Orbital_Error norm 1.6977352304739744e-05
+hd_11 (23076.025333760623+2.7183277769589233e-13j)
+J contribution 57.73411015128129
+orbital energy -3472.376296438104
+total energy -7002.486703027491
+calc_dirac_mu 6302.679773153588 15306.486121806005 137.0359895
+Orbital_Error norm 1.0253201217480363e-05
+hd_11 (23076.158156912607+9.35140960335421e-14j)
+J contribution 57.734825054997785
+orbital energy -3472.3759427105397
+total energy -7002.486710476078
+calc_dirac_mu 6302.679196513108 15306.48647553357 137.0359895
+Orbital_Error norm 6.190238240877846e-06
+hd_11 (23076.238465816376+4.4685514022435125e-14j)
+J contribution 57.735256650164885
+orbital energy -3472.375728277835
+total energy -7002.486713205835
+calc_dirac_mu 6302.678846948662 15306.486689966274 137.0359895
+Orbital_Error norm 3.740846402685205e-06
+hd_11 (23076.28700809157+3.8093464871980157e-13j)
+J contribution 57.7355173880258
+orbital energy -3472.375598409597
+total energy -7002.486714207218
+calc_dirac_mu 6302.6786352397285 15306.486819834512 137.0359895
+Orbital_Error norm 2.2603125758832938e-06
+hd_11 (23076.31636442735+3.4966417067452236e-14j)
+J contribution 57.73567492522784
+orbital energy -3472.3755198249273
+total energy -7002.486714575083
+calc_dirac_mu 6302.678507132372 15306.486898419182 137.0359895
+Orbital_Error norm 1.3665127456677302e-06
+hd_11 (23076.334115186804-2.7199916709634547e-13j)
+J contribution 57.73577014898693
+orbital energy -3472.3754722807826
+total energy -7002.486714710551
+calc_dirac_mu 6302.678429626736 15306.486945963326 137.0359895
+Orbital_Error norm 8.260991164546144e-07
+hd_11 (23076.34485174768-2.6255539863663462e-14j)
+J contribution 57.73582771254907
+orbital energy -3472.375443523988
+total energy -7002.4867147605255
+calc_dirac_mu 6302.678382747912 15306.486974720121 137.0359895
+Orbital_Error norm 4.995708869287885e-07
+hd_11 (23076.351345273488+6.924549653324129e-14j)
+J contribution 57.73586251917011
+orbital energy -3472.375426130002
+total energy -7002.486714779174
+calc_dirac_mu 6302.67835439254 15306.486992114107 137.0359895
+Orbital_Error norm 3.021013367344505e-07
+hd_11 (23076.35527330118+8.973194866322246e-14j)
+J contribution 57.73588356690213
+orbital energy -3472.375415609613
+total energy -7002.48671478613
+calc_dirac_mu 6302.678337242384 15306.487002634496 137.0359895
+Orbital_Error norm 1.827238668907802e-07
+hd_11 (23076.35764933541-1.63060948010722e-13j)
+J contribution 57.735896296566864
+orbital energy -3472.3754092460695
+total energy -7002.486714788705
+calc_dirac_mu 6302.678326868647 15306.48700899804 137.0359895
+Orbital_Error norm 1.1051876930191532e-07
+hd_11 (23076.359086733893+2.4276240153752796e-13j)
+J contribution 57.73590399582854
+orbital energy -3472.375405396946
+total energy -7002.48671478972
+calc_dirac_mu 6302.678320593874 15306.487012847163 137.0359895
+Orbital_Error norm 6.685420063792748e-08
+hd_11 (23076.35995628354+8.705550654014186e-14j)
+J contribution 57.73590865300635
+orbital energy -3472.3754030686014
+total energy -7002.486714790208
+Final classic-like energies: cke = 7080.335359281389, cpe = -7769.872941108034, cke + cpe = -689.5375818266448, total cte = -1436.811072306296
+Dirac orbital energy: -3472.3754030686014
+Dirac total energy: -7002.486714790208
+Kutzelnigg total energy: -7002.480908014215
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+D2          = False
+prec        = 7
+derivative  = BS
+box         = 1
+order       = 10
+
+-------------------------------
+Hg 1 0 7 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg117BS
+Now executing: python test.py Input_Making/input__Hg117BS.txt
+Input file: Input_Making/input__Hg117BS.txt
+Output file: outputs/output__Hg117BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 11
+box = 1
+prec = 1.0e-7                 # precision threshold for the MRA operations
+thr  = 1.0e-6                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True        # bool
+orbitalName = "spinorb1"
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = True         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.0, 0.0, 0.0, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.0, 0.0, 0.0]
+box = 1
+order = 10
+precision = 1e-07
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.0, 0.0, 0.0]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.3
+  root scale: 0
+  order: 10
+  nodes: 1096
+  endNodes: 960
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+    scale=14  nodes=256
+
+Number of Atoms =  1
+[['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction) 2e D2 J only
+Classic-like energies: cke = 7080.335359281389 cpe = -10231.675560402766 cke + cpe = -3151.3402011213766
+Orbital energy:  -3472.3766823391848
+Orbital_Error norm 1.1704169971772503e-07
+Classic-like energies: cke = 7080.340544255256 cpe = -10231.679622157826 cke + cpe = -3151.3390779025704
+Orbital energy:  -3472.3753043108873
+Orbital_Error norm 6.025854475816942e-08
+Final classic-like energies: cke = 7080.339972134476, cpe = -10231.679050977918, cte = -3151.3390788434426
+Final orbital energy: -3472.375305465202
+Dirac total energy: -7002.486693761661
+Kutzelnigg total energy: -7002.486526865713
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+D2          = True
+prec        = 7
+derivative  = BS
+box         = 1
+order       = 10
+
+-------------------------------
+Hg 1 1 7 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg108BS
+Now executing: python test.py Input_Making/input__Hg108BS.txt
+Input file: Input_Making/input__Hg108BS.txt
+Output file: outputs/output__Hg108BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 12
+box = 1
+prec = 1.0e-8                 # precision threshold for the MRA operations
+thr  = 1.0e-7                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = False         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.0, 0.0, 0.0, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.0, 0.0, 0.0]
+Fermi Dirac potential
+Using Half Charge Radius for Hg: 0.0001243324938394
+Integral of the Fermi-Dirac distribution via cartesian 3D integration: 8.5536906901934
+The normalization constant is: 9.352687967980659
+Integral of the Fermi-Dirac distribution via 3D integration: 79.99999999999999
+3D density
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 5.76652e+14
+  root scale: 0
+  order: 11
+  nodes: 904
+  endNodes: 792
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+    scale=14  nodes=64
+
+3D potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.3
+  root scale: 0
+  order: 11
+  nodes: 1096
+  endNodes: 960
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+    scale=14  nodes=256
+
+box = 1
+order = 11
+precision = 1e-08
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.0, 0.0, 0.0]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.3
+  root scale: 0
+  order: 11
+  nodes: 1096
+  endNodes: 960
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+    scale=14  nodes=256
+
+Number of Atoms =  1
+[['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction)
+hd_11 (21727.62177590462+9.507222361391423e-14j)
+J contribution 49.99999999741206
+orbital energy -3400.953092348189
+total energy -6851.906184693791
+calc_dirac_mu 6185.975268395744 15377.90932589592 137.0359895
+Orbital_Error norm 0.044257555446995986
+hd_11 (22208.80783699169+7.73009588268221e-14j)
+J contribution 52.462121982613915
+orbital energy -3434.981679427603
+total energy -6922.425480837821
+calc_dirac_mu 6241.645259749261 15343.880738816506 137.0359895
+Orbital_Error norm 0.03168949640885276
+hd_11 (22490.88767958094+1.6537035426847217e-14j)
+J contribution 54.311073923331946
+orbital energy -3457.0515167803387
+total energy -6968.414107484008
+calc_dirac_mu 6277.68508003958 15321.81090146377 137.0359895
+Orbital_Error norm 0.01904628925337301
+hd_11 (22708.770854865204+3.45328103870268e-14j)
+J contribution 55.58008872192616
+orbital energy -3466.696237437616
+total energy -6988.972563597159
+calc_dirac_mu 6293.41852251333 15312.166180806493 137.0359895
+Orbital_Error norm 0.012529757915442169
+hd_11 (22845.881869235465+1.705093647122511e-13j)
+J contribution 56.41593561941188
+orbital energy -3470.442762270617
+total energy -6997.301460160645
+calc_dirac_mu 6299.527560573435 15308.419655973492 137.0359895
+Orbital_Error norm 0.007514114722956653
+hd_11 (22935.628236885597+1.995668837549994e-13j)
+J contribution 56.93455778013313
+orbital energy -3471.8009079003714
+total energy -7000.536373580875
+calc_dirac_mu 6301.741767218267 15307.061510343738 137.0359895
+Orbital_Error norm 0.004631112385974272
+hd_11 (22990.438356837305-1.476628434828327e-13j)
+J contribution 57.25416176325685
+orbital energy -3472.253581869496
+total energy -7001.761325502248
+calc_dirac_mu 6302.479725213628 15306.608836374613 137.0359895
+Orbital_Error norm 0.002753270572474428
+hd_11 (23024.420370068543-1.433189580952538e-13j)
+J contribution 57.446428451783305
+orbital energy -3472.3861400828628
+total energy -7002.218708617507
+calc_dirac_mu 6302.695820085513 15306.476278161246 137.0359895
+Orbital_Error norm 0.0016638947529561887
+hd_11 (23044.918717730412-1.369775054477599e-13j)
+J contribution 57.562412619962
+orbital energy -3472.412823978804
+total energy -7002.38806057757
+calc_dirac_mu 6302.7393196389085 15306.449594265305 137.0359895
+Orbital_Error norm 0.0009904430000718318
+hd_11 (23057.3982353157+1.8280655792322372e-13j)
+J contribution 57.63175327383576
+orbital energy -3472.4093568928984
+total energy -7002.4504670596325
+calc_dirac_mu 6302.733667669104 15306.45306135121 137.0359895
+Orbital_Error norm 0.0005959999858837012
+hd_11 (23064.906675051534-6.793564827526456e-14j)
+J contribution 57.67339272482383
+orbital energy -3472.400003413295
+total energy -7002.473399551414
+calc_dirac_mu 6302.718419818935 15306.462414830814 137.0359895
+Orbital_Error norm 0.0003562384457823088
+hd_11 (23069.451680675997-1.0913004863501326e-13j)
+J contribution 57.698319964282156
+orbital energy -3472.391746535057
+total energy -7002.481813034396
+calc_dirac_mu 6302.704959618025 15306.470671709052 137.0359895
+Orbital_Error norm 0.00021442452311885905
+hd_11 (23072.188138467143+9.013984757298671e-14j)
+J contribution 57.7132986697913
+orbital energy -3472.385799108417
+total energy -7002.4848968866245
+calc_dirac_mu 6302.695264235303 15306.476619135692 137.0359895
+Orbital_Error norm 0.00012866423158520467
+hd_11 (23073.842108632485+1.2897409738057441e-13j)
+J contribution 57.722291081290905
+orbital energy -3472.381867780763
+total energy -7002.486026642819
+calc_dirac_mu 6302.68885545705 15306.480550463346 137.0359895
+Orbital_Error norm 7.75420073835143e-05
+hd_11 (23074.839265000963-3.009128035078528e-13j)
+J contribution 57.72770405895806
+orbital energy -3472.379368166199
+total energy -7002.486440391356
+calc_dirac_mu 6302.684780630366 15306.48305007791 137.0359895
+Orbital_Error norm 4.6663634312748245e-05
+hd_11 (23075.441885719207-2.245009218137801e-13j)
+J contribution 57.73096189973147
+orbital energy -3472.3778149960053
+total energy -7002.486591891742
+calc_dirac_mu 6302.68224867993 15306.484603248104 137.0359895
+Orbital_Error norm 2.8156319453111604e-05
+hd_11 (23075.805622426476+1.0195106818667262e-13j)
+J contribution 57.73292609628914
+orbital energy -3472.3768606321228
+total energy -7002.486647360536
+calc_dirac_mu 6302.680692892766 15306.485557611986 137.0359895
+Orbital_Error norm 1.6977376741524462e-05
+hd_11 (23076.02549167117+1.438210923051309e-13j)
+J contribution 57.73411043459828
+orbital energy -3472.3762786168263
+total energy -7002.48666766825
+calc_dirac_mu 6302.679744101652 15306.486139627283 137.0359895
+Orbital_Error norm 1.0253219315958711e-05
+hd_11 (23076.15831516616+1.3015121329405954e-13j)
+J contribution 57.73482533946717
+orbital energy -3472.3759248817914
+total energy -7002.4866751030495
+calc_dirac_mu 6302.679167448994 15306.486493362318 137.0359895
+Orbital_Error norm 6.1902501133854614e-06
+hd_11 (23076.238624298978+5.190494685503988e-13j)
+J contribution 57.735256935409936
+orbital energy -3472.375710444827
+total energy -7002.486677825065
+calc_dirac_mu 6302.678817877603 15306.486707799282 137.0359895
+Orbital_Error norm 3.7408547935765163e-06
+hd_11 (23076.287166719772-4.242819877594252e-14j)
+J contribution 57.73551767381559
+orbital energy -3472.375580573971
+total energy -7002.486678821759
+calc_dirac_mu 6302.6786061644025 15306.486837670138 137.0359895
+Orbital_Error norm 2.2603180086956604e-06
+hd_11 (23076.316523151007-1.4075072130242218e-13j)
+J contribution 57.73567521137862
+orbital energy -3472.3755019875352
+total energy -7002.486679186448
+calc_dirac_mu 6302.678478054167 15306.486916256574 137.0359895
+Orbital_Error norm 1.3665163914648555e-06
+hd_11 (23076.33427397025+7.520940175534665e-14j)
+J contribution 57.73577043537784
+orbital energy -3472.375454442481
+total energy -7002.48667932034
+calc_dirac_mu 6302.678400547049 15306.486963801628 137.0359895
+Orbital_Error norm 8.261014559942499e-07
+hd_11 (23076.345010569596+1.3602383087961802e-13j)
+J contribution 57.735827999097616
+orbital energy -3472.3754256850025
+total energy -7002.4866793691035
+calc_dirac_mu 6302.678353667109 15306.486992559107 137.0359895
+Orbital_Error norm 4.995724058196908e-07
+hd_11 (23076.351504119462-2.3600274444829056e-13j)
+J contribution 57.73586280582074
+orbital energy -3472.375408290667
+total energy -7002.486679387155
+calc_dirac_mu 6302.678325311167 15306.487009953442 137.0359895
+Orbital_Error norm 3.0210230181471485e-07
+hd_11 (23076.355432162392-1.4149489227185203e-13j)
+J contribution 57.73588385361821
+orbital energy -3472.375397769976
+total energy -7002.486679393569
+calc_dirac_mu 6302.67830816052 15306.487020474133 137.0359895
+Orbital_Error norm 1.8272447807171206e-07
+hd_11 (23076.357808205856-3.535512564244886e-14j)
+J contribution 57.73589658332369
+orbital energy -3472.375391406451
+total energy -7002.486679396225
+calc_dirac_mu 6302.678297786812 15306.487026837658 137.0359895
+Orbital_Error norm 1.105191646753162e-07
+hd_11 (23076.35924561044+2.417736158209103e-13j)
+J contribution 57.735904282612196
+orbital energy -3472.3753875571656
+total energy -7002.486679396945
+calc_dirac_mu 6302.678291511774 15306.487030686943 137.0359895
+Orbital_Error norm 6.685444418710556e-08
+hd_11 (23076.360115163774+2.614051862835639e-13j)
+J contribution 57.73590893980679
+orbital energy -3472.3753852287446
+total energy -7002.486679397294
+calc_dirac_mu 6302.678287716023 15306.487033015364 137.0359895
+Orbital_Error norm 4.044120825898204e-08
+hd_11 (23076.36064123052+3.6874476669033863e-13j)
+J contribution 57.73591175697121
+orbital energy -3472.375383820263
+total energy -7002.486679397498
+calc_dirac_mu 6302.67828541994 15306.487034423846 137.0359895
+Orbital_Error norm 2.4465211688188867e-08
+hd_11 (23076.360959490827+6.25162316717032e-14j)
+J contribution 57.73591346119099
+orbital energy -3472.3753829681445
+total energy -7002.48667939748
+calc_dirac_mu 6302.678284030833 15306.487035275964 137.0359895
+Orbital_Error norm 1.4800476313991101e-08
+hd_11 (23076.361152039313-6.379947932289299e-14j)
+J contribution 57.73591449216614
+orbital energy -3472.375382452692
+total energy -7002.486679397549
+calc_dirac_mu 6302.67828319055 15306.487035791417 137.0359895
+Orbital_Error norm 8.954082922113086e-09
+hd_11 (23076.36126853158+2.6103556076781456e-13j)
+J contribution 57.73591511588208
+orbital energy -3472.3753821407736
+total energy -7002.486679397429
+Final classic-like energies: cke = 7080.342919850798, cpe = -7769.874232428244, cke + cpe = -689.5313125774455, total cte = -1436.7985402707732
+Dirac orbital energy: -3472.3753821407736
+Dirac total energy: -7002.486679397429
+Kutzelnigg total energy: -7002.480886834233
+
+PARAMETERS:
+molecule    = [['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+D2          = False
+prec        = 8
+derivative  = BS
+box         = 1
+order       = 11
+
+-------------------------------
+Hg 1 0 8 BS 1
+-------------------------------
+>>> Elaboro tutti i file contenenti Hg118BS
+Now executing: python test.py Input_Making/input__Hg118BS.txt
+Input file: Input_Making/input__Hg118BS.txt
+Output file: outputs/output__Hg118BS.txt
+light_speed = 137.0359895  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 12
+box = 1
+prec = 1.0e-8                 # precision threshold for the MRA operations
+thr  = 1.0e-7                  # error threshold for SCF convergence
+
+readPotential    = True        # bool
+computePotential = False         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = True        # bool
+orbitalName = "spinorb1"
+saveOrbitals     = False         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = True         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.0, 0.0, 0.0, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+80 [0.0, 0.0, 0.0]
+box = 1
+order = 11
+precision = 1e-08
+derivative = BS
+light_speed = 137.0359895
+Nuclear Potential Type = fermi_dirac
+Charge = 80
+Position = [0.0, 0.0, 0.0]
+Radius = 54
+Epsilon = 54
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 98223.3
+  root scale: 0
+  order: 11
+  nodes: 1096
+  endNodes: 960
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+    scale=13  nodes=64
+    scale=14  nodes=256
+
+Number of Atoms =  1
+[['Hg', 80, 0.0, 0.0, 0.0, 54, 54]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction) 2e D2 J only
+Classic-like energies: cke = 7080.342919850798 cpe = -10231.68185731407 cke + cpe = -3151.3389374632716
+Orbital energy:  -3472.375132012029
+Orbital_Error norm 3.257637347238013e-08
+Classic-like energies: cke = 7080.342938178197 cpe = -10231.682081718265 cke + cpe = -3151.339143540068
+Orbital energy:  -3472.3753848386764
+Orbital_Error norm 4.352419905198218e-08
+Classic-like energies: cke = 7080.343039349815 cpe = -10231.682182940589 cke + cpe = -3151.3391435907743
+Orbital energy:  -3472.375384900885
+Orbital_Error norm 5.6295198192046337e-08
+Classic-like energies: cke = 7080.343483599905 cpe = -10231.682627741757 cke + cpe = -3151.3391441418516
+Orbital energy:  -3472.375385576978
+Orbital_Error norm 7.90932864814018e-08
+Classic-like energies: cke = 7080.343234627256 cpe = -10231.682377785266 cke + cpe = -3151.3391431580103
+Orbital energy:  -3472.375384369945
+Orbital_Error norm 1.1283334907621008e-07
+Classic-like energies: cke = 7080.343915609548 cpe = -10231.683059810908 cke + cpe = -3151.33914420136
+Orbital energy:  -3472.3753856499857
+Orbital_Error norm 1.6801509426912403e-07
+Classic-like energies: cke = 7080.34307813378 cpe = -10231.682220538998 cke + cpe = -3151.339142405218
+Orbital energy:  -3472.375383446378
+Orbital_Error norm 2.5430012131961815e-07
+Classic-like energies: cke = 7080.344536627763 cpe = -10231.683681686449 cke + cpe = -3151.339145058686
+Orbital energy:  -3472.3753867018017
+Orbital_Error norm 3.9153435500027733e-07
+Classic-like energies: cke = 7080.342377581082 cpe = -10231.681518475998 cke + cpe = -3151.3391408949165
+Orbital energy:  -3472.3753815934556
+Orbital_Error norm 6.082605616638255e-07
+Classic-like energies: cke = 7080.345836968916 cpe = -10231.68498423032 cke + cpe = -3151.339147261404
+Orbital energy:  -3472.3753894042197
+Orbital_Error norm 9.531260751601212e-07
+Classic-like energies: cke = 7080.340490240219 cpe = -10231.679627459765 cke + cpe = -3151.3391372195465
+Orbital energy:  -3472.3753770843014
+Orbital_Error norm 1.5044846985547506e-06
+Classic-like energies: cke = 7080.348908693241 cpe = -10231.68806128038 cke + cpe = -3151.3391525871384
+Orbital energy:  -3472.375395938131
+Orbital_Error norm 2.395446333459187e-06
+Classic-like energies: cke = 7080.335762277137 cpe = -10231.674890068576 cke + cpe = -3151.339127791439
+Orbital energy:  -3472.375365517368
+Orbital_Error norm 3.857341740903352e-06
+Classic-like energies: cke = 7080.356383341088 cpe = -10231.69554802091 cke + cpe = -3151.3391646798227
+Orbital energy:  -3472.375410774122
+Orbital_Error norm 6.305446641339308e-06
+Classic-like energies: cke = 7080.324095450496 cpe = -10231.663197744087 cke + cpe = -3151.3391022935903
+Orbital energy:  -3472.375334235167
+Orbital_Error norm 1.0510412862066083e-05
+Classic-like energies: cke = 7080.374697871122 cpe = -10231.713886252137 cke + cpe = -3151.3391883810145
+Orbital energy:  -3472.375439852081
+Orbital_Error norm 1.7946413914234322e-05
+Classic-like energies: cke = 7080.29540252552 cpe = -10231.63442590119 cke + cpe = -3151.339023375669
+Orbital energy:  -3472.3752374142073
+Orbital_Error norm 3.148837234613972e-05
+Classic-like energies: cke = 7080.419634996868 cpe = -10231.75883649387 cke + cpe = -3151.3392014970013
+Orbital energy:  -3472.375455943513
+Orbital_Error norm 5.6797755511350074e-05
+Classic-like energies: cke = 7080.224857390553 cpe = -10231.563557122081 cke + cpe = -3151.3386997315283
+Orbital energy:  -3472.374840349314
+Orbital_Error norm 0.00010508013843179676
+Classic-like energies: cke = 7080.529827529643 cpe = -10231.86866741082 cke + cpe = -3151.3388398811767
+Orbital energy:  -3472.3750122928077
+Orbital_Error norm 0.00019852554359408567
+Classic-like energies: cke = 7080.051104916392 cpe = -10231.387746913915 cke + cpe = -3151.3366419975227
+Orbital energy:  -3472.372315805364
+Orbital_Error norm 0.0003811553860035002
+Classic-like energies: cke = 7080.798928809 cpe = -10232.13261283163 cke + cpe = -3151.33368402263
+Orbital energy:  -3472.3686867959327
+Orbital_Error norm 0.0007401911360067905
+Classic-like energies: cke = 7079.619253581866 cpe = -10230.935764028909 cke + cpe = -3151.3165104470427
+Orbital energy:  -3472.347617307591
+Orbital_Error norm 0.0014489216952027438
+Classic-like energies: cke = 7081.441934206936 cpe = -10232.707794218244 cke + cpe = -3151.265860011308
+Orbital energy:  -3472.285476732435
+Orbital_Error norm 0.002850551519108709
+Classic-like energies: cke = 7078.493562728434 cpe = -10229.55372390549 cke + cpe = -3151.060161177056
+Orbital energy:  -3472.033117352533
+Orbital_Error norm 0.005628387323720502
+Classic-like energies: cke = 7082.7777034900355 cpe = -10233.086934658095 cke + cpe = -3150.3092311680593
+Orbital energy:  -3471.111882346216
+Orbital_Error norm 0.011132452502066889
+Classic-like energies: cke = 7074.804449416335 cpe = -10222.185948394423 cke + cpe = -3147.3814989780876
+Orbital energy:  -3467.5206929325045
+Orbital_Error norm 0.022060471224527492
+Classic-like energies: cke = 7082.478079204246 cpe = -10218.580448400791 cke + cpe = -3136.1023691965456
+Orbital energy:  -3453.6934507580286
+Orbital_Error norm 0.04369619060910058
+Classic-like energies: cke = 7051.898591361612 cpe = -10144.17573134477 cke + cpe = -3092.277139983159
+Orbital energy:  -3400.085490877918
+Orbital_Error norm 0.08660567973313972
+Classic-like energies: cke = 7026.767949113191 cpe = -9950.767483231688 cke + cpe = -2923.9995341184967
+Orbital energy:  -3195.9582024408583
+Orbital_Error norm 0.17042292785804591
+Classic-like energies: cke = 6779.015182559019 cpe = -9097.153420537434 cke + cpe = -2318.1382379784145
+Orbital energy:  -2482.1855898718277
+Orbital_Error norm 0.3305421903807769
+Classic-like energies: cke = 5971.200189542316 cpe = -6592.094453824789 cke + cpe = -620.8942642824722
+Orbital energy:  -631.5128103022889
+Orbital_Error norm 0.6369173314867649
+Classic-like energies: cke = 2514.8573092461993 cpe = -2341.4126759070946 cke + cpe = 173.4446333391047
+Orbital energy:  172.65096556396878
+Positive energy

@@ -1,0 +1,29 @@
+light_speed = 137.03599913900001  # default 137.03599913900001
+derivative = "BS"                 # possible values: PH, ABGV, BS
+order = 7
+box = 50
+prec = 1.0e-4                 # precision threshold for the MRA operations
+thr  = 1.0e-3                  # error threshold for SCF convergence
+
+readPotential    = False
+computePotential = True
+savePotential    = True
+potential = "coulomb_HFYGB"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False
+saveOrbitals     = False
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = False
+two_electrons    = True
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["He", 2, 0.0, 0.0, 0.0, 1.0e-4, 1.1671538870e9] ]

@@ -1,0 +1,37 @@
+light_speed = 137.0359895   # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 11
+box = 1
+prec = 1.0e-7                 # precision threshold for the MRA operations
+thr  = 1.0e-6                  # error threshold for SCF convergence
+
+readPotential    = False         # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = False
+D2               = False         # bool
+two_electrons    = False         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["Hg", 80, 0.1, 0.2, 0.3, 54, 54] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop

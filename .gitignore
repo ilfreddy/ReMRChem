@@ -5,6 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
+*.ipynb
 
 # Distribution / packaging
 .Python
@@ -127,3 +128,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+*~
+#*#
+\#*#
+.\#*#
+.\#*
+*.out
+*.prof
+*.txt

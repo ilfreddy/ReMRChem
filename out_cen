@@ -1,0 +1,107 @@
+Input file: input_write.txt
+Output file: outputs/outputinput_write.txt
+light_speed = 137.03599913900001  # default 137.03599913900001
+derivative = "BS"         # possible values: PH, ABGV, BS
+order = 8
+box = 1
+prec = 1.0e-5                 # precision threshold for the MRA operations
+thr  = 1.0e-4                  # error threshold for SCF convergence
+
+readPotential    = False        # bool
+computePotential = True         # bool 
+savePotential    = True         # bool
+potential = "coulomb_HFYGB"     # possible values: point_charge coulomb_HFYGB Homogeneus_charge_sphere gaussian
+orbitalName = "spinorb1"
+
+
+readOrbitals     = False         # bool
+saveOrbitals     = True         # bool
+saveGuess        = False
+
+scf              = True
+ktrs             = True
+D2               = False         # bool
+two_electrons    = True         # bool
+
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+
+molecule = [ ["He", 2, 0.0, 0.0, 0.0, 0.0001, 1167153887.0] ]
+
+# With the paramenters I got from Robert, the error is (1) higher than
+#  what he gets and (2) dominated by the width of the Gaussian
+# I get a much better agreement with the ideal value IF the Gaussian
+#  size is reduced by one order of magnitude 3e4->3e5 for Ar
+# It seems the position of the nucleus is also important: I get bad
+#  results from D2 if I move the nucleus
+# Higher prec with off centered nucleus is too demanding for my laptop
+
+**************************************
+2 [0.0, 0.0, 0.0]
+Harrison potential
+box = 50
+order = 8
+precision = 1e-05
+derivative = BS
+light_speed = 137.035999139
+Nuclear Potential Type = coulomb_HFYGB
+Charge = 2
+Position = [0.0, 0.0, 0.0]
+Radius = 0.0001
+Epsilon = 1167153887.0
+Potential
+
+*FunctionTree: nn
+  genNodes: 0
+  square norm: 61.3904
+  root scale: 0
+  order: 8
+  nodes: 776
+  endNodes: 680
+  nodes per scale: 
+    scale=0  nodes=8
+    scale=1  nodes=64
+    scale=2  nodes=64
+    scale=3  nodes=64
+    scale=4  nodes=64
+    scale=5  nodes=64
+    scale=6  nodes=64
+    scale=7  nodes=64
+    scale=8  nodes=64
+    scale=9  nodes=64
+    scale=10  nodes=64
+    scale=11  nodes=64
+    scale=12  nodes=64
+
+Number of Atoms =  1
+[['He', 2, 0.0, 0.0, 0.0, 0.0001, 1167153887.0]]
+Using derivative  BS
+Hartree-Fock (Coulomb interaction)
+hd_11 (18781.30461753738+1.7685385358222978e-17j)
+J contribution 1.4574382223873805
+orbital energy -0.5445065093954327
+total energy -2.546451241178147
+calc_dirac_mu 1.088997230442304 18778.320553514615 137.035999139
+Orbital_Error norm 0.061640990812440906
+hd_11 (18785.311479632328+3.869305969569682e-17j)
+J contribution 1.3753349626813598
+orbital energy 3.649517209531041
+total energy 5.923699456383474
+calc_dirac_mu -7.299743672564394 18782.51457723354 137.035999139
+Orbital_Error norm nan
+
+PARAMETERS:
+molecule    = [['He', 2, 0.0, 0.0, 0.0, 0.0001, 1167153887.0]]
+D2          = False
+prec        = 5
+derivative  = BS
+box         = 50
+order       = 8
+
+-------------------------------
+He 1 0 5 BS 50
+-------------------------------
