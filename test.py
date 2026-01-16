@@ -25,10 +25,10 @@ importlib.reload(orb)
 import fileinput
 import sys
 
-
+# read the input
 input_blob = ""
 print("Input file:", sys.argv[1])
-output_file = "outputs/output" + sys.argv[1].replace("Input_Making/input", "")
+output_file = "outputs/output" + sys.argv[1].replace("inputs/input", "")
 print("Output file:", output_file)
 for line in fileinput.input():
     input_blob += line
@@ -38,8 +38,12 @@ for line in fileinput.input():
 with open(output_file, "w") as f:
     pass
 
+oneel.write_and_print(output_file,"**************************************")
+
+oneel.write_and_print(output_file, "INPUT FILE CONTENT:")
 oneel.write_and_print(output_file,input_blob)
 oneel.write_and_print(output_file,"**************************************")
+print()
 exec(input_blob)
 
 #
@@ -50,10 +54,9 @@ exec(input_blob)
 # 5. Nuclear potential selected manually (Gaussian now to reproduce Harrison's results)
 #
 
-thr = prec*10
-order = int(-np.log10(prec) + 3)
-box = int(np.ceil(float(50/molecule[0][1])))
 
+if (auto_box):
+    box = int(np.ceil(float(50/molecule[0][1])))
 
 ################# Call MRA #######################
 mra = vp.MultiResolutionAnalysis(box=[-box, box], order=order, max_depth=25)
@@ -66,7 +69,6 @@ radius = molecule[0][5]
 epsilon = molecule[0][6]
 
 
-print(charge,position)
 
 ################### Define V potential ######################
 Peps = vp.ScalingProjector(mra, prec/10)
@@ -89,21 +91,20 @@ if(computePotential):
         V_tree = Peps(f)
     elif(potential == "fermi_dirac"):
         print("Fermi Dirac potential")
-        with open("Half_Charge_Radius.txt", "r") as f:
-            half_charge_radius_dict = {}
-            for line in f:
-                parts = line.strip().split()
-                if len(parts) == 2:
-                    symbol, value = parts
-                    if symbol == molecule[0][0]:
-                     HCR = float(value)
-                     break
+        if radius == 0:
+            with open("Half_Charge_Radius.txt", "r") as f:
+                half_charge_radius_dict = {}
+                for line in f:
+                    parts = line.strip().split()
+                    if len(parts) == 2:
+                        symbol, value = parts
+                        if symbol == molecule[0][0]:
+                            HCR = float(value)
+                            break
+        else:
+            HCR = radius
 
-
-
-        
-
-        print(f"Using Half Charge Radius for {molecule[0][0]}: {HCR}")
+        print(f"-> Using Half Charge Radius for {molecule[0][0]}: {HCR}")
             
         V_tree = nucpot.Fermi_Dirac(position, charge, box, mra, order, prec, HCR)
     else:
@@ -116,30 +117,28 @@ if(savePotential):
     V_tree.saveTree(f"potential")
 
 # showing the variables used
-print("box =", box)
-print("order =", order)
-print("precision =", prec)
-print("derivative =", derivative)
+print()
+print("------------------------------------")
+print("      Calculation parameters ")
+print("------------------------------------")
 print("light_speed =", light_speed)
+print("derivative =", derivative)
 print("Nuclear Potential Type =", potential)
+print("box =", box)
+print("precision =", prec)
+print("order =", order)
+print("threshold =", thr)
 print("Charge =", charge)
-print("Position =", position)
-print("Radius =", radius)
-print("Epsilon =", epsilon)
-
-
-
-
-print("Potential")
-print(V_tree)
         
 print("Number of Atoms = ", len(molecule))
 print(molecule)
-
+print()
+print()
 #############################START WITH CALCULATION###################################
 spinorb1 = orb.orbital4c()
 spinorb2 = orb.orbital4c()
 if readOrbitals:
+    orbitalName = "spinorb1"
     spinorb1.read(orbitalName)
 else:
     spinorb1 = sg.make_NR_starting_guess(position, charge, mra, prec)
@@ -156,8 +155,6 @@ run_D_2e_ktrs  = scf and not D2 and     two_electrons and     ktrs
 run_D2_2e_ktrs = scf and     D2 and     two_electrons and     ktrs
 
 
-length = 2 * box
-print("Using derivative ", derivative)
 
 if run_D_1e:
     spinorb1 = oneel.gs_D_1e(spinorb1, V_tree, mra, prec, thr, derivative, charge, output_file)
@@ -176,10 +173,10 @@ if run_D2_2e:
     spinorb1, spinorb2 = twoel.coulomb_2e_D2([spinorb1, spinorb2], V_tree, mra, prec, derivative)
 
 if run_D_2e_ktrs:
-    spinorb1, spinorb2 = twoel.coulomb_gs_2e(spinorb1, V_tree, mra, prec, derivative, output_file)
+    spinorb1, spinorb2 = twoel.coulomb_gs_2e(spinorb1, V_tree, mra, prec, thr, derivative, output_file)
 
 if run_D2_2e_ktrs:
-    spinorb1, spinorb2 = twoel.coulomb_2e_D2_J([spinorb1, spinorb2], V_tree, mra, prec, derivative, output_file)
+    spinorb1, spinorb2 = twoel.coulomb_2e_D2_J([spinorb1, spinorb2], V_tree, mra, prec, thr, derivative, output_file)
 
 if runGaunt:
     twoel.calcGauntPert(spinorb1, spinorb2, mra, prec)
@@ -210,15 +207,17 @@ oneel.write_and_print(output_file, "PARAMETERS:")
 oneel.write_and_print(output_file, f"molecule    = {molecule}")
 oneel.write_and_print(output_file, f"D2          = {D2}")
 oneel.write_and_print(output_file, f"prec        = {-int(np.log10(prec))}")
+oneel.write_and_print(output_file, f"order       = {order}")
 oneel.write_and_print(output_file, f"derivative  = {derivative}")
 oneel.write_and_print(output_file, f"box         = {box}")
-oneel.write_and_print(output_file, f"order       = {order}")
 if position == [0.0, 0.0, 0.0]:
     centerd = True
 else:
     centerd = False
+oneel.write_and_print(output_file, f"centered    = {centerd}")
 
 oneel.write_and_print(output_file, "")
+oneel.write_and_print(output_file, "-> ID calculation ")
 oneel.write_and_print(output_file, "-------------------------------")
 oneel.write_and_print(output_file, f"{molecule[0][0]} {int(centerd)} {int(D2)} {-int(np.log10(prec))} {derivative} {box}")
 oneel.write_and_print(output_file, "-------------------------------")

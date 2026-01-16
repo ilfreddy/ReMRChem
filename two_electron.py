@@ -161,7 +161,7 @@ def coulomb_2e_D2(spinors, potential, mra, prec, derivative):
         delta_psi = new_spinor - spinors[0]
         deltasq = delta_psi.squaredNorm()
         error_norm = np.sqrt(deltasq)
-        print('Orbital_Error norm', error_norm)
+        print('Orbital_Error norm', error_norm.real())
         spinors = new_spinors
 
         Jop = oper.CoulombDirectOperator(mra, prec, spinors)
@@ -188,44 +188,39 @@ def coulomb_2e_D2(spinors, potential, mra, prec, derivative):
         print("total energy: ", total_energy)
     return spinors[0], spinors[1]
 
-def coulomb_2e_D2_J(spinors, potential, mra, prec, derivative, output_file):
-    print('Hartree-Fock (Coulomb interaction) 2e D2 J only')
+def coulomb_2e_D2_J(spinors, potential, mra, prec, thr, derivative, output_file):
+    
+    idx = 0 
     error_norm = 1.0
     compute_last_energy = False
     P = vp.PoissonOperator(mra, prec/10)
     light_speed = spinors[0].light_speed
     c2 = light_speed**2
     Vop = oper.PotentialOperator(mra, prec/10, potential)
-    while(error_norm > prec):
+    while (error_norm > thr):
+        print()
+        print("$ Iteration ", idx)
         Jop = oper.CoulombDirectOperator(mra, prec, spinors)
         RHS = build_RHS_D2(Jop, Vop, spinors[0], prec, light_speed)
         cke = spinors[0].classicT()
         cpe = (spinors[0].dot(RHS)).real
-        print("Classic-like energies:", "cke =", cke,"cpe =", cpe,"cke + cpe =", cke + cpe)
+        
         print("Orbital energy: ", c2 * ( -1.0 + np.sqrt(1 + 2 * (cpe + cke) / c2)))
         mu = orb.calc_non_rel_mu(cke+cpe)
-        print("this is mu: ", mu)
-        #mu = 83.6808614
-        print("Using fixed mu instead: ", mu)
         new_spinor = orb.apply_helmholtz(RHS, mu, prec)
-
-        #print("============= Spinor before Helmholtz =============")
-        #print(spinors[0])
-        #print("============= RHS before Helmholtz    =============")
-        #print(RHS)
-        #print("============= New spinor before crop  =============")
-        #print(new_spinor)
         new_spinor.cropLargeSmall(prec)
         new_spinor.normalize()
         delta_psi = new_spinor - spinors[0]
         deltasq = delta_psi.squaredNorm()
         error_norm = np.sqrt(deltasq)
-        print('Orbital_Error norm', error_norm)
         # DAMPENING 
         dampen_spinor = np.sqrt(0.7)* spinors[0] + np.sqrt(0.3) * new_spinor
         dampen_spinor.normalize()
         spinors[0] = dampen_spinor 
         spinors[1] = spinors[0].ktrs(prec)
+        print('     Converged? ', '  ----  ', error_norm, ' > ',thr)
+
+        idx += 1
     Jop = oper.CoulombDirectOperator(mra, prec, spinors)
     RHS = build_RHS_D2(Jop, Vop, spinors[0], prec, light_speed)
     cke = spinors[0].classicT()
@@ -267,14 +262,16 @@ def coulomb_2e_D2_J(spinors, potential, mra, prec, derivative, output_file):
     oneel.write_and_print(output_file, f"Kutzelnigg total energy: {final_total_energy}")
     return spinors[0], spinors[1]
 
-def coulomb_gs_2e(spinorb1, potential, mra, prec, derivative, output_file):
-    print('Hartree-Fock (Coulomb interaction)')
+def coulomb_gs_2e(spinorb1, potential, mra, prec, thr, derivative, output_file):
     error_norm = 1
     compute_last_energy = False
     P = vp.PoissonOperator(mra, prec)
     light_speed = spinorb1.light_speed
+    idx = 0 
 #    for i in range(10):
-    while (error_norm > prec or compute_last_energy):
+    while (error_norm > thr or compute_last_energy):
+        print()
+        print("$ Iteration ", idx)
         n_22 = spinorb1.overlap_density(spinorb1, prec)
 
         # Definition of two electron operators
@@ -283,7 +280,8 @@ def coulomb_gs_2e(spinorb1, potential, mra, prec, derivative, output_file):
         # Definiton of Dirac Hamiltonian for spinorbit 1 that due to TRS is equal spinorbit 2
         hd_psi_1 = orb.apply_dirac_hamiltonian(spinorb1, prec, 0.0, der = derivative)
         hd_11 = spinorb1.dot(hd_psi_1)
-        print("hd_11", hd_11)
+        
+        print("     Orbital energy", -(hd_11 - light_speed*light_speed).real)
         # Applying nuclear potential to spin orbit 1 and 2
         v_psi_1 = orb.apply_potential(-1.0, potential, spinorb1, prec)
         V1 = spinorb1.dot(v_psi_1)
@@ -297,31 +295,12 @@ def coulomb_gs_2e(spinorb1, potential, mra, prec, derivative, output_file):
         JmK = spinorb1.dot(JmK_phi1)
 
         # Calculate Fij Fock matrix
-        print("J contribution", JmK.real)
+        
         eps = hd_V_11.real + JmK.real
         E_tot_JK =  2*eps - JmK.real
 
-        print('orbital energy', eps - light_speed**2)
-        print('total energy', E_tot_JK - (2.0 *light_speed**2))
-        if(compute_last_energy):
-            cke = spinorb1.classicT()
-            cpe = spinorb1.dot(v_psi_1).real + JmK.real
-            cte = cke + cpe 
-            total_cte = 2 * cte - JmK.real
+        
 
-            hd_psi1_one_electron = hd_psi_1+ v_psi_1
-            hd_psi1_two_electron = hd_psi1_one_electron + 0.5 * JmK_phi1
-            exp_val_d2 = hd_psi1_two_electron.squaredNorm()
-
-            E_kutzelnigg = 2 * (np.sqrt(exp_val_d2)-light_speed**2)
-
-
-            oneel.write_and_print(output_file, f"Final classic-like energies: cke = {cke}, cpe = {cpe}, cke + cpe = {cte}, total cte = {total_cte}")
-
-            oneel.write_and_print(output_file, f'Dirac orbital energy: {eps - light_speed**2}')
-            oneel.write_and_print(output_file, f'Dirac total energy: {E_tot_JK - (2.0 *light_speed**2)}')
-            oneel.write_and_print(output_file, f'Kutzelnigg total energy: {E_kutzelnigg}')
-            break
 
         V_J_K_spinorb1 = v_psi_1 + JmK_phi1
 
@@ -342,11 +321,32 @@ def coulomb_gs_2e(spinorb1, potential, mra, prec, derivative, output_file):
         delta_psi = new_orbital - spinorb1
         deltasq = delta_psi.squaredNorm()
         error_norm = np.sqrt(deltasq)
-        print('Orbital_Error norm', error_norm)
+        print('     Converged? ', error_norm, ' > ', thr)
+
         spinorb1 = new_orbital
         spinorb2 = spinorb1.ktrs(prec)
         if(error_norm < prec):
             compute_last_energy = True
+        idx += 1
+    cke = spinorb1.classicT()
+    cpe = spinorb1.dot(v_psi_1).real + JmK.real
+    cte = cke + cpe 
+    total_cte = 2 * cte - JmK.real
+
+    hd_psi1_one_electron = hd_psi_1+ v_psi_1
+    hd_psi1_two_electron = hd_psi1_one_electron + 0.5 * JmK_phi1
+    exp_val_d2 = hd_psi1_two_electron.squaredNorm()
+
+    E_kutzelnigg = 2 * (np.sqrt(exp_val_d2)-light_speed**2)
+
+
+    print()
+    print()
+
+    oneel.write_and_print(output_file, f'Dirac orbital energy: {eps - light_speed**2}')
+    oneel.write_and_print(output_file, f'Dirac total energy: {E_tot_JK - (2.0 *light_speed**2)}')
+    oneel.write_and_print(output_file, f'Kutzelnigg total energy: {E_kutzelnigg}')
+         
     return spinorb1, spinorb2
 
 #def coulomb_gs(potential, spinors, mra, prec, der = 'ABGV'):
