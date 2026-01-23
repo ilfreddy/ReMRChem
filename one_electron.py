@@ -144,7 +144,7 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge, output_fil
         #print("Error =", error_norm)
         delta_e = np.abs(energy - old_energy)
         #print('Delta E', delta_e)
-        print('     Energy',energy)
+        print('     Energy',energy, old_energy)
         old_energy = energy
         spinorb1 = new_orbital 
         print('     Converged? ', error_norm, ' > ', thr, '  ----  ', delta_e, ' > ',prec/10)
@@ -171,6 +171,7 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge, output_fil
 
     print()
     print()
+    
     printing_string = f'Exact Energy = {energy_1s - light_speed**2}'
     write_and_print(output_file,printing_string)
     printing_string = f'Dirac Energy = {energy_dirac - light_speed**2}'

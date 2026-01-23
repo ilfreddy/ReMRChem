@@ -115,11 +115,9 @@ def Fermi_Dirac(center, charge, box_size, mra, ord, prec, C):
     # Define the lambda function for the Fermi-Dirac distribution
     # This parameter T is chosen to have a smooth transition and is the same for all atoms
     global T
-    #T = 4.349e-5
-    #T = (2.3e-5) / 0.52917721092 #recent one
     T = 0.00000989059 * np.log(81)
-    #T = 2.3 / 52917.7249 # maybe grasp
-    # BOOSTED BY A FACTOR OF 10 TO HAVE A SMOOTHER TRANSITION
+    
+    
     # Fermi Dirac distribution defined as a function of the radial distance r
     def FD(r):
         r = np.array(r)
@@ -163,14 +161,12 @@ def Fermi_Dirac(center, charge, box_size, mra, ord, prec, C):
 
     #integral_FD_3D = FD_tree.integrate()
     #print('Integral of the Fermi-Dirac distribution via radial integration:', integral_FD)
-    print('Integral of the Fermi-Dirac distribution via cartesian 3D integration:', integral_3D)
+    #print('Integral of the Fermi-Dirac distribution via cartesian 3D integration:', integral_3D)
 
     RhoF_0 = charge / integral_3D
-    print("The normalization constant is:", RhoF_0)
     
     Rho_3D = Rho_3D * RhoF_0
     Should_be_charge = Rho_3D.integrate()
-    print('Integral of the Fermi-Dirac distribution via 3D integration:', Should_be_charge)
     if abs(Should_be_charge - charge) > prec:
         print("")
         print(">>The integral of the charge density is not correct!<<")
@@ -181,10 +177,6 @@ def Fermi_Dirac(center, charge, box_size, mra, ord, prec, C):
     P = vp.PoissonOperator(mra, prec/10)
     # Remember that by definition in atomic units the Poisson operator has a 4*pi factor
     V_tree =  np.pi*4*P(Rho_3D)
-    print("3D density")
-    print(Rho_3D)
-    print("3D potential")
-    print(V_tree)
 
 
     return V_tree
