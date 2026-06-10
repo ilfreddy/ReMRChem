@@ -171,9 +171,7 @@ def coulomb_2e_D2(spinors, potential, mra, prec, derivative):
         print("Compute Jmat")
         Jmat = Jop.matrix(spinors)
         print(Jmat)
-#        print("Compute Kmat")
-#        Kmat = Kop.matrix(spinors)
-#        print(Kmat)
+
         print("Compute Vmat")
         Vmat = Vop.matrix(spinors)
         print(Vmat)
@@ -200,21 +198,32 @@ def coulomb_2e_D2_J(spinors, potential, mra, prec, thr, derivative, output_file)
     while (error_norm > thr):
         print()
         print("$ Iteration ", idx)
+        # Compute the V part
         Jop = oper.CoulombDirectOperator(mra, prec, spinors)
         RHS = build_RHS_D2(Jop, Vop, spinors[0], prec, light_speed)
-        cke = spinors[0].classicT()
         cpe = (spinors[0].dot(RHS)).real
+        # Compute the kinetic energy part (classic)
+        cke = spinors[0].classicT()
         
-        print("Orbital energy: ", c2 * ( -1.0 + np.sqrt(1 + 2 * (cpe + cke) / c2)))
-        mu = orb.calc_non_rel_mu(cke+cpe)
+        print("Orbital energy: ", c2 * ( -1.0 + np.sqrt(1 + 2 * (cpe + cke) / c2))) # expressed as ev of D2
+        mu = orb.calc_kutzelnigg_mu( c2*c2+2 * c2*  (cpe + cke), light_speed)
+
+        # Convolute and precision control
         new_spinor = orb.apply_helmholtz(RHS, mu, prec)
         new_spinor.cropLargeSmall(prec)
+        
+        # Compare with previous iteration and dampen if necessary
         new_spinor.normalize()
         delta_psi = new_spinor - spinors[0]
         deltasq = delta_psi.squaredNorm()
         error_norm = np.sqrt(deltasq)
-        # DAMPENING 
-        dampen_spinor = np.sqrt(0.7)* spinors[0] + np.sqrt(0.3) * new_spinor
+        #DAMPENING
+        if (error_norm > prec ):
+            dampen_spinor = np.sqrt(0.5)* spinors[0] + np.sqrt(0.5) * new_spinor
+        else:
+            dampen_spinor = new_spinor
+        # CROP AND NORMALIZE
+        dampen_spinor.cropLargeSmall(prec)    
         dampen_spinor.normalize()
         spinors[0] = dampen_spinor 
         spinors[1] = spinors[0].ktrs(prec)
@@ -308,12 +317,6 @@ def coulomb_gs_2e(spinorb1, potential, mra, prec, thr, derivative, output_file):
         tmp = orb.apply_helmholtz(V_J_K_spinorb1, mu, prec)
         new_orbital = orb.apply_dirac_hamiltonian(tmp, prec, eps, der = derivative)
         new_orbital *= 0.5/light_speed**2
-        #print("============= Spinor before Helmholtz =============")
-        #print(spinorb1)
-        #print("============= RHS before Helmholtz    =============")
-        #print(V_J_K_spinorb1)
-        #print("============= New spinor before crop  =============")
-        #print(new_orbital)
         new_orbital.normalize()
         new_orbital.cropLargeSmall(prec)       
 
@@ -693,19 +696,23 @@ def build_RHS_D2(Jop, Vop, spinor, prec, light_speed):
     c2 = light_speed**2
     Jpsi = Jop(spinor)
     Vpsi = Vop(spinor)
+    Jpsi.cropLargeSmall(prec)
+    Vpsi.cropLargeSmall(prec)
     VT_psi = 0.5 * Jpsi - Vpsi                      # V total
+    VT_psi.cropLargeSmall(prec)
 
     beta_VT_psi = VT_psi.beta2()                    # V\beta = \beta V
     beta_VT_psi.cropLargeSmall(prec)
 
     ap_VT_psi = VT_psi.alpha_p(prec)                # V \pi
-    ap_psi = spinor.alpha_p(prec)
+    ap_VT_psi.cropLargeSmall(prec)
+    ap_psi = spinor.alpha_p(prec/10)
     VT_ap_psi = 0.5 * Jop(ap_psi) - Vop(ap_psi)     # \pi V
     anticom = VT_ap_psi + ap_VT_psi
     anticom *= 1.0 / (2.0 * light_speed)            # 0.5c^-1 {V, \pi\}= (V\pi + \pi V) / 2c
     anticom.cropLargeSmall(prec)
 
-    VT_VT_psi = 0.5 * Jop(VT_psi) - Vop(VT_psi)     # V V = V^2
+    VT_VT_psi = Vop(Vop(spinor)) - 0.5*Jop(Vop(spinor)) - 0.5*Vop(Jop(spinor)) +  0.25*Jop(Jop(spinor))   # V V = V^2
     VT_VT_psi *= 1.0 / (2.0 * c2)                   # 0.5c^-2 V^2
     VT_VT_psi.cropLargeSmall(prec)
 

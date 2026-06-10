@@ -35,19 +35,19 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge,  output_fil
         print()
         print('$ Iteration', idx)
         
-        #print('Norms:')
-        #print('Large Norm:', np.sqrt(spinorb1.squaredLargeNorm()))
-        #print('Small Norm:', np.sqrt(spinorb1.squaredSmallNorm()))
+        # Compute energy of the guess
         hd_psi = orb.apply_dirac_hamiltonian(spinorb1, prec, der = derivative)
         v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec)
         add_psi = hd_psi + v_psi
         energy = spinorb1.dot(add_psi).real
         mu = orb.calc_dirac_mu(energy, light_speed)
+
+        # Convolute and precision control
         tmp = orb.apply_helmholtz(v_psi, mu, prec)
-#       tmp = orb.apply_dirac_hamiltonian(v_psi, prec, energy, der = derivative)
         tmp.cropLargeSmall(prec)
         new_orbital = orb.apply_dirac_hamiltonian(tmp, prec, energy, der = derivative)
-#        new_orbital =  orb.apply_helmholtz(tmp, mu, prec)
+
+        # Possible dampening
         if(idx > 10):
             new_orbital = new_orbital + spinorb1
         new_orbital.cropLargeSmall(prec)
@@ -55,15 +55,13 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge,  output_fil
         delta_psi = new_orbital - spinorb1
         deltasq = delta_psi.squaredNorm()
         error_norm = np.sqrt(deltasq)
-        #print('Error', error_norm)
         delta_e = np.abs(energy - old_energy)
-        #print('Delta E', delta_e)
         print('     Energy',energy - light_speed**2)
         old_energy = energy
         spinorb1 = new_orbital
         print('     Converged? ', error_norm, ' > ', thr, '  ----  ', delta_e, ' > ',prec/10)
         idx += 1
-        #print(new_orbital)
+        
     
     hd_psi = orb.apply_dirac_hamiltonian(spinorb1, prec, der = derivative)
     v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec)
@@ -80,8 +78,8 @@ def gs_D_1e(spinorb1, potential, mra, prec, thr, derivative, charge,  output_fil
     cpe = psi_beta_v_vpsi + psi_ap_V_psi/light_speed + 0.5 * psi_V2_psi / c2
     classic_energy = cke + cpe
     
-    #printing_string = f"Classic-like energies: cke = {cke}, cpe = {cpe}, cke + cpe = {classic_energy}"
-    #write_and_print(output_file,printing_string)
+    printing_string = f"Classic-like energies: cke = {cke}, cpe = {cpe}, cke + cpe = {classic_energy}"
+    write_and_print(output_file,printing_string)
     energy_kutzelnigg = c2*(np.sqrt(1+2*classic_energy/c2)-1)
 
     print()
@@ -113,6 +111,7 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge, output_fil
     idx = 0
     while (idx < niter and (delta_e > prec/10 or error_norm > thr)):
         print("$ Iteration ", idx )
+        # All the V terms 
         v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec) 
         vv_psi = orb.apply_potential(-0.5/c2, potential, v_psi, prec)
         beta_v_psi = v_psi.beta2()
@@ -120,20 +119,22 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge, output_fil
         ap_psi = spinorb1.alpha_p(prec, derivative)
         Vap_psi = orb.apply_potential(-1.0, potential, ap_psi, prec)
         anticom = apV_psi + Vap_psi
-#        anticom.cropLargeSmall(prec)
-#        beta_v_psi.cropLargeSmall(prec)
-#        vv_psi.cropLargeSmall(prec)
+
         RHS = beta_v_psi + vv_psi + anticom * (0.5/light_speed)
         RHS.cropLargeSmall(prec)
-        cke = spinorb1.classicT()
         cpe = (spinorb1.dot(RHS)).real
-        #print("Classic-like energies:", "cke =", cke,"cpe =", cpe,"cke + cpe =", cke + cpe)
+
+        # And kinetic
+        cke = spinorb1.classicT()
+        
         classic_energy = cke + cpe
-        energy = c2*(np.sqrt(1+2*classic_energy/c2)-1)
+        energy = c2*(np.sqrt(1+2*classic_energy/c2)-1) # Energy as given by Kutzelnigg's formula
         mu = orb.calc_non_rel_mu(cke+cpe)
+
+        # Convolute and precision control
         new_orbital = orb.apply_helmholtz(RHS, mu, prec)
-        #if(idx > 10):
-        if(idx > 3):
+        # Dampen if necessary (1 part new, 2 parts old as with 2-el it might be a bit more unstable)
+        if(idx > 10): 
             new_orbital = 2 * new_orbital 
             new_orbital =  new_orbital + spinorb1
         new_orbital.cropLargeSmall(prec)
@@ -141,16 +142,12 @@ def gs_D2_1e(spinorb1, potential, mra, prec, thr, derivative, charge, output_fil
         delta_psi = new_orbital - spinorb1
         deltasq = delta_psi.squaredNorm()
         error_norm = np.sqrt(deltasq)
-        #print("Error =", error_norm)
         delta_e = np.abs(energy - old_energy)
-        #print('Delta E', delta_e)
         print('     Energy',energy, old_energy)
         old_energy = energy
         spinorb1 = new_orbital 
         print('     Converged? ', error_norm, ' > ', thr, '  ----  ', delta_e, ' > ',prec/10)
         idx += 1
-        #print(new_orbital)
-        spinorb1.save("spinorb1")
     
     hd_psi = orb.apply_dirac_hamiltonian(spinorb1, prec, der = derivative)
     v_psi = orb.apply_potential(-1.0, potential, spinorb1, prec)
