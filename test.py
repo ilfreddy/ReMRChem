@@ -109,8 +109,7 @@ if(computePotential):
         V_tree = nucpot.Fermi_Dirac(position, charge, box, mra, order, prec, HCR)
     else:
         exit(-1)
-    #V_tree = Peps(f)
-elif(readPotential):
+else:
     V_tree.loadTree(f"potential")
 
 if(savePotential):

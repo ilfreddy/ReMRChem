@@ -1,0 +1,59 @@
+**************************************
+INPUT FILE CONTENT:
+light_speed = 137.0359895   # default 137.03599913900001
+derivative = "ABGV"         # possible values: PH, ABGV, BS
+order = 10                  # max degree of the polyinomial used
+auto_box = True             # Will auto select a box large enought so that the wavefunction vanishes at the edge
+box = 1                     # If the previous was set to False, this lets you choose the value, ignored otherwise
+prec = 1.0e-8               # precision threshold for the MRA operations
+thr  = 1.0e-7               # error threshold for SCF convergence
+
+# -- POTENTIAL OPTIONS -
+computePotential = True         # bool; T: it computes it from scratch, F: reads from a previous potential.tree
+savePotential    = False        # bool; saves potential as potential.tree
+potential = "fermi_dirac"       # possible values: point_charge coulomb_HFYGB homogeneus_charge_sphere gaussian
+
+# -- ORBITAL OPTIONS --
+readOrbitals     = False         # bool
+saveOrbitals     = False         # bool
+saveGuess        = False         # bool
+
+# -- ALGORITHM OPTIONS --
+scf              = True         # bool; T: scf, F: point energy calc
+D2               = False        # bool; T: D2 scf, F: Dirac scf
+two_electrons    = False        # bool; T: 2-el, F: 1-el
+ktrs             = True         # Time reversal symmetry in case of 2-el, for now only supported true
+
+# -- SYSTEM --
+molecule = [ ["H", 1, 0.0, 0.0, 0.0, 1.3223400000e-5, 2] ]
+
+# NOT TESTED PART 
+runGaunt         = False
+runGaugeA        = False
+runGaugeB        = False
+runGaugeC        = False
+runGaugeD        = False
+runGaugeDelta    = False
+**************************************
+Classic-like energies: cke = 0.5000531083280508, cpe = -1.0000530562753045, cke + cpe = -0.49999994794725366
+Exact Energy = -0.5000066565953603
+Dirac Energy = -0.5000066218017309
+Kutze Energy = -0.5000066045435392
+Error Kutze  = 5.205220077186823e-08
+Error Dirac  = 3.479362931102514e-08
+Delta Energy = -1.0550138540565968e-10
+Dirac - Kutzelnigg = -1.7258571460843086e-08
+
+PARAMETERS:
+molecule    = [['H', 1, 0.0, 0.0, 0.0, 1.32234e-05, 2]]
+D2          = False
+prec        = 8
+order       = 10
+derivative  = ABGV
+box         = 50
+centered    = True
+
+-> ID calculation 
+-------------------------------
+H 1 0 8 ABGV 50
+-------------------------------
